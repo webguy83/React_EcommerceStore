@@ -1,0 +1,35 @@
+.shop-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: .1rem solid black;
+
+    background-position: center;
+    background-size: cover;
+
+    &.big {
+        grid-column: span 2;  
+    }
+
+    @media (max-width: 690px) {
+        &.big {
+            grid-column: auto;  
+        }
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: .1rem solid black;
+    padding: 1rem;
+
+    & > h2 {
+        font-size: 1.8rem;
+    }
+    & > p {
+        font-size: 1.3rem;
+    }
+}
