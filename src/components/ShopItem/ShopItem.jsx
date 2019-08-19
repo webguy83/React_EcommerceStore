@@ -5,8 +5,7 @@ import './ShopItem.scss';
 export default ({title, image, size}) => {
     return (
         <div style={{
-            backgroundImage: `url(${image})`,
-            
+            backgroundImage: `url(${image})`
         }} className={`${size} shop-item`}>
             <div className="content">
                 <h2>{title}</h2>
