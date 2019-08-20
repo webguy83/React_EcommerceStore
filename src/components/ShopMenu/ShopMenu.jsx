@@ -11,7 +11,7 @@ import IndiaImg from './Assets/india_cover.jpg';
 
 export default () => {
 
-    const [shopItems, setShopItems] = useState([{
+    const [shopItems] = useState([{
         id: 1,
         title: "Malaysia",
         image: MalaysiaImg,
