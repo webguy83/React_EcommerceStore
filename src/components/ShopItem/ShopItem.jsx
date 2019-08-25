@@ -1,10 +1,13 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
+import { lowerCaseCountry } from '../../helpers/generic';
 
 import './ShopItem.scss';
 
-export default ({ title, image, size }) => {
+export default withRouter(({ title, image, size, history, match }) => {
     return (
-        <div className={`${size} shop-item`}>
+        <div className={`${size} shop-item`} onClick={() => history.push(`${match.url}${lowerCaseCountry(title)}`)} >
             <div style={{
                 backgroundImage: `url(${image})`
             }} className="shop-item-background" />
@@ -12,6 +15,6 @@ export default ({ title, image, size }) => {
                 <h2>{title}</h2>
                 <p>Shop for photos now!</p>
             </div>
-        </div>
+        </div >
     );
-};
+});
