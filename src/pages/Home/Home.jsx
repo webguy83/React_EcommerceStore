@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.scss';
 
-import ShopMenu from '../components/ShopMenu/ShopMenu';
+import ShopMenu from '../../components/ShopMenu/ShopMenu';
 
 export default (props) => {
     return (
