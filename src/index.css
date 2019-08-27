@@ -15,3 +15,7 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+body {
+  padding: 4rem 8rem;
+}

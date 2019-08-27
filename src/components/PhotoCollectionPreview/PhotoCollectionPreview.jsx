@@ -1,14 +1,14 @@
 import React from 'react';
 
+import CollectonItem from '../CollectionItem/CollectionItem';
+import './PhotoCollectionPreview.scss';
+
 export default ({ title, items }) => {
     return (
         <div className="photo-collection-preview">
-            <h2>{title}</h2>
-            {items.map(({ id, imageUrl, name, price }) => {
-                return <div key={id}>
-                    <img src={imageUrl} alt={name} />
-                    <p>${price}</p>
-                </div>
+            <h2 className="photo-collection-preview-title">{title}</h2>
+            {items.filter((_, i) => i < 4).map(({ id, imageUrl, name, price }) => {
+                return <CollectonItem key={id} imageUrl={imageUrl} name={name} price={price} />
             })}
         </div>
     );
