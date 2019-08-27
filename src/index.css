@@ -19,3 +19,15 @@ html {
 body {
   padding: 4rem 8rem;
 }
+
+@media (max-width: 680px) {
+  body {
+    padding: 4rem 4rem;
+  }
+}
+
+@media (max-width: 350px) {
+  body {
+    padding: 4rem 2rem;
+  }
+}

@@ -3,6 +3,7 @@ import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
 
 import { Route, Switch } from 'react-router-dom';
+import Header from './components/Header/Header';
 
 const CountryPage = (props) => {
   return (
@@ -13,6 +14,7 @@ const CountryPage = (props) => {
 export default () => {
   return (
     <div className="container">
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/shop" component={Shop} />
