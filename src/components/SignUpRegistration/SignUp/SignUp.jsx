@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+import CustomInput from '../../UI/CustomInput/CustomInput';
+
+import './SignUp.scss'
+
 export default () => {
 
     const [email, setEmail] = useState('');
@@ -22,10 +26,8 @@ export default () => {
             <h2>I already have an account</h2>
             <p className="instructions">Sign in with your email and password.</p>
             <form onSubmit={handleSubmit}>
-                <label>Email</label>
-                <input type="email" name="email" value={email} onChange={handleChange} required />
-                <label>Password</label>
-                <input type="password" name="password" value={password} onChange={handleChange} required />
+                <CustomInput type="email" name="email" handleChange={handleChange} value={email} label="Email" required />
+                <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" required />
                 <input type="submit" value='Submit' />
             </form>
         </div>
