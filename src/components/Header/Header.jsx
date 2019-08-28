@@ -14,6 +14,7 @@ export default () => {
             <nav>
                 <Link to="/shop">Shop</Link>
                 <Link to="/contact">Contact</Link>
+                <Link to="/signup">Sign Up</Link>
             </nav>
         </div>
     );

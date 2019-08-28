@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
+import SignUpRegistration from './pages/SignUpRegistration/SignUpRegistration';
 
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
@@ -17,8 +18,9 @@ export default () => {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/shop" component={Shop} />
-        <Route exact path="/:country" component={CountryPage} />
+        <Route path="/shop" component={Shop} />
+        <Route path="/signup" component={SignUpRegistration} />
+        <Route path="/:country" component={CountryPage} />
       </Switch>
     </div>
   );

@@ -9,6 +9,10 @@
   box-sizing: inherit;
 }
 
+input, button {
+  font-family: inherit;
+}
+
 html {
   font-size: 62.5%;
   font-family: 'Open Sans', sans-serif;
@@ -18,6 +22,10 @@ html {
 
 body {
   padding: 4rem 8rem;
+}
+
+h2 {
+  font-size: 2.4rem;
 }
 
 @media (max-width: 680px) {
