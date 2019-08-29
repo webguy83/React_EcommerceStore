@@ -3,10 +3,8 @@
     & form {
         display: flex;
         flex-direction: column;
-        margin-top: 2rem;
-    }
-
-    & input[type=submit] {
-        align-self: flex-start;
+        margin-top: 5rem;
+        height: 23rem;
+        justify-content: space-between;
     }
 }

@@ -1,0 +1,18 @@
+.customButton {
+    width: 40%;
+    min-width: 11rem;
+    padding: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 1.4rem;
+    border: .1rem solid black;
+    background-color: black;
+    color: white;
+    outline: none;
+
+    &:hover, &:active {
+        color: black;
+        background-color: white;
+    }
+}

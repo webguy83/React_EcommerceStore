@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import CustomInput from '../../UI/CustomInput/CustomInput';
+import CustomButton from '../../UI/CustomButton/CustomButton';
 
 import './SignUp.scss'
 
@@ -28,7 +29,7 @@ export default () => {
             <form onSubmit={handleSubmit}>
                 <CustomInput type="email" name="email" handleChange={handleChange} value={email} label="Email" required />
                 <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" required />
-                <input type="submit" value='Submit' />
+                <CustomButton type="submit" value='Sign In' />
             </form>
         </div>
     );
