@@ -18,6 +18,10 @@
             margin-right: 4rem;
         }
     }
+
+    & .navItem {
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 440px) {

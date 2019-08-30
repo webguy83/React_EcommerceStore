@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import CustomInput from '../../UI/CustomInput/CustomInput';
 import CustomButton from '../../UI/CustomButton/CustomButton';
 
+import { signInWithGoogle } from '../../../helpers/firebase';
+
 import './SignUp.scss'
 
 export default () => {
@@ -29,7 +31,10 @@ export default () => {
             <form onSubmit={handleSubmit}>
                 <CustomInput type="email" name="email" handleChange={handleChange} value={email} label="Email" required />
                 <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" required />
-                <CustomButton type="submit" value='Sign In' />
+                <div className="submitButtonGroup">
+                    <CustomButton type="submit" value='Sign In' />
+                    <CustomButton click={signInWithGoogle} type="submit" value='Sign In with Google' google />
+                </div>
             </form>
         </div>
     );

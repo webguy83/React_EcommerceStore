@@ -6,5 +6,10 @@
         margin-top: 5rem;
         height: 23rem;
         justify-content: space-between;
+
+        & .submitButtonGroup {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 }
