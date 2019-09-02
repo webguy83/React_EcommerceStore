@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
-import SignUpRegistration from './pages/SignUpRegistration/SignUpRegistration';
+import SignInRegistration from './pages/SignInRegistration/SignInRegistration';
 
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 
-import { auth } from './helpers/firebase';
+import { auth, createUserDoc } from './helpers/firebase';
 
 // const CountryPage = (props) => {
 //   return (
@@ -15,13 +15,25 @@ import { auth } from './helpers/firebase';
 // }
 
 export default () => {
- const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      setCurrentUser(user);
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      if (userAuth) {
+        const userRef = createUserDoc(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+            setCurrentUser({
+              id: snapShot.id,
+              ...snapShot.data()
+            });
+          })      
+      } else {
+        setCurrentUser(userAuth)
+      }
+      
     });
-    return function () {
+    return () => {
       unsubscribe();
     }
   }, []);
@@ -32,7 +44,7 @@ export default () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/shop" component={Shop} />
-        <Route path="/signup" component={SignUpRegistration} />
+        <Route path="/signup" component={SignInRegistration} />
         {/* <Route path="/:country" component={CountryPage} /> */}
       </Switch>
     </div>

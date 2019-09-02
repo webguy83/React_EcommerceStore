@@ -5,7 +5,7 @@ import CustomButton from '../../UI/CustomButton/CustomButton';
 
 import { signInWithGoogle } from '../../../helpers/firebase';
 
-import './SignUp.scss'
+import './SignIn.scss'
 
 export default () => {
 
@@ -25,7 +25,7 @@ export default () => {
     }
 
     return (
-        <div className="SignUp">
+        <div className="SignIn">
             <h2>I already have an account</h2>
             <p className="instructions">Sign in with your email and password.</p>
             <form onSubmit={handleSubmit}>
