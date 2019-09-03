@@ -58,8 +58,8 @@ export default () => {
 
     return (
         <div className={Registration}>
-            <h2>I don't have an account</h2>
-            <p className={instructions}>Sign in with your email and password.</p>
+            <h2>I need to register an account</h2>
+            <p className={instructions}>Register your email and password.</p>
             <form className={formGroup} onSubmit={handleSubmit}>
                 <CustomInput type="text" name="displayName" handleChange={handleChange} value={displayName} label="Display Name" labelToInputLink="displayName" required />
                 <CustomInput type="email" name="email" handleChange={handleChange} value={email} label="Email" labelToInputLink="registrationEmail" required />
