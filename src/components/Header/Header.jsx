@@ -17,7 +17,7 @@ export default ({ currentUser }) => {
                 <Link className={styles.navItem} to="/shop">Shop</Link>
                 <Link className={styles.navItem} to="/contact">Contact</Link>
                 {
-                    currentUser ? <div className={styles.navItem} onClick={() => auth.signOut()}>Sign Out</div> : <Link className={styles.navItem} to="/signup">Sign Up</Link>
+                    currentUser ? <div className={styles.navItem} onClick={() => auth.signOut()}>Sign Out</div> : <Link className={styles.navItem} to="/signinregistration">Sign In / Registration</Link>
                 }
                 
             </nav>

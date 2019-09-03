@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import CustomInput from '../../UI/CustomInput/CustomInput';
 import CustomButton from '../../UI/CustomButton/CustomButton';
 
-import { signInWithGoogle } from '../../../helpers/firebase';
+import { signInWithGoogle, auth } from '../../../helpers/firebase';
 
-import './SignIn.scss'
+import { formGroup, SignIn, instructions, submitButtonGroup } from './SignIn.module.scss'
 
 export default () => {
 
@@ -15,8 +15,12 @@ export default () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setEmail("");
-        setPassword("");
+        auth.signInWithEmailAndPassword(email, password)
+            .then(() => {
+                setEmail("");
+                setPassword("");
+            })
+            .catch(err => console.log(err))
     }
 
     const handleChange = (e) => {
@@ -25,13 +29,13 @@ export default () => {
     }
 
     return (
-        <div className="SignIn">
+        <div className={SignIn}>
             <h2>I already have an account</h2>
-            <p className="instructions">Sign in with your email and password.</p>
-            <form onSubmit={handleSubmit}>
-                <CustomInput type="email" name="email" handleChange={handleChange} value={email} label="Email" required />
-                <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" required />
-                <div className="submitButtonGroup">
+            <p className={instructions}>Sign in with your email and password.</p>
+            <form className={formGroup} onSubmit={handleSubmit}>
+                <CustomInput type="email" name="email" handleChange={handleChange} value={email} label="Email" labelToInputLink="signInEmail" required />
+                <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" labelToInputLink="signInPassword" required />
+                <div className={submitButtonGroup}>
                     <CustomButton type="submit" value='Sign In' />
                     <CustomButton click={signInWithGoogle} type="submit" value='Sign In with Google' google />
                 </div>

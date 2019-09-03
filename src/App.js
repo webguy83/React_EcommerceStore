@@ -18,9 +18,9 @@ export default () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+    const unsubscribe = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
-        const userRef = createUserDoc(userAuth);
+        const userRef = await createUserDoc(userAuth);
 
         userRef.onSnapshot(snapShot => {
             setCurrentUser({
@@ -28,10 +28,9 @@ export default () => {
               ...snapShot.data()
             });
           })      
-      } else {
-        setCurrentUser(userAuth)
       }
-      
+
+      setCurrentUser(userAuth);
     });
     return () => {
       unsubscribe();
@@ -44,7 +43,7 @@ export default () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/shop" component={Shop} />
-        <Route path="/signup" component={SignInRegistration} />
+        <Route path="/signinregistration" component={SignInRegistration} />
         {/* <Route path="/:country" component={CountryPage} /> */}
       </Switch>
     </div>
