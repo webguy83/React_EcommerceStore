@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header currentUser={currentUser} />
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/shop" component={Shop} />

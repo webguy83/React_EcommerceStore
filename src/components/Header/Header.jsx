@@ -1,6 +1,8 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
 
+import { connect } from 'react-redux';
+
 import { auth } from '../../helpers/firebase';
 
 import styles from './Header.module.scss';
@@ -19,10 +21,16 @@ const Header = ({ currentUser }) => {
                 {
                     currentUser ? <div className={styles.navItem} onClick={() => auth.signOut()}>Sign Out</div> : <Link className={styles.navItem} to="/signinregistration">Sign In / Registration</Link>
                 }
-                
+
             </nav>
         </div>
     );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.user.currentUser
+    }
+}
+
+export default connect(mapStateToProps)(Header);
