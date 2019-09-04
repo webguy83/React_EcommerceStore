@@ -3,7 +3,7 @@ import { SHOP_DATA } from '../../data/shopData';
 
 import PhotoCollectionPreview from '../../components/PhotoCollectionPreview/PhotoCollectionPreview';
 
-export default () => {
+const Shop = () => {
 
     return (
         <div className="shop-page">
@@ -13,3 +13,5 @@ export default () => {
         </div>
     );
 };
+
+export default Shop;

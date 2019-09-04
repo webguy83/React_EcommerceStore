@@ -4,7 +4,7 @@ import Registration from '../../components/SignInRegistration/Registration/Regis
 
 import './SignInRegistration.scss';
 
-export default () => {
+const SignInRegistration = () => {
     return (
         <div className="SignInRegistration">
             <SignIn />
@@ -12,3 +12,5 @@ export default () => {
         </div>
     );
 };
+
+export default SignInRegistration;

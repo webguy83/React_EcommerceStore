@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { customButton, googleSignIn } from './CustomButton.module.scss';
+import { customButtonContainer, googleSignIn } from './CustomButton.module.scss';
 
-export default ({ type, value, click, google }) => {
+const CustomButton =  ({ type, value, click, google }) => {
     return (
-        <button onClick={click} type={type} className={google ? customButton.concat(` ${googleSignIn}`) : customButton}>{value}</button>
+        <button onClick={click} type={type} className={google ? customButtonContainer.concat(` ${googleSignIn}`) : customButtonContainer}>{value}</button>
     );
 };
+
+export default CustomButton;

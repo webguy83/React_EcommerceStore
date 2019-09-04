@@ -9,7 +9,7 @@ import SouthKoreaImg from './Assets/korea_cover.jpg';
 import ChinaImg from './Assets/china_cover.jpg';
 import IndiaImg from './Assets/india_cover.jpg';
 
-export default () => {
+const ShopMenu = () => {
 
     const [shopItems] = useState([{
         id: 1,
@@ -50,3 +50,5 @@ export default () => {
         </div>
     );
 };
+
+export default ShopMenu;

@@ -3,7 +3,7 @@ import React from 'react';
 import CollectonItem from '../CollectionItem/CollectionItem';
 import './PhotoCollectionPreview.scss';
 
-export default ({ title, items }) => {
+const PhotoCollectionPreview = ({ title, items }) => {
     return (
         <div className="photo-collection-preview">
             <h2 className="photo-collection-preview-title">{title}</h2>
@@ -15,3 +15,5 @@ export default ({ title, items }) => {
         </div>
     );
 };
+
+export default PhotoCollectionPreview;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './CollectionItem.scss'
 
-export default ({ imageUrl, price, name }) => {
+const CollectionItem = ({ imageUrl, price, name }) => {
     return (
         <div className="photo-collection-preview-item">
             <div style={{
@@ -16,3 +16,5 @@ export default ({ imageUrl, price, name }) => {
         </div>
     );
 };
+
+export default CollectionItem;

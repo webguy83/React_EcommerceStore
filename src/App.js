@@ -14,7 +14,7 @@ import { auth, createUserDoc } from './helpers/firebase';
 //   )
 // }
 
-export default () => {
+const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -49,3 +49,5 @@ export default () => {
     </div>
   );
 }
+
+export default App;

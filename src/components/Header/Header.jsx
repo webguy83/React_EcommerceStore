@@ -7,7 +7,7 @@ import styles from './Header.module.scss';
 
 import { Link } from 'react-router-dom';
 
-export default ({ currentUser }) => {
+const Header = ({ currentUser }) => {
     return (
         <div className={styles.header}>
             <Link to="/">
@@ -24,3 +24,5 @@ export default ({ currentUser }) => {
         </div>
     );
 };
+
+export default Header;

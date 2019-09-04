@@ -5,7 +5,7 @@ import { lowerCaseCountry } from '../../helpers/generic';
 
 import './ShopItem.scss';
 
-export default withRouter(({ title, image, size, history, match }) => {
+const ShopItem = ({ title, image, size, history, match }) => {
     return (
         <div className={`${size} shop-item`} onClick={() => history.push(`${match.url}${lowerCaseCountry(title)}`)} >
             <div style={{
@@ -17,4 +17,6 @@ export default withRouter(({ title, image, size, history, match }) => {
             </div>
         </div >
     );
-});
+};
+
+export default withRouter(ShopItem);

@@ -3,10 +3,12 @@ import './Home.scss';
 
 import ShopMenu from '../../components/ShopMenu/ShopMenu';
 
-export default (props) => {
+const Home = (props) => {
     return (
         <div className="home">
             <ShopMenu />
         </div>
     );
 };
+
+export default Home;

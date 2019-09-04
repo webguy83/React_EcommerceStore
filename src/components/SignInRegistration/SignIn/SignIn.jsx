@@ -5,9 +5,9 @@ import CustomButton from '../../UI/CustomButton/CustomButton';
 
 import { signInWithGoogle, auth } from '../../../helpers/firebase';
 
-import { formGroup, SignIn, instructions, submitButtonGroup } from './SignIn.module.scss'
+import { formGroup, SignInContainer, instructions, submitButtonGroup } from './SignIn.module.scss'
 
-export default () => {
+const SignIn = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -29,7 +29,7 @@ export default () => {
     }
 
     return (
-        <div className={SignIn}>
+        <div className={SignInContainer}>
             <h2>I already have an account</h2>
             <p className={instructions}>Sign in with your email and password.</p>
             <form className={formGroup} onSubmit={handleSubmit}>
@@ -43,3 +43,5 @@ export default () => {
         </div>
     );
 };
+
+export default SignIn;

@@ -5,9 +5,9 @@ import CustomButton from '../../UI/CustomButton/CustomButton';
 
 import { auth, createUserDoc } from '../../../helpers/firebase';
 
-import { formGroup, Registration, instructions, submitButtonGroup } from './Registration.module.scss'
+import { formGroup, RegistrationContainer, instructions, submitButtonGroup } from './Registration.module.scss'
 
-export default () => {
+const Registration = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -57,7 +57,7 @@ export default () => {
     }
 
     return (
-        <div className={Registration}>
+        <div className={RegistrationContainer}>
             <h2>I need to register an account</h2>
             <p className={instructions}>Register your email and password.</p>
             <form className={formGroup} onSubmit={handleSubmit}>
@@ -72,3 +72,5 @@ export default () => {
         </div>
     );
 };
+
+export default Registration;
