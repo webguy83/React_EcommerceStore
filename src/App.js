@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
 import SignInRegistration from './pages/SignInRegistration/SignInRegistration';
@@ -8,14 +8,16 @@ import Header from './components/Header/Header';
 
 import { auth, createUserDoc } from './helpers/firebase';
 
+import { setCurrentUser } from './store/actions/user';
+import { connect } from 'react-redux';
+
 // const CountryPage = (props) => {
 //   return (
 //     <h1>{props.match.params.country}</h1>
 //   )
 // }
 
-const App = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+const App = ({ setCurrentUser }) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async userAuth => {
@@ -23,11 +25,11 @@ const App = () => {
         const userRef = await createUserDoc(userAuth);
 
         userRef.onSnapshot(snapShot => {
-            setCurrentUser({
-              id: snapShot.id,
-              ...snapShot.data()
-            });
-          })      
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
+          });
+        })
       }
 
       setCurrentUser(userAuth);
@@ -35,7 +37,7 @@ const App = () => {
     return () => {
       unsubscribe();
     }
-  }, []);
+  }, [setCurrentUser]);
 
   return (
     <div className="container">
@@ -50,4 +52,12 @@ const App = () => {
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCurrentUser: (user) => {
+       dispatch(setCurrentUser(user));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
