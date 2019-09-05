@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
-import ShoppingCartIcon from '../ShoppingCartIcon/ShoppingCartIcon';
+import ShoppingCartIcon from '../ShoppingCart/Icon/Icon';
 
 import { connect } from 'react-redux';
 

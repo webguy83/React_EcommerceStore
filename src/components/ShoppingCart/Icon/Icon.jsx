@@ -1,19 +1,18 @@
 import React from 'react';
-import { ShoppingCartIconContainer, 
+import { IconContainer, 
          counter } 
-from './ShoppingCartIcon.module.scss';
+from './Icon.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-
-const ShoppingCartIcon = () => {
+const Icon = () => {
     return (
-        <div className={ShoppingCartIconContainer}>
+        <div className={IconContainer}>
             <FontAwesomeIcon icon={faShoppingCart} size="3x" />
             <span className={counter}>0</span>
         </div>
     );
 };
 
-export default ShoppingCartIcon;
+export default Icon;
