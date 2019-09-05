@@ -1,18 +1,17 @@
-.photo-collection-preview {
-    &-item {
+.photoCollectionPreviewContainer {
+    &Item {
         width: 100%;
         height: 45rem;
 
-        &-footer {
+        &Footer {
             height: 10%;
             font-size: 1.6rem;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            
+            align-items: center; 
         }
     }
-    &-image {
+    &Image {
         width: 100%;
         height: 90%;
         background-size: cover;

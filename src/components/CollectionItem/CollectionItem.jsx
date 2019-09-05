@@ -1,15 +1,19 @@
 import React from 'react';
-import './CollectionItem.scss'
+import {
+    photoCollectionPreviewContainerItem,
+    photoCollectionPreviewContainerItemFooter,
+    photoCollectionPreviewContainerImage
+} from './CollectionItem.module.scss';
 
 const CollectionItem = ({ imageUrl, price, name }) => {
     return (
-        <div className="photo-collection-preview-item">
+        <div className={photoCollectionPreviewContainerItem}>
             <div style={{
                 backgroundImage: `url(${imageUrl})`
-            }} className="photo-collection-preview-image">
+            }} className={photoCollectionPreviewContainerImage}>
 
             </div>
-            <div className="photo-collection-preview-item-footer">
+            <div className={photoCollectionPreviewContainerItemFooter}>
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </div>
