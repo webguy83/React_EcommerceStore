@@ -9,6 +9,7 @@ import { auth } from '../../helpers/firebase';
 import { navItem, header } from './Header.module.scss';
 
 import { Link } from 'react-router-dom';
+import MiniCart from '../ShoppingCart/MiniCart/MiniCart';
 
 const Header = ({ currentUser }) => {
     return (
@@ -24,6 +25,7 @@ const Header = ({ currentUser }) => {
                 }
                 <Link className={navItem} to="#"><ShoppingCartIcon /></Link>
             </nav>
+            <MiniCart />
         </div>
     );
 };

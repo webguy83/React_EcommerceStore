@@ -1,0 +1,23 @@
+.MiniCartContainer {
+    position: absolute;
+    right: 0;
+    top: 7rem;
+    background-color: white;
+    border: .1rem solid black;
+    padding: 2rem;
+    
+    & > .cartItems{
+        min-width: 28rem;
+        min-height: 30rem;
+    }
+
+    & > button {
+        margin: 0 auto;
+        display: block;
+    }
+
+    & > h2 {
+        text-align: center;
+    }
+}
+
