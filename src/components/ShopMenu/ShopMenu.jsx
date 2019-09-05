@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ShopItem from '../ShopItem/ShopItem';
 
-import './ShopMenu.scss';
+import { shopMenuContainer } from './ShopMenu.module.scss';
 
 import MalaysiaImg from './Assets/malaysia_cover.jpg';
 import ThailandImg from './Assets/thailand_cover.jpg';
@@ -43,7 +43,7 @@ const ShopMenu = () => {
     }])
 
     return (
-        <div className="shop-menu">
+        <div className={shopMenuContainer}>
             {shopItems.map(({ id, title, image, size }) => {
                 return <ShopItem key={id} title={title} image={image} size={size} />
             })}

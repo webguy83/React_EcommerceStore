@@ -1,12 +1,12 @@
-.photo-collection-preview {
-    &-grid {
+.photoCollectionPreviewContainer {
+    &Grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
         grid-gap: 3rem;
         margin-bottom: 5rem;
     }
 
-    &-title {
+    &Title {
         margin-bottom: 1.3rem;
         grid-column: 1 / -1;
     }

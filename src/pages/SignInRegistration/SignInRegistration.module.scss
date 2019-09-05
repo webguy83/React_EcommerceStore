@@ -1,11 +1,11 @@
-.SignInRegistration {
+.SignInRegistrationContainer {
     margin-top: 4rem;
     display: flex;
     justify-content: space-around;
 }
 
 @media (max-width: 830px) {
-    .SignInRegistration {
+    .SignInRegistrationContainer {
         flex-direction: column;
     }
 }

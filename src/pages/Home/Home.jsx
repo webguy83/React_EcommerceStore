@@ -1,11 +1,11 @@
 import React from 'react';
-import './Home.scss';
+import { home } from './Home.module.scss';
 
 import ShopMenu from '../../components/ShopMenu/ShopMenu';
 
-const Home = (props) => {
+const Home = () => {
     return (
-        <div className="home">
+        <div className={home}>
             <ShopMenu />
         </div>
     );
