@@ -19,15 +19,15 @@
             transition: all .3s ease-out;
         }
     }
+}
 
-    &.big {
-        grid-column: span 2;  
-    }
+.big {
+    grid-column: span 2;  
+}
 
-    @media (max-width: 750px) {
-        &.big {
-            grid-column: auto;  
-        }
+@media (max-width: 750px) {
+    .big {
+        grid-column: auto;  
     }
 }
 

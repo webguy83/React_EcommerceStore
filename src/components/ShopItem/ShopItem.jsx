@@ -3,11 +3,11 @@ import { withRouter } from 'react-router-dom';
 
 import { lowerCaseCountry } from '../../helpers/generic';
 
-import { shopItemContainer, shopItemBackground, content } from './ShopItem.module.scss';
+import { shopItemContainer, shopItemBackground, content, big } from './ShopItem.module.scss';
 
 const ShopItem = ({ title, image, size, history, match }) => {
     return (
-        <div className={`${size} ${shopItemContainer}`} onClick={() => history.push(`${match.url}${lowerCaseCountry(title)}`)} >
+        <div className={`${size === "big" ? big : null} ${shopItemContainer}`} onClick={() => history.push(`${match.url}${lowerCaseCountry(title)}`)} >
             <div style={{
                 backgroundImage: `url(${image})`
             }} className={shopItemBackground} />

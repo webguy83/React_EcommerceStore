@@ -1,27 +1,28 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
+import ShoppingCartIcon from '../ShoppingCartIcon/ShoppingCartIcon';
 
 import { connect } from 'react-redux';
 
 import { auth } from '../../helpers/firebase';
 
-import styles from './Header.module.scss';
+import { navItem, header } from './Header.module.scss';
 
 import { Link } from 'react-router-dom';
 
 const Header = ({ currentUser }) => {
     return (
-        <div className={styles.header}>
+        <div className={header}>
             <Link to="/">
                 <Logo />
             </Link>
             <nav>
-                <Link className={styles.navItem} to="/shop">Shop</Link>
-                <Link className={styles.navItem} to="/contact">Contact</Link>
+                <Link className={navItem} to="/shop">Shop</Link>
+                <Link className={navItem} to="/contact">Contact</Link>
                 {
-                    currentUser ? <div className={styles.navItem} onClick={() => auth.signOut()}>Sign Out</div> : <Link className={styles.navItem} to="/signinregistration">Sign In / Registration</Link>
+                    currentUser ? <div className={navItem} onClick={() => auth.signOut()}>Sign Out</div> : <Link className={navItem} to="/signinregistration">Sign In / Registration</Link>
                 }
-
+                <Link className={navItem} to="#"><ShoppingCartIcon /></Link>
             </nav>
         </div>
     );

@@ -14,7 +14,7 @@
         align-items: center;
         text-transform: uppercase;
         
-        & a:not(:last-child) {
+        & > *:not(:last-child) {
             margin-right: 4rem;
         }
     }
@@ -34,7 +34,7 @@
             justify-content: center;
             margin-top: 2rem;
 
-            & a:not(:last-child) {
+            & > *:not(:last-child) {
                 margin-right: 0;
                 margin-bottom: 2rem;
             }
