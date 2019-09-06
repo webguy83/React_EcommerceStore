@@ -8,8 +8,8 @@ const PhotoCollectionPreview = ({ title, items }) => {
         <div className={photoCollectionPreviewContainer}>
             <h2 className={photoCollectionPreviewContainerTitle}>{title}</h2>
             <div className={photoCollectionPreviewContainerGrid}>
-                {items.filter((_, i) => i < 4).map(({ id, imageUrl, name, price }) => {
-                    return <CollectonItem key={id} imageUrl={imageUrl} name={name} price={price} />
+                {items.filter((_, i) => i < 4).map((item) => {
+                    return <CollectonItem key={item.id} id={item.id} item={item} />
                 })}
             </div>
         </div>
