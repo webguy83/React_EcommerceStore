@@ -5,6 +5,7 @@
     background-color: white;
     border: .1rem solid black;
     padding: 2rem;
+    z-index: 1;
     
     & > .cartItems{
         min-width: 28rem;
