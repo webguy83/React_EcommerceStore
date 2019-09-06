@@ -1,19 +1,21 @@
 .customButtonContainer {
-    width: 40%;
     min-width: 11rem;
     padding: 1rem;
     cursor: pointer;
     text-transform: uppercase;
     font-family: inherit;
     font-size: 1.4rem;
+    font-weight: bold;
     border: .1rem solid black;
     background-color: black;
     color: white;
     outline: none;
+    transition: all .2s ease-out;
 
     &:hover, &:active {
         color: black;
         background-color: white;
+        transition: all .2s ease-out;
     }
 
     &.googleSignIn {
@@ -23,6 +25,15 @@
     
         &:hover {
             background-color: #F4B400;
+        }
+    }
+
+    &.addToCartBtn {
+        background-color: #F4B400;
+        color: black;
+
+        &:hover {
+            background-color: white;
         }
     }
 }

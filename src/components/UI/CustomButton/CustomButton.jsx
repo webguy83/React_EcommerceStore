@@ -1,10 +1,15 @@
 import React from 'react';
 
-import { customButtonContainer, googleSignIn } from './CustomButton.module.scss';
+import { customButtonContainer, googleSignIn, addToCartBtn } from './CustomButton.module.scss';
 
-const CustomButton =  ({ type, value, click, google }) => {
+const CustomButton =  ({ type, value, click, google, addToCart }) => {
+    const defaultColour = google ? googleSignIn : addToCart ? addToCartBtn : "";
     return (
-        <button onClick={click} type={type} className={google ? customButtonContainer.concat(` ${googleSignIn}`) : customButtonContainer}>{value}</button>
+        <button onClick={click}
+                type={type}
+                className={
+                customButtonContainer.concat(` ${defaultColour}`)}>{value}
+        </button>
     );
 };
 

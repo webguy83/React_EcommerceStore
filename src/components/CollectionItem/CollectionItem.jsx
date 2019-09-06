@@ -1,4 +1,5 @@
 import React from 'react';
+import CustomButton from '../UI/CustomButton/CustomButton';
 import {
     photoCollectionPreviewContainerItem,
     photoCollectionPreviewContainerItemFooter,
@@ -17,6 +18,7 @@ const CollectionItem = ({ imageUrl, price, name }) => {
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </div>
+            <CustomButton addToCart value="Add to Cart" />
         </div>
     );
 };
