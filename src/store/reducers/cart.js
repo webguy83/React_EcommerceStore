@@ -1,4 +1,5 @@
 import { ADD_CART_ITEM } from '../actions/actionTypes';
+import { addToCart } from '../../helpers/generic';
 
 const initState = {
     cartItems: []
@@ -9,7 +10,7 @@ export default (state = initState, action) => {
         case ADD_CART_ITEM:
             return {
                 ...state,
-                cartItems: [...state.cartItems, action.payload]
+                cartItems: addToCart(state.cartItems, action.payload)
             }
         default:
             return state;
