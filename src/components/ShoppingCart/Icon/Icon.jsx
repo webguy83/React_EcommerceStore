@@ -8,11 +8,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-const Icon = ({ toggleMiniCartHidden }) => {
+const Icon = ({ toggleMiniCartHidden, itemCount }) => {
     return (
         <div className={IconContainer} onClick={toggleMiniCartHidden}>
             <FontAwesomeIcon icon={faShoppingCart} size="3x" />
-            <span className={counter}>0</span>
+            <span className={counter}>{itemCount}</span>
         </div>
     );
 };

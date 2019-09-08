@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import MiniCart from '../ShoppingCart/MiniCart/MiniCart';
 import { toggleMiniCartHidden } from '../../store/actions/minicart';
 
-const Header = ({ currentUser, miniCartHidden, toggleMiniCartHidden }) => {
+const Header = ({ currentUser, miniCartHidden, toggleMiniCartHidden, itemCount }) => {
     return (
         <div className={header}>
             <Link to="/">
@@ -24,17 +24,20 @@ const Header = ({ currentUser, miniCartHidden, toggleMiniCartHidden }) => {
                 {
                     currentUser ? <div className={navItem} onClick={() => auth.signOut()}>Sign Out</div> : <Link className={navItem} to="/signinregistration">Sign In / Registration</Link>
                 }
-                <ShoppingCartIcon toggleMiniCartHidden={toggleMiniCartHidden} />
+                <ShoppingCartIcon itemCount={itemCount} toggleMiniCartHidden={toggleMiniCartHidden} />
             </nav>
             {miniCartHidden ? null : <MiniCart />}
         </div>
     );
 };
 
-const mapStateToProps = ({ user, miniCart }) => {
+const mapStateToProps = ({ user, miniCart, cart }) => {
     return {
         currentUser: user.currentUser,
-        miniCartHidden: miniCart.miniCartHidden
+        miniCartHidden: miniCart.miniCartHidden,
+        itemCount: cart.cartItems.reduce((prev, cur) => {
+            return prev + cur.qty
+        }, 0)
     }
 }
 
