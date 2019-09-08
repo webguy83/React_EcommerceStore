@@ -1,0 +1,20 @@
+.ShoppingCartItemContainer {
+    display: flex;
+    margin: 1rem 0;
+
+    & > .thumbnail {
+        display: block;
+        width: 30%;
+    }
+
+    & .details {
+        align-self: center;
+        font-size: 1.5rem;
+        width: 70%;
+        padding-left: 2rem;
+
+        & > .detailsName {
+            font-weight: bold;
+        }
+    }
+}

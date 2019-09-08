@@ -6,10 +6,28 @@
     border: .1rem solid black;
     padding: 2rem;
     z-index: 1;
+    animation: showCart .3s ease-in-out;
+  
     
-    & > .cartItems{
+    & > .items{
         min-width: 28rem;
+        max-height: 30rem;
+        overflow-y: scroll;
+        margin-bottom: 1.5rem;
+
+        
+    }
+
+    & .emptyMiniCart {
         min-height: 30rem;
+        min-width: 28rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & > .emptyMessage {
+            font-size: 1.9rem;
+        }
     }
 
     & > button {
@@ -22,3 +40,11 @@
     }
 }
 
+@keyframes showCart {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
