@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
 import SignInRegistration from './pages/SignInRegistration/SignInRegistration';
+import Checkout from './pages/Checkout/Checkout';
 
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header/Header';
@@ -48,6 +49,7 @@ const App = ({ setCurrentUser, currentUser }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/shop" component={Shop} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/signinregistration" render={() => currentUser ? <Redirect to="/" /> : <SignInRegistration />} />
         {/* <Route path="/:country" component={CountryPage} /> */}
       </Switch>
