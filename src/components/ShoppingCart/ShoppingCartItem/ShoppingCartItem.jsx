@@ -3,7 +3,6 @@ import React from 'react';
 import { ShoppingCartItemContainer, details, thumbnail, detailsName } from './ShoppingCartItem.module.scss';
 
 const ShoppingCartItem = ({ item: { imageUrl, name, price, qty } }) => {
-    console.log(imageUrl)
     return (
         <div className={ShoppingCartItemContainer}>
             <img className={thumbnail} src={imageUrl} alt={name} />

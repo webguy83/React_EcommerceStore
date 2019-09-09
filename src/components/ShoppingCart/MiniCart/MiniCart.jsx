@@ -2,6 +2,8 @@ import React from 'react';
 import { MiniCartContainer, items, emptyMiniCart, emptyMessage } from './MiniCart.module.scss';
 import CustomButton from '../../UI/CustomButton/CustomButton';
 
+import { selectCartItems } from '../../../store/selectors';
+
 import { connect } from 'react-redux';
 
 import ShoppingCartItem from '../ShoppingCartItem/ShoppingCartItem';
@@ -24,9 +26,9 @@ const MiniCart = ({ cartItems }) => {
     );
 };
 
-const mapStateToProps = ({ cart: { cartItems } }) => {
+const mapStateToProps = (state) => {
     return {
-        cartItems
+        cartItems: selectCartItems(state)
     }
 }
 

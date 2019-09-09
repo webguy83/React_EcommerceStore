@@ -10,9 +10,8 @@ import { navItem, header } from './Header.module.scss';
 
 import { Link } from 'react-router-dom';
 import MiniCart from '../ShoppingCart/MiniCart/MiniCart';
-import { toggleMiniCartHidden } from '../../store/actions/minicart';
 
-const Header = ({ currentUser, miniCartHidden, toggleMiniCartHidden, itemCount }) => {
+const Header = ({ currentUser, miniCartHidden }) => {
     return (
         <div className={header}>
             <Link to="/">
@@ -24,27 +23,18 @@ const Header = ({ currentUser, miniCartHidden, toggleMiniCartHidden, itemCount }
                 {
                     currentUser ? <div className={navItem} onClick={() => auth.signOut()}>Sign Out</div> : <Link className={navItem} to="/signinregistration">Sign In / Registration</Link>
                 }
-                <ShoppingCartIcon itemCount={itemCount} toggleMiniCartHidden={toggleMiniCartHidden} />
+                <ShoppingCartIcon />
             </nav>
             {miniCartHidden ? null : <MiniCart />}
         </div>
     );
 };
 
-const mapStateToProps = ({ user, miniCart, cart }) => {
+const mapStateToProps = ({ user, miniCart }) => {
     return {
         currentUser: user.currentUser,
         miniCartHidden: miniCart.miniCartHidden,
-        itemCount: cart.cartItems.reduce((prev, cur) => {
-            return prev + cur.qty
-        }, 0)
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        toggleMiniCartHidden: () => dispatch(toggleMiniCartHidden())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);

@@ -1,4 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { selectCartItemAmount } from '../../../store/selectors';
+
+import { toggleMiniCartHidden } from '../../../store/actions/minicart';
+
 import {
     IconContainer,
     counter
@@ -17,4 +23,16 @@ const Icon = ({ toggleMiniCartHidden, itemCount }) => {
     );
 };
 
-export default Icon;
+const mapStateToProps = (state) => {
+    return {
+        itemCount: selectCartItemAmount(state)
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleMiniCartHidden: () => dispatch(toggleMiniCartHidden())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Icon);
