@@ -11,6 +11,9 @@ import { auth, createUserDoc } from './helpers/firebase';
 import { setCurrentUser } from './store/actions/user';
 import { connect } from 'react-redux';
 
+import { selectCurrentUser } from './store/selectors';
+import { createStructuredSelector } from 'reselect';
+
 // const CountryPage = (props) => {
 //   return (
 //     <h1>{props.match.params.country}</h1>
@@ -52,16 +55,14 @@ const App = ({ setCurrentUser, currentUser }) => {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.user.currentUser
-  }
-}
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentUser: (user) => {
-       dispatch(setCurrentUser(user));
+      dispatch(setCurrentUser(user));
     }
   }
 }

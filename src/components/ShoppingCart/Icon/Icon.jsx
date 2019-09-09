@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { selectCartItemAmount } from '../../../store/selectors';
+import { createStructuredSelector } from 'reselect';
 
 import { toggleMiniCartHidden } from '../../../store/actions/minicart';
 
@@ -23,11 +24,9 @@ const Icon = ({ toggleMiniCartHidden, itemCount }) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        itemCount: selectCartItemAmount(state)
-    }
-}
+const mapStateToProps = createStructuredSelector({
+    itemCount: selectCartItemAmount
+});
 
 const mapDispatchToProps = (dispatch) => {
     return {

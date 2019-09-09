@@ -3,6 +3,7 @@ import { MiniCartContainer, items, emptyMiniCart, emptyMessage } from './MiniCar
 import CustomButton from '../../UI/CustomButton/CustomButton';
 
 import { selectCartItems } from '../../../store/selectors';
+import { createStructuredSelector } from 'reselect';
 
 import { connect } from 'react-redux';
 
@@ -26,10 +27,8 @@ const MiniCart = ({ cartItems }) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        cartItems: selectCartItems(state)
-    }
-}
+const mapStateToProps = createStructuredSelector({
+    cartItems: selectCartItems
+})
 
 export default connect(mapStateToProps)(MiniCart);

@@ -4,6 +4,9 @@ import ShoppingCartIcon from '../ShoppingCart/Icon/Icon';
 
 import { connect } from 'react-redux';
 
+import { selectMiniCartHidden, selectCurrentUser } from '../../store/selectors';
+import { createStructuredSelector } from 'reselect';
+
 import { auth } from '../../helpers/firebase';
 
 import { navItem, header } from './Header.module.scss';
@@ -30,11 +33,9 @@ const Header = ({ currentUser, miniCartHidden }) => {
     );
 };
 
-const mapStateToProps = ({ user, miniCart }) => {
-    return {
-        currentUser: user.currentUser,
-        miniCartHidden: miniCart.miniCartHidden,
-    }
-}
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+    miniCartHidden: selectMiniCartHidden,
+});
 
 export default connect(mapStateToProps)(Header);
