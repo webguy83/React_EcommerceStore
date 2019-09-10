@@ -12,12 +12,12 @@
     background-color: black;
     color: white;
     outline: none;
-    transition: all .2s ease-out;
+    transition: all .3s ease-out;
 
     &:hover, &:active {
         color: black;
         background-color: white;
-        transition: all .2s ease-out;
+        transition: all .3s ease-out;
     }
 
     &.googleSignIn {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { selectCartItemAmount } from '../../../store/selectors';
+import { selectCartItemAmount, selectIconCartHidden } from '../../../store/selectors';
 import { createStructuredSelector } from 'reselect';
 
 import { toggleMiniCartHidden } from '../../../store/actions/minicart';
@@ -15,9 +15,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-const Icon = ({ toggleMiniCartHidden, itemCount }) => {
+const Icon = ({ toggleMiniCartHidden, itemCount, iconCartHidden }) => {
     return (
-        <div className={IconContainer} onClick={toggleMiniCartHidden}>
+        iconCartHidden ? null : <div className={IconContainer} onClick={toggleMiniCartHidden}>
             <FontAwesomeIcon icon={faShoppingCart} size="3x" />
             <span className={counter}>{itemCount}</span>
         </div>
@@ -25,7 +25,8 @@ const Icon = ({ toggleMiniCartHidden, itemCount }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-    itemCount: selectCartItemAmount
+    itemCount: selectCartItemAmount,
+    iconCartHidden: selectIconCartHidden
 });
 
 const mapDispatchToProps = (dispatch) => {

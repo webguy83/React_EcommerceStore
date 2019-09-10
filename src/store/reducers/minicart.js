@@ -1,7 +1,8 @@
-import { TOGGLE_MINI_CART_HIDDEN } from '../actions/actionTypes';
+import { TOGGLE_MINI_CART_HIDDEN, ICON_CART_HIDDEN } from '../actions/actionTypes';
 
 const initState = {
-    miniCartHidden: true
+    miniCartHidden: true,
+    iconCartHidden: false
 }
 
 export default (state = initState, action) => {
@@ -10,6 +11,12 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 miniCartHidden: !state.miniCartHidden
+            }
+        case ICON_CART_HIDDEN:
+            console.log(action)
+            return {
+                ...state,
+                iconCartHidden: action.payload
             }
         default:
             return state

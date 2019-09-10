@@ -6,7 +6,7 @@ import { addCartItem,  removeCartItem, subtractCartItem } from '../../../store/a
 import TrashIcon from '../../UI/TrashIcon/TrashIcon';
 import AddSubtractIcon from '../../UI/AddSubtractIcon/AddSubtractIcon';
 
-import { CheckoutDesktopContainer, thumb, totalPrice, qtyGroup } from './CheckoutDesktop.module.scss';
+import { CheckoutDesktopContainer, thumb, totalPrice, qtyGroup, tblMobileFoot } from '../Checkout.module.scss';
 
 const CheckoutDesktop = ({ cartItems, cartItemsTotal, removeCartItem, addCartItem, subtractCartItem }) => {
     return (
@@ -36,7 +36,7 @@ const CheckoutDesktop = ({ cartItems, cartItemsTotal, removeCartItem, addCartIte
                                     <AddSubtractIcon disabled={qty > 1 ? false: true} addOrSubtract={() => qty > 1 ? subtractCartItem(item) : undefined} />
                                 </div>
                             </td>
-                            <td>${price}</td>
+                            <td>${price * qty}</td>
                             <td><TrashIcon removeItem={() => removeCartItem(item)} /></td>
                         </tr>
                     })
@@ -45,7 +45,7 @@ const CheckoutDesktop = ({ cartItems, cartItemsTotal, removeCartItem, addCartIte
                         <td colSpan="5">You have no items in your cart yet</td>
                     </tr>}
             </tbody>
-            <tfoot>
+            <tfoot className={tblMobileFoot}>
                 <tr>
                     <td colSpan="5"><span className={totalPrice}>Total: <span>${cartItemsTotal}</span></span></td>
                 </tr>

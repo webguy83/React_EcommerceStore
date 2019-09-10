@@ -14,6 +14,11 @@ export const selectMiniCartHidden = createSelector(
     miniCart => miniCart.miniCartHidden
 )
 
+export const selectIconCartHidden = createSelector(
+    miniCart,
+    miniCart => miniCart.iconCartHidden
+)
+
 export const selectCurrentUser = createSelector(
     user,
     user => user.currentUser

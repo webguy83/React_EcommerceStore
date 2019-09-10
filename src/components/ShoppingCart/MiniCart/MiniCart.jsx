@@ -18,18 +18,21 @@ const MiniCart = ({ cartItems, history, dispatch }) => {
         <div className={MiniCartContainer}>
             <h2>Your Cart</h2>
             {cartItems.length > 0 ?
-                <div className={items}>
-                    {cartItems.map(item => {
-                        return <ShoppingCartItem key={item.id} item={item} />
-                    })}
-                </div> :
+                <>
+                    <div className={items}>
+                        {cartItems.map(item => {
+                            return <ShoppingCartItem key={item.id} item={item} />
+                        })}
+                    </div>
+                    <CustomButton click={() => {
+                        history.push("/checkout");
+                        dispatch(toggleMiniCartHidden());
+                    }} value="Checkout" />
+                </>
+                :
                 <div className={emptyMiniCart}>
                     <p className={emptyMessage}>Your shopping cart is empty!</p>
                 </div>}
-            <CustomButton click={() => {
-                history.push("/checkout");
-                dispatch(toggleMiniCartHidden());
-            }} value="Checkout" />
         </div>
     );
 };

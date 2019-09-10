@@ -3,4 +3,5 @@
 @mixin buttonHover {
     cursor: pointer;
     color: $yellowBtnColour;
+    transition: all .3s ease-in-out;
 }

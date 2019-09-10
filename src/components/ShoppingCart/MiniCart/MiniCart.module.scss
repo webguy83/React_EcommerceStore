@@ -10,7 +10,6 @@
   
     
     & > .items{
-        min-width: 28rem;
         max-height: 30rem;
         overflow-y: scroll;
         margin-bottom: 1.5rem;
@@ -20,7 +19,6 @@
 
     & .emptyMiniCart {
         min-height: 30rem;
-        min-width: 28rem;
         display: flex;
         justify-content: center;
         align-items: center;
