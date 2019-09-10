@@ -1,0 +1,6 @@
+@import './general.scss';
+
+@mixin buttonHover {
+    cursor: pointer;
+    color: $yellowBtnColour;
+}

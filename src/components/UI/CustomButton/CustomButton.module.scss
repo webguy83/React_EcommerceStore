@@ -1,3 +1,5 @@
+@import '../../../mixins/general.scss';
+
 .customButtonContainer {
     min-width: 11rem;
     padding: 1rem;
@@ -24,12 +26,12 @@
         border: none;
     
         &:hover {
-            background-color: #F4B400;
+            background-color: $yellowBtnColour;
         }
     }
 
     &.addToCartBtn {
-        background-color: #F4B400;
+        background-color: $yellowBtnColour;
         color: black;
 
         &:hover {

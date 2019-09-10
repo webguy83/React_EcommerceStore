@@ -1,0 +1,7 @@
+@import '../../../mixins/UI.scss';  
+
+.AddSubtractIconContainer {
+    &:hover {
+        @include buttonHover;
+    }
+}

@@ -7,11 +7,13 @@ import { withRouter } from 'react-router-dom';
 import { selectCartItems } from '../../../store/selectors';
 import { createStructuredSelector } from 'reselect';
 
+import { toggleMiniCartHidden } from '../../../store/actions/minicart';
+
 import { connect } from 'react-redux';
 
 import ShoppingCartItem from '../ShoppingCartItem/ShoppingCartItem';
 
-const MiniCart = ({ cartItems, history }) => {
+const MiniCart = ({ cartItems, history, dispatch }) => {
     return (
         <div className={MiniCartContainer}>
             <h2>Your Cart</h2>
@@ -24,7 +26,10 @@ const MiniCart = ({ cartItems, history }) => {
                 <div className={emptyMiniCart}>
                     <p className={emptyMessage}>Your shopping cart is empty!</p>
                 </div>}
-            <CustomButton click={() => history.push("/checkout")} value="Checkout" />
+            <CustomButton click={() => {
+                history.push("/checkout");
+                dispatch(toggleMiniCartHidden());
+            }} value="Checkout" />
         </div>
     );
 };
