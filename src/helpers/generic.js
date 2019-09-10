@@ -23,3 +23,15 @@ export const addToCart = (cartItems, newCartItem) => {
         return [...cartItems, adjustedNewCartItem];
     }
 }
+
+export const subtractFromCart = (cartItems, newCartItem) => {
+    const adjustedCartItems = cartItems.map(item => {
+        if(item.id === newCartItem.id) {
+            item['qty']--;
+            return item;
+        } else {
+            return item;
+        }
+    });
+    return adjustedCartItems;
+}

@@ -1,11 +1,14 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { addCartItem,  removeCartItem, subtractCartItem } from '../../../store/actions/cart';
+
 import TrashIcon from '../../UI/TrashIcon/TrashIcon';
 import AddSubtractIcon from '../../UI/AddSubtractIcon/AddSubtractIcon';
 
 import { CheckoutDesktopContainer, thumb, totalPrice, qtyGroup } from './CheckoutDesktop.module.scss';
 
-const CheckoutDesktop = ({ cartItems, cartItemsTotal }) => {
+const CheckoutDesktop = ({ cartItems, cartItemsTotal, removeCartItem, addCartItem, subtractCartItem }) => {
     return (
         <table className={CheckoutDesktopContainer}>
             <thead>
@@ -19,7 +22,8 @@ const CheckoutDesktop = ({ cartItems, cartItemsTotal }) => {
             </thead>
             <tbody>
                 {cartItems.length > 0 ?
-                    cartItems.map(({ imageUrl, name, price, qty, id }) => {
+                    cartItems.map((item) => {
+                        const {id, imageUrl, name, qty, price} = item;
                         return <tr key={id}>
                             <td className={thumb} style={{
                                 backgroundImage: `url(${imageUrl})`,
@@ -27,13 +31,13 @@ const CheckoutDesktop = ({ cartItems, cartItemsTotal }) => {
                             <td>{name}</td>
                             <td>
                                 <div className={qtyGroup}>
-                                    <AddSubtractIcon addIcon />
+                                    <AddSubtractIcon addOrSubtract={() => addCartItem(item)} addIcon />
                                     <span>{qty}</span>
-                                    <AddSubtractIcon />
+                                    <AddSubtractIcon disabled={qty > 1 ? false: true} addOrSubtract={() => qty > 1 ? subtractCartItem(item) : undefined} />
                                 </div>
                             </td>
                             <td>${price}</td>
-                            <td><TrashIcon /></td>
+                            <td><TrashIcon removeItem={() => removeCartItem(item)} /></td>
                         </tr>
                     })
                     :
@@ -50,4 +54,18 @@ const CheckoutDesktop = ({ cartItems, cartItemsTotal }) => {
     );
 };
 
-export default CheckoutDesktop;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeCartItem: (item) => {
+            dispatch(removeCartItem(item))
+        },
+        addCartItem: (item) => {
+            dispatch(addCartItem(item))
+        },
+        subtractCartItem: (item) => {
+            dispatch(subtractCartItem(item))
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CheckoutDesktop);

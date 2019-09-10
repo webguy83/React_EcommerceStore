@@ -5,3 +5,12 @@
         @include buttonHover;
     }
 }
+
+.disabledAddSubtractIcon {
+    opacity: .1;
+
+    &:hover {
+        cursor: default;
+        color: inherit;
+    }
+}
