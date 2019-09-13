@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addCartItem } from '../../store/actions/cart';
+import { addCartItem } from '../../../store/actions/cart';
 
-import CustomButton from '../UI/CustomButton/CustomButton';
+import CustomButton from '../../UI/CustomButton/CustomButton';
 import {
     photoCollectionPreviewContainerItem,
     photoCollectionPreviewContainerItemFooter,
