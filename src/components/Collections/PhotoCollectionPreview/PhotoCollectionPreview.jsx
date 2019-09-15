@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CollectonItem from '../CollectionItem/CollectionItem';
+import CollectionItem from '../CollectionItem/CollectionItem';
 import { photoCollectionPreviewContainer, grid, colTitle } from './PhotoCollectionPreview.module.scss';
 
 const PhotoCollectionPreview = ({ title, items }) => {
@@ -9,7 +9,7 @@ const PhotoCollectionPreview = ({ title, items }) => {
             <h2 className={colTitle}>{title}</h2>
             <div className={grid}>
                 {items.filter((_, i) => i < 4).map((item) => {
-                    return <CollectonItem key={item.id} id={item.id} item={item} />
+                    return <CollectionItem key={item.id} id={item.id} item={item} />
                 })}
             </div>
         </div>
