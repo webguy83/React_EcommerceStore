@@ -1,29 +1,28 @@
-.photoCollectionPreviewContainer {
-    &Item {
+.colItem {
+    width: 100%;
+    height: 45rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    & .footer {
         width: 100%;
-        height: 45rem;
+        height: 10%;
+        font-size: 1.6rem;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-
-        &Footer {
-            width: 100%;
-            height: 10%;
-            font-size: 1.6rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center; 
-        }
-
-        & > button {
-            position: absolute;
-            opacity: .7;
-            bottom: 6rem;
-        }
+        justify-content: space-between;
+        align-items: center; 
     }
-    &Image {
+
+    & > button {
+        position: absolute;
+        opacity: .7;
+        bottom: 6rem;
+    }
+    
+    & .image {
         width: 100%;
         height: 90%;
         background-size: cover;

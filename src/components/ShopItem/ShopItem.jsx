@@ -7,7 +7,7 @@ import { shopItemContainer, shopItemBackground, content, big } from './ShopItem.
 
 const ShopItem = ({ title, image, size, history, match }) => {
     return (
-        <div className={`${size === "big" ? big : "small"} ${shopItemContainer}`} onClick={() => history.push(`${match.url}${lowerCaseCountry(title)}`)} >
+        <div className={`${size === "big" ? big : "small"} ${shopItemContainer}`} onClick={() => history.push(`${match.url}shop/${lowerCaseCountry(title)}`)} >
             <div style={{
                 backgroundImage: `url(${image})`
             }} className={shopItemBackground} />

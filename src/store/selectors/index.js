@@ -1,7 +1,5 @@
 import { createSelector } from 'reselect';
 
-import { lowerCaseCountry } from '../../helpers/generic';
-
 const cart = state => state.cart;
 const user = state => state.user;
 const miniCart = state => state.miniCart;
@@ -38,13 +36,21 @@ export const selectShopData = createSelector(
     shop => shop.data
 )
 
+export const selectAllCollections = createSelector(
+    selectShopData,
+    (allCollections) => {
+        const collections = Object.keys(allCollections).map(collection => {
+            return allCollections[collection];
+        })
+        return collections;
+    }
+)
+
 export const selectCollection = (urlParam) => {
     return createSelector(
         selectShopData,
         (collection) => {
-            return collection.find(collection => {
-                return lowerCaseCountry(collection.title) === urlParam
-            })
+            return collection[urlParam];
         }
     )
 }

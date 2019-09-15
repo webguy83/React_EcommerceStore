@@ -1,4 +1,4 @@
-.photoCollectionPreviewContainer {
+.collectionContainer {
     & .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
@@ -6,7 +6,7 @@
         margin-bottom: 5rem;
     }
 
-    & .colTitle {
+    & .title {
         margin-bottom: 1.3rem;
         grid-column: 1 / -1;
     }

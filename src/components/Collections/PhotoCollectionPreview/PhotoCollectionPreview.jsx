@@ -1,13 +1,13 @@
 import React from 'react';
 
 import CollectonItem from '../CollectionItem/CollectionItem';
-import { photoCollectionPreviewContainer, photoCollectionPreviewContainerGrid, photoCollectionPreviewContainerTitle } from './PhotoCollectionPreview.module.scss';
+import { photoCollectionPreviewContainer, grid, colTitle } from './PhotoCollectionPreview.module.scss';
 
 const PhotoCollectionPreview = ({ title, items }) => {
     return (
         <div className={photoCollectionPreviewContainer}>
-            <h2 className={photoCollectionPreviewContainerTitle}>{title}</h2>
-            <div className={photoCollectionPreviewContainerGrid}>
+            <h2 className={colTitle}>{title}</h2>
+            <div className={grid}>
                 {items.filter((_, i) => i < 4).map((item) => {
                     return <CollectonItem key={item.id} id={item.id} item={item} />
                 })}

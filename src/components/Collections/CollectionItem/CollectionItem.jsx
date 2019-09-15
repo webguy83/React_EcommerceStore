@@ -3,24 +3,20 @@ import { connect } from 'react-redux';
 import { addCartItem } from '../../../store/actions/cart';
 
 import CustomButton from '../../UI/CustomButton/CustomButton';
-import {
-    photoCollectionPreviewContainerItem,
-    photoCollectionPreviewContainerItemFooter,
-    photoCollectionPreviewContainerImage
-} from './CollectionItem.module.scss';
+import { colItem, footer, image } from './CollectionItem.module.scss';
 
 const CollectionItem = ({ item, addCartItem }) => {
 
     const { name, imageUrl, price } = item;
 
     return (
-        <div className={photoCollectionPreviewContainerItem}>
+        <div className={colItem}>
             <div style={{
                 backgroundImage: `url(${imageUrl})`
-            }} className={photoCollectionPreviewContainerImage}>
+            }} className={image}>
 
             </div>
-            <div className={photoCollectionPreviewContainerItemFooter}>
+            <div className={footer}>
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </div>
