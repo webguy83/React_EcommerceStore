@@ -6,9 +6,11 @@ import { iconCartHidden } from '../../store/actions/minicart';
 import { selectCartItems, selectCartItemsTotal } from '../../store/selectors';
 import { createStructuredSelector } from 'reselect';
 
-import { CheckoutContainer, header } from './Checkout.module.scss';
+import { CheckoutContainer, header, creditCardWarning } from './Checkout.module.scss';
 import CheckoutDesktop from '../../components/Checkout/Desktop/CheckoutDesktop';
 import CheckoutMobile from '../../components/Checkout/Mobile/CheckoutMobile';
+
+import StripeButton from '../../components/UI/StripeButton/StripeButton';
 
 const Checkout = ({ cartItems, cartItemsTotal, iconCartHidden }) => {
 
@@ -27,6 +29,8 @@ const Checkout = ({ cartItems, cartItemsTotal, iconCartHidden }) => {
             />
             <CheckoutMobile cartItemsTotal={cartItemsTotal}
                 cartItems={cartItems} />
+            <p className={creditCardWarning}><strong>Test credit card #:</strong> 4242 4242 4242 4242<br /><strong>Expires:</strong> 01/20<br /><strong>CVC:</strong> 123</p>
+            <StripeButton price={cartItemsTotal} />
         </div>
     );
 };

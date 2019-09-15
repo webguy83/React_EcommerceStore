@@ -1,4 +1,21 @@
+.CheckoutContainer {
+    display: flex;
+    flex-direction: column;
+
+    & button {
+        align-self: flex-end;
+        margin-top: 1rem;
+    }
+}
+
 .header {
     text-align: center;
     margin-bottom: 5rem;
+}
+
+.creditCardWarning {
+    color: red;
+    font-size: 1.8rem;
+    align-self: flex-end;
+    margin-top: 2rem;
 }
