@@ -1,14 +1,23 @@
 import React from 'react';
-
 import { Redirect } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-
 import { selectCollection } from '../../store/selectors';
-
 import CollectionItem from '../../components/Collections/CollectionItem/CollectionItem';
+import styled from 'styled-components';
 
-import { collectionContainer, title, grid } from './Collection.module.scss';
+const CollectionContainer = styled.div`
+    & .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+        grid-gap: 3rem;
+        margin-bottom: 5rem;
+    }
+
+    & .title {
+        margin-bottom: 1.3rem;
+        grid-column: 1 / -1;
+    }
+`
 
 const Collection = ({ collection }) => {
     if (collection === undefined) {
@@ -16,14 +25,14 @@ const Collection = ({ collection }) => {
     } else {
         const { items } = collection;
         return (
-            <div className={collectionContainer}>
-                <h2 className={title}>{collection.title}</h2>
-                <div className={grid}>
+            <CollectionContainer>
+                <h2 className="title">{collection.title}</h2>
+                <div className="grid">
                     {items.map((item) => {
                         return <CollectionItem key={item.id} id={item.id} item={item} />
                     })}
                 </div>
-            </div>
+            </CollectionContainer>
         );
     }
 };

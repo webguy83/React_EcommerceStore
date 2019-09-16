@@ -1,19 +1,39 @@
 import React, { useEffect } from 'react';
-
 import { connect } from 'react-redux';
 import { iconCartHidden } from '../../store/actions/minicart';
-
 import { selectCartItems, selectCartItemsTotal } from '../../store/selectors';
 import { createStructuredSelector } from 'reselect';
-
-import { CheckoutContainer, header, creditCardWarning } from './Checkout.module.scss';
 import CheckoutDesktop from '../../components/Checkout/Desktop/CheckoutDesktop';
 import CheckoutMobile from '../../components/Checkout/Mobile/CheckoutMobile';
-
 import StripeButton from '../../components/UI/StripeButton/StripeButton';
+import styled from 'styled-components';
+
+// css
+const CheckoutContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    & button {
+        align-self: flex-end;
+        margin-top: 1rem;
+    }
+`
+
+const Header = styled.h1`
+    text-align: center;
+    margin-bottom: 5rem;
+`
+
+const CreditCardWarning = styled.p`
+    color: red;
+    font-size: 1.8rem;
+    align-self: flex-end;
+    margin-top: 2rem;
+`
+
+// jsx
 
 const Checkout = ({ cartItems, cartItemsTotal, iconCartHidden }) => {
-
     useEffect(() => {
         iconCartHidden(true);
         return () => {
@@ -22,16 +42,16 @@ const Checkout = ({ cartItems, cartItemsTotal, iconCartHidden }) => {
     }, [iconCartHidden])
 
     return (
-        <div className={CheckoutContainer}>
-            <h1 className={header}>Checkout</h1>
+        <CheckoutContainer>
+            <Header>Checkout</Header>
             <CheckoutDesktop cartItemsTotal={cartItemsTotal}
                 cartItems={cartItems}
             />
             <CheckoutMobile cartItemsTotal={cartItemsTotal}
                 cartItems={cartItems} />
-            <p className={creditCardWarning}><strong>Test credit card #:</strong> 4242 4242 4242 4242<br /><strong>Expires:</strong> 01/20<br /><strong>CVC:</strong> 123</p>
+            <CreditCardWarning><strong>Test credit card #:</strong> 4242 4242 4242 4242<br /><strong>Expires:</strong> 01/20<br /><strong>CVC:</strong> 123</CreditCardWarning>
             <StripeButton price={cartItemsTotal} />
-        </div>
+        </CheckoutContainer>
     );
 };
 

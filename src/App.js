@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react';
-import { container } from './App.module.scss';
 import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
 import SignInRegistration from './pages/SignInRegistration/SignInRegistration';
 import Checkout from './pages/Checkout/Checkout';
-
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header/Header';
-
 import { auth, createUserDoc } from './helpers/firebase';
-
 import { setCurrentUser } from './store/actions/user';
 import { connect } from 'react-redux';
-
 import { selectCurrentUser } from './store/selectors';
 import { createStructuredSelector } from 'reselect';
+import styled from 'styled-components';
+
+// css
+const Container = styled.div`
+    max-width: 118rem;
+    margin: 0 auto;
+`
+
+// jsx
 
 const App = ({ setCurrentUser, currentUser }) => {
-  console.log(container)
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -39,7 +42,7 @@ const App = ({ setCurrentUser, currentUser }) => {
   }, [setCurrentUser]);
 
   return (
-    <div className={container}>
+    <Container>
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -47,7 +50,7 @@ const App = ({ setCurrentUser, currentUser }) => {
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/signinregistration" render={() => currentUser ? <Redirect to="/" /> : <SignInRegistration />} />
       </Switch>
-    </div>
+    </Container>
   );
 }
 
