@@ -11,7 +11,7 @@ const ShopMenu = ({ sections }) => {
     return (
         <div className={shopMenuContainer}>
             {sections.map(({ id, title, image, size }) => {
-               return <ShopItem key={id} title={title} image={image} size={size} />
+                return <ShopItem key={id} title={title} image={image} size={size} />
             })}
         </div>
     );

@@ -1,32 +1,39 @@
+import malaysiaImg from "../../components/ShopMenu/Assets/malaysia_cover.jpg";
+import thailandImg from "../../components/ShopMenu/Assets/thailand_cover.jpg";
+import southkoreaImg from "../../components/ShopMenu/Assets/southkorea_cover.jpg";
+import chinaImg from "../../components/ShopMenu/Assets/china_cover.jpg";
+import indiaImg from "../../components/ShopMenu/Assets/india_cover.jpg";
+
+
 const initState = {
     sections: [{
         id: 1,
         title: "Malaysia",
-        image: "./Assets/malaysia_cover.jpg",
+        image: malaysiaImg,
         size: "small"
     },
     {
         id: 2,
         title: "Thailand",
-        image: "./Assets/thailand_cover.jpg",
+        image: thailandImg,
         size: "small"
     },
     {
         id: 3,
         title: "South Korea",
-        image: "./Assets/southkorea_cover.jpg",
+        image: southkoreaImg,
         size: "small"
     },
     {
         id: 4,
         title: "China",
-        image: "./Assets/china_cover.jpg",
+        image: chinaImg,
         size: "big"
     },
     {
         id: 5,
         title: "India",
-        image: "./Assets/india_cover.jpg",
+        image: indiaImg,
         size: "small"
     }]
 }
