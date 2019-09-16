@@ -1,7 +1,0 @@
-@import '../../../mixins/UI.scss';
-
-.TrashIconContainer {
-    &:hover {
-        @include buttonHover;
-    }
-}

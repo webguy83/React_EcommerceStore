@@ -1,15 +1,23 @@
 import React from 'react';
 
-import { TrashIconContainer } from './TrashIcon.module.scss';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
+import styled from 'styled-components';
+
+const TrashIconContainer = styled.span`
+    &:hover {
+        cursor: pointer;
+        color: #F4B400;
+        transition: all .3s ease-in-out;
+    }
+`
+
 const TrashIcon = ({ removeItem }) => {
     return (
-        <span className={TrashIconContainer} onClick={removeItem}>
+        <TrashIconContainer onClick={removeItem}>
             <FontAwesomeIcon icon={faTrashAlt} />
-        </span>
+        </TrashIconContainer>
     );
 };
 
