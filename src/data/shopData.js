@@ -1,3 +1,15 @@
+import shanghai from '../components/Collections/Assets/shanghai.jpg';
+import shanghai2 from '../components/Collections/Assets/shanghai2.jpg';
+import suzhou from '../components/Collections/Assets/suzhou.jpg';
+import suzhou2 from '../components/Collections/Assets/suzhou2.jpg';
+import meishan from '../components/Collections/Assets/meishan.jpg';
+import meishan2 from '../components/Collections/Assets/meishan2.jpg';
+import dali from '../components/Collections/Assets/dali.jpg';
+import dali2 from '../components/Collections/Assets/dali2.jpg';
+import lijiang from '../components/Collections/Assets/lijiang.jpg';
+import lijiang2 from '../components/Collections/Assets/lijiang2.jpg';
+import kunming from '../components/Collections/Assets/kunming.jpg';
+
 export const SHOP_DATA = {
   china: {
     id: 3567367,
@@ -5,57 +17,69 @@ export const SHOP_DATA = {
     items: [
       {
         id: 546435643567,
-        name: 'The Great Wall',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Shanghai, China',
+        imageUrl: shanghai,
         price: 25
       },
       {
         id: 7856784356,
-        name: 'Some temple',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Shanghai, China',
+        imageUrl: shanghai2,
         price: 18
       },
       {
         id: 3463578588,
-        name: 'A lake',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Suzhou, China',
+        imageUrl: suzhou,
         price: 35
       },
       {
         id: 567854745675647,
-        name: 'Eary Road',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Suzhou, China',
+        imageUrl: suzhou2,
         price: 25
       },
       {
         id: 45678575467,
-        name: 'Chinese food',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Meishan, China',
+        imageUrl: meishan,
         price: 18
       },
       {
         id: 45643745675675,
-        name: 'Palm Tree Cap',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Meishan, China',
+        imageUrl: meishan2,
         price: 14
       },
       {
         id: 3254388745,
-        name: 'Red Beanie',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Dali, China',
+        imageUrl: dali,
         price: 18
       },
       {
         id: 3425235787,
-        name: 'Wolf Cap',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Dali, China',
+        imageUrl: dali2,
         price: 14
       },
       {
         id: 45745884352,
-        name: 'Blue Snapback',
-        imageUrl: 'https://via.placeholder.com/150',
+        name: 'Lijiang, China',
+        imageUrl: lijiang,
         price: 16
+      },
+      {
+        id: 5645688995,
+        name: 'Lijiang, China',
+        imageUrl: lijiang2,
+        price: 19
+      },
+      {
+        id: 546800065543,
+        name: 'Kunming, China',
+        imageUrl: kunming,
+        price: 32
       }
     ]
   },
