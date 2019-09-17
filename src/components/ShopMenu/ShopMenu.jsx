@@ -1,19 +1,26 @@
 import React from 'react';
-import ShopItem from '../ShopItem/ShopItem';
+import styled from 'styled-components/macro';
+import ShopItem from '../ShopItem';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectSections } from '../../store/selectors';
 
-import { shopMenuContainer } from './ShopMenu.module.scss';
+const ShopMenuContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+    grid-auto-rows: calc(47vh - 4.7rem);
+    grid-gap: 3rem;
+    grid-auto-flow: dense;
+`
 
 const ShopMenu = ({ sections }) => {
     return (
-        <div className={shopMenuContainer}>
+        <ShopMenuContainer>
             {sections.map(({ id, title, image, size }) => {
                 return <ShopItem key={id} title={title} image={image} size={size} />
             })}
-        </div>
+        </ShopMenuContainer>
     );
 };
 
