@@ -1,8 +1,7 @@
-import { SHOP_DATA } from '../../data/shopData';
 import { UPDATE_COLLECTIONS } from '../actions/actionTypes';
 
 const initState = {
-    data: SHOP_DATA
+    data: null
 }
 
 export default (state = initState, action) => {

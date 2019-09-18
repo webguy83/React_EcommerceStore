@@ -39,9 +39,9 @@ export const selectShopData = createSelector(
 export const selectAllCollections = createSelector(
     selectShopData,
     (allCollections) => {
-        const collections = Object.keys(allCollections).map(collection => {
+        const collections = allCollections ? Object.keys(allCollections).map(collection => {
             return allCollections[collection];
-        })
+        }) : []
         return collections;
     }
 )
@@ -50,7 +50,7 @@ export const selectCollection = (urlParam) => {
     return createSelector(
         selectShopData,
         (collection) => {
-            return collection[urlParam];
+            return collection ? collection[urlParam] : null;
         }
     )
 }

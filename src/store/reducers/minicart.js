@@ -13,7 +13,6 @@ export default (state = initState, action) => {
                 miniCartHidden: !state.miniCartHidden
             }
         case ICON_CART_HIDDEN:
-            console.log(action)
             return {
                 ...state,
                 iconCartHidden: action.payload
