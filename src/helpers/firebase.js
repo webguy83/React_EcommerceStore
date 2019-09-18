@@ -1,4 +1,5 @@
 import * as firebase from "firebase/app";
+import { lowerCaseCountry } from './generic';
 
 import "firebase/auth";
 import "firebase/firestore";
@@ -46,5 +47,35 @@ provider.setCustomParameters({
     prompt: 'select_account'
 });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+export const addCollectionAndDocuments = async (colKey, objsToAdd) => {
+    const colRef = firestore.collection(colKey);
+
+    const batch = firestore.batch();
+    objsToAdd.forEach(obj => {
+        const newDocReference = colRef.doc();
+        batch.set(newDocReference, obj);
+    });
+
+    return await batch.commit();
+}
+
+export const mapCollectionsToFirebaseSnapShot = (collections) => {
+    const modifiedCollection = collections.docs.map(doc => {
+        const { title, items } = doc.data();
+
+        return {
+            id: doc.id,
+            routeName: encodeURI(lowerCaseCountry(title)),
+            title,
+            items
+        }
+    })
+    
+    return modifiedCollection.reduce((prev, cur) => {
+        prev[lowerCaseCountry(cur.title)] = cur;
+        return prev;
+    }, {})
+}
 
 export default firebase;
