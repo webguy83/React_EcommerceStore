@@ -18,15 +18,11 @@ const Shop = ({ match, updateCollections }) => {
     useEffect(() => {
         const colRef = firestore.collection('collections');
 
-        const unsubscribe = colRef.onSnapshot(async snapShot => {
-            setLoading(false);
+        colRef.get().then(snapShot => {
             const collections = mapCollectionsToFirebaseSnapShot(snapShot);
             updateCollections(collections);
+            setLoading(false);
         })
-
-        return () => {
-            unsubscribe();
-        }
     }, [updateCollections])
 
     const SpinnerWithCollectionOverview = WithSpinner(CollectionOverview);
