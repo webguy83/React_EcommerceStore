@@ -1,17 +1,31 @@
-import { UPDATE_COLLECTIONS } from '../actions/actionTypes';
+import { COLLECTIONS_LOADING, COLLECTIONS_LOADED_SUCCESS, COLLECTIONS_LOADED_FAILED } from '../actions/actionTypes';
 
 const initState = {
-    data: null
+    collections: null,
+    collectionsLoading: false,
+    collectionsLoadingError: ""
 }
 
 export default (state = initState, action) => {
-    switch(action.type) {
-        case UPDATE_COLLECTIONS: 
+    switch (action.type) {
+        case COLLECTIONS_LOADING:
             return {
                 ...state,
-                data: action.payload
+                collectionsLoading: true
             }
-        default: 
+        case COLLECTIONS_LOADED_SUCCESS:
+            return {
+                ...state,
+                collections: action.payload,
+                collectionsLoading: false
+            }
+        case COLLECTIONS_LOADED_FAILED:
+            return {
+                ...state,
+                collectionsLoading: false,
+                collectionsLoadingError: action.payload
+            }
+        default:
             return state;
     }
 }

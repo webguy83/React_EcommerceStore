@@ -33,7 +33,7 @@ export const selectSections = createSelector(
 
 export const selectShopData = createSelector(
     shop,
-    shop => shop.data
+    shop => shop.collections
 )
 
 export const selectAllCollections = createSelector(
@@ -67,4 +67,9 @@ export const selectCartItemsTotal = createSelector(
     cartItems => cartItems.reduce((prev, cur) => {
         return prev + (cur.qty * cur.price)
     }, 0)
+);
+
+export const selectCollectionLoading = createSelector(
+    shop,
+    shop => shop.collectionsLoading
 );
