@@ -46,6 +46,11 @@ export const selectAllCollections = createSelector(
     }
 )
 
+export const selectIsCollectionsLoaded = createSelector(
+    selectShopData,
+    allCollections => allCollections === null ? false : true
+)
+
 export const selectCollection = (urlParam) => {
     return createSelector(
         selectShopData,

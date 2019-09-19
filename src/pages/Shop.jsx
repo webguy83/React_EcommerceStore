@@ -9,9 +9,9 @@ import WithSpinner from '../components/UI/WithSpinner';
 import Collection from './Collection';
 import CollectionOverview from '../components/Collections/CollectionOverview';
 import { createStructuredSelector } from 'reselect';
-import { selectCollectionLoading } from '../store/selectors'
+import { selectIsCollectionsLoaded } from '../store/selectors'
 
-const Shop = ({ match, loadCollections, collectionLoading }) => {
+const Shop = ({ match, loadCollections, isCollectionsLoaded }) => {
     useEffect(() => {
         loadCollections();
     }, [loadCollections])
@@ -21,19 +21,19 @@ const Shop = ({ match, loadCollections, collectionLoading }) => {
 
     return (
         <div className="shop-page">
-            <Route exact path={`${match.path}`} render={(props) => <SpinnerWithCollectionOverview isLoading={collectionLoading} {...props} />} />
-            <Route path={`${match.path}/:catId`} render={(props) => <SpinnerWithCollection isLoading={collectionLoading} {...props} />} />
+            <Route exact path={`${match.path}`} render={(props) => <SpinnerWithCollectionOverview isLoading={!isCollectionsLoaded} {...props} />} />
+            <Route path={`${match.path}/:catId`} render={(props) => <SpinnerWithCollection isLoading={!isCollectionsLoaded} {...props} />} />
         </div>
     );
 };
 
 const mapStateToProps = createStructuredSelector({
-    collectionLoading: selectCollectionLoading
+    isCollectionsLoaded: selectIsCollectionsLoaded
 })
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadCollections: (collections) => dispatch(loadCollections(collections))
+        loadCollections: () => dispatch(loadCollections())
     }
 }
 
