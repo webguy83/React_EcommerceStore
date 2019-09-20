@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { selectCollection } from '../store/selectors';
-import CollectionItem from '../components/Collections/CollectionItem';
+import { selectCollection } from '../../store/selectors';
+import CollectionItem from '../../components/Collections/CollectionItem';
 import styled from 'styled-components/macro';
 
 const CollectionContainer = styled.div`
