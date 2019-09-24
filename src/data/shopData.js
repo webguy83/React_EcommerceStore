@@ -1,84 +1,72 @@
-import shanghai from '../components/Collections/Assets/shanghai.jpg';
-import shanghai2 from '../components/Collections/Assets/shanghai2.jpg';
-import suzhou from '../components/Collections/Assets/suzhou.jpg';
-import suzhou2 from '../components/Collections/Assets/suzhou2.jpg';
-import meishan from '../components/Collections/Assets/meishan.jpg';
-import meishan2 from '../components/Collections/Assets/meishan2.jpg';
-import dali from '../components/Collections/Assets/dali.jpg';
-import dali2 from '../components/Collections/Assets/dali2.jpg';
-import lijiang from '../components/Collections/Assets/lijiang.jpg';
-import lijiang2 from '../components/Collections/Assets/lijiang2.jpg';
-import kunming from '../components/Collections/Assets/kunming.jpg';
-
 export const SHOP_DATA = {
   china: {
     id: 3567367,
     title: 'China',
     items: [
       {
-        id: 546435643567,
+        id: 3356464646,
         name: 'Shanghai, China',
-        imageUrl: shanghai,
+        imageUrl: "https://i.ibb.co/dWLdQ85/shanghai.jpg",
         price: 25
       },
       {
         id: 7856784356,
         name: 'Shanghai, China',
-        imageUrl: shanghai2,
+        imageUrl: "https://i.ibb.co/jWMtvh9/shanghai2.jpg",
         price: 18
       },
       {
         id: 3463578588,
         name: 'Suzhou, China',
-        imageUrl: suzhou,
+        imageUrl: "https://i.ibb.co/XWPkTmx/suzhou.jpg",
         price: 35
       },
       {
         id: 567854745675647,
         name: 'Suzhou, China',
-        imageUrl: suzhou2,
+        imageUrl: "https://i.ibb.co/DRG26SC/suzhou2.jpg",
         price: 25
       },
       {
         id: 45678575467,
         name: 'Meishan, China',
-        imageUrl: meishan,
+        imageUrl: "https://i.ibb.co/b74v7fL/meishan.jpg",
         price: 18
       },
       {
         id: 45643745675675,
         name: 'Meishan, China',
-        imageUrl: meishan2,
+        imageUrl: "https://i.ibb.co/WfhjQpG/meishan2.jpg",
         price: 14
       },
       {
         id: 3254388745,
         name: 'Dali, China',
-        imageUrl: dali,
+        imageUrl: "https://i.ibb.co/CHWMbyL/dali.jpg",
         price: 18
       },
       {
         id: 3425235787,
         name: 'Dali, China',
-        imageUrl: dali2,
+        imageUrl: "https://i.ibb.co/mDpx31T/dali2.jpg",
         price: 14
       },
       {
         id: 45745884352,
         name: 'Lijiang, China',
-        imageUrl: lijiang,
+        imageUrl: "https://i.ibb.co/5Fb9ZKY/lijiang.jpg",
         price: 16
       },
       {
         id: 5645688995,
         name: 'Lijiang, China',
-        imageUrl: lijiang2,
+        imageUrl: "https://i.ibb.co/KbLMxLx/lijiang2.jpg",
         price: 19
       },
       {
         id: 546800065543,
         name: 'Kunming, China',
-        imageUrl: kunming,
+        imageUrl: "https://i.ibb.co/vhmBqDZ/kunming.jpg",
         price: 32
       }
     ]

@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { loadCollections } from '../store/actions/shop';
+import { collectionsLoading } from '../store/actions/shop';
 
 import CollectionContainer from './Collection/CollectionContainer';
 import CollectionOverviewContainer from '../components/Collections/CollectionOverviewContainer';
 
-const Shop = ({ match, loadCollections }) => {
+const Shop = ({ match, collectionsLoading }) => {
     useEffect(() => {
-        loadCollections();
-    }, [loadCollections])
+        collectionsLoading();
+    }, [collectionsLoading])
 
     return (
         <div className="shop-page">
@@ -22,7 +22,7 @@ const Shop = ({ match, loadCollections }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadCollections: () => dispatch(loadCollections())
+        collectionsLoading: () => dispatch(collectionsLoading())
     }
 }
 

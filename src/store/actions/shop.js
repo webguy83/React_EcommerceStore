@@ -1,20 +1,20 @@
 import { COLLECTIONS_LOADED_FAILED, COLLECTIONS_LOADED_SUCCESS, COLLECTIONS_LOADING } from './actionTypes';
 import { firestore, mapCollectionsToFirebaseSnapShot } from '../../helpers/firebase';
 
-const collectionsLoading = () => {
+export const collectionsLoading = () => {
     return {
         type: COLLECTIONS_LOADING
     }
 }
 
-const collectionsLoadedSuccess = (collections) => {
+export const collectionsLoadedSuccess = (collections) => {
     return {
         type: COLLECTIONS_LOADED_SUCCESS,
         payload: collections
     }
 }
 
-const collectionsLoadedFailed = (errMsg) => {
+export const collectionsLoadedFailed = (errMsg) => {
     return {
         type: COLLECTIONS_LOADED_FAILED,
         payload: errMsg

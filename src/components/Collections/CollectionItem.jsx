@@ -43,7 +43,6 @@ const ColFooter = styled.div`
 const CollectionItem = ({ item, addCartItem }) => {
 
     const { name, imageUrl, price } = item;
-
     return (
         <ColItem>
             <Image imageUrl={imageUrl} />
