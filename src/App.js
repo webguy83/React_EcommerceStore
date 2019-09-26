@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import SignInRegistration from './pages/SignInRegistration';
 import Checkout from './pages/Checkout';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header';
-import { auth, createUserDoc } from './helpers/firebase';
 import { selectAllCollections } from './store/selectors'
-import { setCurrentUser } from './store/actions/user';
 import { connect } from 'react-redux';
 import { selectCurrentUser } from './store/selectors';
 import { createStructuredSelector } from 'reselect';
@@ -21,28 +19,7 @@ const Container = styled.div`
 
 // jsx
 
-const App = ({ setCurrentUser, currentUser, collections }) => {
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserDoc(userAuth);
-
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        })
-      }
-
-      setCurrentUser(userAuth);
-      //addCollectionAndDocuments("collections", collections.map(({ title, items }) => ({ title, items })));
-    });
-    return () => {
-      unsubscribe();
-    }
-  }, [setCurrentUser, collections]);
-
+const App = ({ currentUser }) => {
   return (
     <Container>
       <Header />
@@ -61,12 +38,5 @@ const mapStateToProps = createStructuredSelector({
   collections: selectAllCollections
 })
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setCurrentUser: (user) => {
-      dispatch(setCurrentUser(user));
-    }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

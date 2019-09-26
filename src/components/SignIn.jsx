@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
+import { connect } from 'react-redux';
+
 import CustomInput from './UI/CustomInput';
 import CustomButton from './UI/CustomButton';
 
-import { signInWithGoogle, auth } from '../helpers/firebase';
+import { auth } from '../helpers/firebase';
+import { googleSignInStart } from '../store/actions/user';
 
 // css
 const RegistrationContainer = styled.div`
@@ -32,7 +35,7 @@ const SubmitButtonGroup = styled.div`
 `
 // jsx
 
-const SignIn = () => {
+const SignIn = ({ googleSignInStart }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -62,11 +65,19 @@ const SignIn = () => {
                 <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" labelToInputLink="signInPassword" required />
                 <SubmitButtonGroup>
                     <CustomButton type="submit" value='Sign In' />
-                    <CustomButton click={signInWithGoogle} type="submit" value='Sign In with Google' google />
+                    <CustomButton click={googleSignInStart} type="button" value='Sign In with Google' google />
                 </SubmitButtonGroup>
             </FormGroup>
         </RegistrationContainer>
     );
 };
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        googleSignInStart: () => {
+            dispatch(googleSignInStart())
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignIn);
