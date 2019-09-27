@@ -6,8 +6,7 @@ import { connect } from 'react-redux';
 import CustomInput from './UI/CustomInput';
 import CustomButton from './UI/CustomButton';
 
-import { auth } from '../helpers/firebase';
-import { googleSignInStart } from '../store/actions/user';
+import { googleSignInStart, signInPasswordStart } from '../store/actions/user';
 
 // css
 const RegistrationContainer = styled.div`
@@ -35,7 +34,7 @@ const SubmitButtonGroup = styled.div`
 `
 // jsx
 
-const SignIn = ({ googleSignInStart }) => {
+const SignIn = ({ googleSignInStart, signInPasswordStart }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -43,12 +42,14 @@ const SignIn = ({ googleSignInStart }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        auth.signInWithEmailAndPassword(email, password)
-            .then(() => {
-                setEmail("");
-                setPassword("");
-            })
-            .catch(err => console.log(err))
+        signInPasswordStart(email, password);
+
+        // auth.signInWithEmailAndPassword(email, password)
+        //     .then(() => {
+        //         setEmail("");
+        //         setPassword("");
+        //     })
+        //     .catch(err => console.log(err))
     }
 
     const handleChange = (e) => {
@@ -76,6 +77,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         googleSignInStart: () => {
             dispatch(googleSignInStart())
+        },
+        signInPasswordStart: (email, password) => {
+            dispatch(signInPasswordStart({ email, password }))
         }
     }
 }

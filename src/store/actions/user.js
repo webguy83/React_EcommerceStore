@@ -4,8 +4,15 @@ import {
     GOOGLE_SIGNIN_FAILURE,
     SIGNINPASSWORD_START,
     SIGNINPASSWORD_SUCCESS,
-    SIGNINPASSWORD_FAILURE
+    SIGNINPASSWORD_FAILURE,
+    CHECK_USER_SESSION
 } from './actionTypes';
+
+export const checkUserSession = () => {
+    return {
+        type: CHECK_USER_SESSION
+    }
+}
 
 export const googleSignInStart = () => {
     return {
@@ -27,16 +34,17 @@ export const googleSignInFailure = (error) => {
     }
 }
 
-export const signInPasswordStart = () => {
+export const signInPasswordStart = (emailPassword) => {
     return {
-        type: SIGNINPASSWORD_START
+        type: SIGNINPASSWORD_START,
+        payload: emailPassword
     }
 }
 
-export const signInPasswordSuccess = (emailPassword) => {
+export const signInPasswordSuccess = (user) => {
     return {
         type: SIGNINPASSWORD_SUCCESS,
-        payload: emailPassword
+        payload: user
     }
 }
 

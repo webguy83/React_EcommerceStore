@@ -49,6 +49,15 @@ googleProvider.setCustomParameters({
 
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
+export const getCurrentUser = () => {
+    return new Promise((res, rej) => {
+        const unsubscribe = auth.onAuthStateChanged(userAuth => {
+            unsubscribe();
+            res(userAuth);
+        }, rej)
+    });
+}
+
 export const addCollectionAndDocuments = async (colKey, objsToAdd) => {
     const colRef = firestore.collection(colKey);
 
