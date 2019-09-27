@@ -1,4 +1,4 @@
-import { ADD_CART_ITEM, REMOVE_CART_ITEM, SUBTRACT_CART_ITEM } from '../actions/actionTypes';
+import { ADD_CART_ITEM, REMOVE_CART_ITEM, SUBTRACT_CART_ITEM, CLEAR_CART } from '../actions/actionTypes';
 import { addToCart, subtractFromCart } from '../../helpers/generic';
 
 const initState = {
@@ -21,6 +21,11 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 cartItems: state.cartItems.filter(item => item.id !== action.payload.id)
+            }
+        case CLEAR_CART:
+            return {
+                ...state,
+                cartItems: []
             }
         default:
             return state;

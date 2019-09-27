@@ -2,7 +2,9 @@ import {
     GOOGLE_SIGNIN_SUCCESS,
     GOOGLE_SIGNIN_FAILURE,
     SIGNINPASSWORD_SUCCESS,
-    SIGNINPASSWORD_FAILURE
+    SIGNINPASSWORD_FAILURE,
+    SIGNOUT_SUCCESS,
+    SIGNOUT_FAILURE
 } from '../actions/actionTypes';
 
 const initState = {
@@ -21,6 +23,16 @@ export default (state = initState, action) => {
             }
         case GOOGLE_SIGNIN_FAILURE:
         case SIGNINPASSWORD_FAILURE:
+            return {
+                ...state,
+                error: action.payload
+            }
+        case SIGNOUT_SUCCESS:
+            return {
+                ...state,
+                currentUser: null
+            }
+        case SIGNOUT_FAILURE:
             return {
                 ...state,
                 error: action.payload

@@ -43,13 +43,6 @@ const SignIn = ({ googleSignInStart, signInPasswordStart }) => {
         e.preventDefault();
 
         signInPasswordStart(email, password);
-
-        // auth.signInWithEmailAndPassword(email, password)
-        //     .then(() => {
-        //         setEmail("");
-        //         setPassword("");
-        //     })
-        //     .catch(err => console.log(err))
     }
 
     const handleChange = (e) => {

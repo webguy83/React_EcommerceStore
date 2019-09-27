@@ -5,7 +5,10 @@ import {
     SIGNINPASSWORD_START,
     SIGNINPASSWORD_SUCCESS,
     SIGNINPASSWORD_FAILURE,
-    CHECK_USER_SESSION
+    CHECK_USER_SESSION,
+    SIGNOUT_START,
+    SIGNOUT_SUCCESS,
+    SIGNOUT_FAILURE
 } from './actionTypes';
 
 export const checkUserSession = () => {
@@ -54,4 +57,25 @@ export const signInPasswordFailure = (error) => {
         payload: error.message
     }
 }
+
+export const signOutStart = () => {
+    return {
+        type: SIGNOUT_START
+    }
+}
+
+export const signOutSuccess = () => {
+    return {
+        type: SIGNOUT_SUCCESS
+    }
+}
+
+export const signOutFailure = (error) => {
+    return {
+        type: SIGNOUT_FAILURE,
+        payload: error
+    }
+}
+
+
 
