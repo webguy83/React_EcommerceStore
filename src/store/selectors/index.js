@@ -5,6 +5,12 @@ const user = state => state.user;
 const miniCart = state => state.miniCart;
 const category = state => state.category;
 const shop = state => state.shop;
+const registration = state => state.registration;
+
+export const selectRegistrationError = createSelector(
+    registration,
+    registration => registration.error
+)
 
 export const selectCartItems = createSelector(
     cart,

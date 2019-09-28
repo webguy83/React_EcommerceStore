@@ -23,7 +23,7 @@ function* onGoogleSignIn() {
     }
 }
 
-function* onSignInPassword({ payload: { email, password } }) {
+export function* onSignInPassword({ payload: { email, password } }) {
     try {
         const { user } = yield auth.signInWithEmailAndPassword(email, password);
         const userReference = yield call(createUserDoc, user);

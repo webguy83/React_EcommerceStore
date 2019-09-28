@@ -7,6 +7,7 @@ import miniCart from './minicart';
 import cart from './cart'
 import category from './category';
 import shop from './shop';
+import registration from './registration';
 
 const persistConfig = {
     key: "root",
@@ -19,5 +20,6 @@ export default persistReducer(persistConfig, combineReducers({
     miniCart,
     cart,
     category,
-    shop
+    shop,
+    registration
 }))
