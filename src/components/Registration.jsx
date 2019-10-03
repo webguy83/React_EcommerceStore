@@ -44,30 +44,19 @@ const FormError = styled.p`
 
 const Registration = ({ registrationStart, registrationError }) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [displayName, setDisplayName] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [errorPasswordMessage, setErrorPasswordMessage] = useState("");
+    const [userInputData, setUserInputData] = useState({
+        email: '',
+        password: '',
+        confirmPassword: '',
+        displayName: ''
+    });
+
+    const { email, password, confirmPassword, displayName } = userInputData;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        switch (name) {
-            case "displayName":
-                setDisplayName(value);
-                break;
-            case "email":
-                setEmail(value);
-                break;
-            case "password":
-                setPassword(value);
-                break;
-            case "confirmPassword":
-                setConfirmPassword(value);
-                break;
-            default:
-                return
-        }
+        setUserInputData({ ...userInputData, [name]: value })
     }
 
     const handleSubmit = (e) => {
@@ -87,20 +76,20 @@ const Registration = ({ registrationStart, registrationError }) => {
 
     return (
         <RegistrationContainer>
-        <h2>I need to register an account</h2>
-        <Instructions>Register your email and password.</Instructions>
-        <FormGroup onSubmit={handleSubmit}>
-            <CustomInput type="text" name="displayName" handleChange={handleChange} value={displayName} label="Display Name" labelToInputLink="displayName" required />
-            <CustomInput type="email" name="email" handleChange={handleChange} value={email} label="Email" labelToInputLink="registrationEmail" required />
-            <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" labelToInputLink="registrationPassword" required />
-            <CustomInput type="password" name="confirmPassword" handleChange={handleChange} value={confirmPassword} label="Confirm Password" labelToInputLink="confirmRegistrationPassword" required />
-            <SubmitButtonGroup>
-                <FormError>{errorPasswordMessage}{registrationError}</FormError>
-                <CustomButton type="submit" value='Sign Up' />
-            </SubmitButtonGroup>
-        </FormGroup>
-    </RegistrationContainer>
-        
+            <h2>I need to register an account</h2>
+            <Instructions>Register your email and password.</Instructions>
+            <FormGroup onSubmit={handleSubmit}>
+                <CustomInput type="text" name="displayName" handleChange={handleChange} value={displayName} label="Display Name" labelToInputLink="displayName" required />
+                <CustomInput type="email" name="email" handleChange={handleChange} value={email} label="Email" labelToInputLink="registrationEmail" required />
+                <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" labelToInputLink="registrationPassword" required />
+                <CustomInput type="password" name="confirmPassword" handleChange={handleChange} value={confirmPassword} label="Confirm Password" labelToInputLink="confirmRegistrationPassword" required />
+                <SubmitButtonGroup>
+                    <FormError>{errorPasswordMessage}{registrationError}</FormError>
+                    <CustomButton type="submit" value='Sign Up' />
+                </SubmitButtonGroup>
+            </FormGroup>
+        </RegistrationContainer>
+
     );
 };
 

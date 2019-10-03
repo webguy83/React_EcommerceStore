@@ -36,9 +36,8 @@ const SubmitButtonGroup = styled.div`
 
 const SignIn = ({ googleSignInStart, signInPasswordStart }) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
+    const [userInputData, setUserInputData] = useState({ email: "", password: "" });
+    const { email, password } = userInputData;
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -47,7 +46,7 @@ const SignIn = ({ googleSignInStart, signInPasswordStart }) => {
 
     const handleChange = (e) => {
         const { value, name } = e.target;
-        name === "email" ? setEmail(value) : setPassword(value);
+        setUserInputData({ ...userInputData, [name]: value })
     }
 
     return (

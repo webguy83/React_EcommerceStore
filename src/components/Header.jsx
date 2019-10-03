@@ -75,7 +75,7 @@ const Header = ({ currentUser, miniCartHidden, signOutStart }) => {
                 <NavLink to="/shop">Shop</NavLink>
                 <NavLink to="/contact">Contact</NavLink>
                 {
-                    currentUser ? <NavLink as="div" onClick={() => signOutStart()}>Sign Out</NavLink> : <NavLink to="/signinregistration">Sign In / Registration</NavLink>
+                    currentUser ? <NavLink as="div" to="" onClick={() => signOutStart()}>Sign Out</NavLink> : <NavLink to="/signinregistration">Sign In / Registration</NavLink>
                 }
                 <ShoppingCartIcon />
             </NavList>
