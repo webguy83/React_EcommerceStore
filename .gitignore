@@ -8,8 +8,12 @@
 # testing
 /coverage
 
+# env
+/.env
+
 # production
 /build
+/client/node_modules
 /src/components/ShopMenu/Assets/full
 
 # misc
