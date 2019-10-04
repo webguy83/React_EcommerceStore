@@ -12,7 +12,7 @@
 /.env
 
 # production
-/build
+/client/build
 /client/node_modules
 /src/components/ShopMenu/Assets/full
 
