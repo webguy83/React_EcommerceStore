@@ -1,29 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { collectionsLoading } from '../store/actions/shop';
+import ShopProvider from '../contexts/shop';
 
-import CollectionContainer from './Collection/CollectionContainer';
-import CollectionOverviewContainer from '../components/Collections/CollectionOverviewContainer';
+import Collection from './Collection';
+import CollectionOverview from '../components/Collections/CollectionOverview';
 
-const Shop = ({ match, collectionsLoading }) => {
-    useEffect(() => {
-        collectionsLoading();
-    }, [collectionsLoading])
-
+const Shop = ({ match }) => {
     return (
-        <div className="shop-page">
-            <Route exact path={`${match.path}`} component={CollectionOverviewContainer} />
-            <Route path={`${match.path}/:catId`} component={CollectionContainer} />
-        </div>
+        <ShopProvider>
+            <div className="shop-page">
+                <Route exact path={`${match.path}`} component={CollectionOverview} />
+                <Route path={`${match.path}/:catId`} component={Collection} />
+            </div>
+        </ShopProvider>
     );
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        collectionsLoading: () => dispatch(collectionsLoading())
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Shop);
+export default Shop;

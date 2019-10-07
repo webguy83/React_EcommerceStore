@@ -11,15 +11,10 @@ const SpinnerContainer = styled.div`
 `
 // jsx
 
-const WithSpinner = (WrappedComp) => {
-    return ({ isLoading, ...otherProps }) => {
-        return isLoading ?
-            <SpinnerContainer>
-                <FontAwesomeIcon spin icon={faCompass} size="9x" />
-            </SpinnerContainer>
-            :
-            <WrappedComp {...otherProps} />
-    }
+const Spinner = () => {
+    return <SpinnerContainer>
+        <FontAwesomeIcon spin icon={faCompass} size="9x" />
+    </SpinnerContainer>
 };
 
-export default WithSpinner;
+export default Spinner;

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { selectCollection } from '../../store/selectors';
-import CollectionItem from '../../components/Collections/CollectionItem';
+import { selectCollection } from '../store/selectors';
+import { ShopContext } from '../contexts/shop';
+import CollectionItem from '../components/Collections/CollectionItem';
 import styled from 'styled-components/macro';
 
 const CollectionContainer = styled.div`
@@ -20,6 +21,8 @@ const CollectionContainer = styled.div`
 `
 
 const Collection = ({ collection }) => {
+    const { collections } = useContext(ShopContext);
+    console.log(collections);
     if (collection === undefined) {
         return <Redirect to="/" />
     } else {
