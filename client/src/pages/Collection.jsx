@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { selectCollection } from '../store/selectors';
+import Spinner from '../components/UI/Spinner';
 import { ShopContext } from '../contexts/shop';
 import CollectionItem from '../components/Collections/CollectionItem';
 import styled from 'styled-components/macro';
+import { getCollection } from '../helpers/generic'
 
 const CollectionContainer = styled.div`
     & .grid {
@@ -20,12 +20,15 @@ const CollectionContainer = styled.div`
     }
 `
 
-const Collection = ({ collection }) => {
-    const { collections } = useContext(ShopContext);
-    console.log(collections);
-    if (collection === undefined) {
-        return <Redirect to="/" />
+const Collection = ({ match }) => {
+    const { collections, loading } = useContext(ShopContext);
+    if (loading || collections === null) {
+        return <Spinner />
     } else {
+        const collection = getCollection(collections, match.params.catId);
+        if(!collection) {
+            return <Redirect to="/" />
+        }
         const { items } = collection;
         return (
             <CollectionContainer>
@@ -40,10 +43,4 @@ const Collection = ({ collection }) => {
     }
 };
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        collection: selectCollection(ownProps.match.params.catId)(state)
-    }
-}
-
-export default connect(mapStateToProps)(Collection);
+export default Collection;

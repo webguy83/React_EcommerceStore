@@ -10,6 +10,7 @@ import CustomButton from '../UI/CustomButton';
 const ColItem = styled.div`
     width: 100%;
     height: 42vh;
+    min-height: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,7 +33,6 @@ const Image = styled.div`
 
 const ColFooter = styled.div`
     width: 100%;
-    height: 10%;
     font-size: 1.6rem;
     display: flex;
     justify-content: space-between;

@@ -42,3 +42,7 @@ export const convertCollectionsToArray = (collections) => {
     }) : []
     return collections;
 }
+
+export const getCollection = (collections, collection) => {
+    return collections[collection];
+}
