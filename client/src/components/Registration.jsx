@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { RegistrationContext } from '../contexts/registration';
 import styled from 'styled-components/macro';
-
-import { selectRegistrationError } from '../store/selectors';
-import { createStructuredSelector } from 'reselect';
-
-import { connect } from 'react-redux';
 
 import CustomInput from './UI/CustomInput';
 import CustomButton from './UI/CustomButton';
 
-import { registrationStart } from '../store/actions/registration';
+import { auth, createUserDoc } from '../helpers/firebase';
 
 const RegistrationContainer = styled.div`
     width: 45%;
@@ -42,16 +38,9 @@ const FormError = styled.p`
     color: red;
 `
 
-const Registration = ({ registrationStart, registrationError }) => {
+const Registration = ({ match }) => {
 
-    const [errorPasswordMessage, setErrorPasswordMessage] = useState("");
-    const [userInputData, setUserInputData] = useState({
-        email: '',
-        password: '',
-        confirmPassword: '',
-        displayName: ''
-    });
-
+    const { userInputData, setUserInputData, errorPasswordMessage, setErrorPasswordMessage } = useContext(RegistrationContext);
     const { email, password, confirmPassword, displayName } = userInputData;
 
     const handleChange = (e) => {
@@ -67,11 +56,19 @@ const Registration = ({ registrationStart, registrationError }) => {
             return;
         }
 
-        setErrorPasswordMessage("");
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(({ user }) => {
+                setErrorPasswordMessage("");
+                return createUserDoc(user, { displayName });
+            })
+            .then(() => {
+                console.log("User created.  Add function to sign user in")
+            })
+            .catch(err => {
+                setErrorPasswordMessage(err.message);
+            })
 
-        registrationStart({
-            email, password, displayName
-        });
+        setErrorPasswordMessage("");
     }
 
     return (
@@ -84,7 +81,7 @@ const Registration = ({ registrationStart, registrationError }) => {
                 <CustomInput type="password" name="password" handleChange={handleChange} value={password} label="Password" labelToInputLink="registrationPassword" required />
                 <CustomInput type="password" name="confirmPassword" handleChange={handleChange} value={confirmPassword} label="Confirm Password" labelToInputLink="confirmRegistrationPassword" required />
                 <SubmitButtonGroup>
-                    <FormError>{errorPasswordMessage}{registrationError}</FormError>
+                    <FormError>{errorPasswordMessage}</FormError>
                     <CustomButton type="submit" value='Sign Up' />
                 </SubmitButtonGroup>
             </FormGroup>
@@ -93,16 +90,4 @@ const Registration = ({ registrationStart, registrationError }) => {
     );
 };
 
-const mapStateToProps = createStructuredSelector({
-    registrationError: selectRegistrationError
-})
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        registrationStart: (emailPasswordDisplayNameLoading) => {
-            dispatch(registrationStart(emailPasswordDisplayNameLoading));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Registration);
+export default Registration;

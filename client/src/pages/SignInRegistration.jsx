@@ -1,6 +1,7 @@
 import React from 'react';
 import SignIn from '../components/SignIn';
 import Registration from '../components/Registration';
+import RegistrationProvider from '../contexts/registration';
 
 import styled from 'styled-components/macro';
 
@@ -19,7 +20,9 @@ const SignInRegistration = () => {
     return (
         <SignInRegistrationContainer>
             <SignIn />
-            <Registration />
+            <RegistrationProvider>
+                <Registration />
+            </RegistrationProvider>
         </SignInRegistrationContainer>
     );
 };
