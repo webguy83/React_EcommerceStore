@@ -36,6 +36,10 @@ export const subtractFromCart = (cartItems, newCartItem) => {
     return adjustedCartItems;
 }
 
+export const removeFromCart = (cartItems, removalItem) => {
+    return cartItems.filter(item => item.id !== removalItem.id);
+}
+
 export const convertCollectionsToArray = (collections) => {
     collections = collections ? Object.keys(collections).map(collection => {
         return collections[collection];

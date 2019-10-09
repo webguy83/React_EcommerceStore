@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components/macro';
-import { connect } from 'react-redux';
-import { addCartItem, removeCartItem, subtractCartItem } from '../store/actions/cart';
+import { CartContext } from '../contexts/cart';
 
 import TrashIcon from './UI/TrashIcon';
 import AddSubtractIcon from './UI/AddSubtractIcon';
@@ -85,7 +84,8 @@ const CheckoutContainer = styled.table`
     }}
 `
 // jsx 
-const Checkout = ({ cartItems, cartItemsTotal, removeCartItem, addCartItem, subtractCartItem }) => {
+const Checkout = ({ cartItemsTotal }) => {
+    const { addItemToCart, subtractItemFromCart, removeItemFromCart, cartItems } = useContext(CartContext);
     return (
         <>
             <CheckoutContainer>
@@ -109,13 +109,13 @@ const Checkout = ({ cartItems, cartItemsTotal, removeCartItem, addCartItem, subt
                                 <td>{name}</td>
                                 <td>
                                     <div className="qtyGroup">
-                                        <AddSubtractIcon addOrSubtract={() => addCartItem(item)} addIcon />
+                                        <AddSubtractIcon addOrSubtract={() => addItemToCart(item)} addIcon />
                                         <span>{qty}</span>
-                                        <AddSubtractIcon disabled={qty > 1 ? false : true} addOrSubtract={() => qty > 1 ? subtractCartItem(item) : undefined} />
+                                        <AddSubtractIcon disabled={qty > 1 ? false : true} addOrSubtract={() => qty > 1 ? subtractItemFromCart(item) : undefined} />
                                     </div>
                                 </td>
                                 <td>${price * qty}</td>
-                                <td><TrashIcon removeItem={() => removeCartItem(item)} /></td>
+                                <td><TrashIcon removeItem={() => removeItemFromCart(item)} /></td>
                             </tr>
                         })
                         :
@@ -150,9 +150,9 @@ const Checkout = ({ cartItems, cartItemsTotal, removeCartItem, addCartItem, subt
                                     <th>Quantity</th>
                                     <td>
                                         <div className="qtyGroup">
-                                            <AddSubtractIcon addOrSubtract={() => addCartItem(item)} addIcon />
+                                            <AddSubtractIcon addOrSubtract={() => addItemToCart(item)} addIcon />
                                             <span>{qty}</span>
-                                            <AddSubtractIcon disabled={qty > 1 ? false : true} addOrSubtract={() => qty > 1 ? subtractCartItem(item) : undefined} />
+                                            <AddSubtractIcon disabled={qty > 1 ? false : true} addOrSubtract={() => qty > 1 ? subtractItemFromCart(item) : undefined} />
                                         </div>
                                     </td>
 
@@ -163,7 +163,7 @@ const Checkout = ({ cartItems, cartItemsTotal, removeCartItem, addCartItem, subt
                                 </tr>
                                 <tr>
                                     <th>Remove</th>
-                                    <td><TrashIcon removeItem={() => removeCartItem(item)} /></td>
+                                    <td><TrashIcon removeItem={() => removeItemFromCart(item)} /></td>
                                 </tr>
                                 <tr className="borderRow">
                                     <td colSpan="2"></td>
@@ -184,18 +184,4 @@ const Checkout = ({ cartItems, cartItemsTotal, removeCartItem, addCartItem, subt
     );
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        removeCartItem: (item) => {
-            dispatch(removeCartItem(item))
-        },
-        addCartItem: (item) => {
-            dispatch(addCartItem(item))
-        },
-        subtractCartItem: (item) => {
-            dispatch(subtractCartItem(item))
-        }
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Checkout);
+export default Checkout;
