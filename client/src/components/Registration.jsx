@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { RegistrationContext } from '../contexts/registration';
+import { UserContext } from '../contexts/user';
 import styled from 'styled-components/macro';
 
 import CustomInput from './UI/CustomInput';
@@ -38,9 +39,10 @@ const FormError = styled.p`
     color: red;
 `
 
-const Registration = ({ match }) => {
+const Registration = () => {
 
     const { userInputData, setUserInputData, errorPasswordMessage, setErrorPasswordMessage } = useContext(RegistrationContext);
+    const { signInUser } = useContext(UserContext)
     const { email, password, confirmPassword, displayName } = userInputData;
 
     const handleChange = (e) => {
@@ -62,7 +64,7 @@ const Registration = ({ match }) => {
                 return createUserDoc(user, { displayName });
             })
             .then(() => {
-                console.log("User created.  Add function to sign user in")
+                signInUser(email, password);
             })
             .catch(err => {
                 setErrorPasswordMessage(err.message);

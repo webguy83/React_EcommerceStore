@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Logo from './Logo';
 import ShoppingCartIcon from './Icon';
 import { connect } from 'react-redux';
-import { signOutStart } from '../store/actions/user';
-import { selectMiniCartHidden, selectCurrentUser } from '../store/selectors';
+import { selectMiniCartHidden } from '../store/selectors';
 import { createStructuredSelector } from 'reselect';
 import { Link } from 'react-router-dom';
 import MiniCart from './MiniCart';
 import styled, { css } from 'styled-components';
+import { UserContext } from '../contexts/user';
 
 // css
 
@@ -65,7 +65,8 @@ const NavLink = styled(Link)`
 `
 // jsx
 
-const Header = ({ currentUser, miniCartHidden, signOutStart }) => {
+const Header = ({ miniCartHidden }) => {
+    const { currentUser, signOutUser } = useContext(UserContext)
     return (
         <HeaderContainer>
             <LogoLink to="/">
@@ -75,7 +76,7 @@ const Header = ({ currentUser, miniCartHidden, signOutStart }) => {
                 <NavLink to="/shop">Shop</NavLink>
                 <NavLink to="/contact">Contact</NavLink>
                 {
-                    currentUser ? <NavLink as="div" to="" onClick={() => signOutStart()}>Sign Out</NavLink> : <NavLink to="/signinregistration">Sign In / Registration</NavLink>
+                    currentUser ? <NavLink as="div" to="" onClick={() => signOutUser()}>Sign Out</NavLink> : <NavLink to="/signinregistration">Sign In / Registration</NavLink>
                 }
                 <ShoppingCartIcon />
             </NavList>
@@ -85,16 +86,7 @@ const Header = ({ currentUser, miniCartHidden, signOutStart }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser,
     miniCartHidden: selectMiniCartHidden,
 });
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        signOutStart: () => {
-            dispatch(signOutStart())
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);
