@@ -86,6 +86,7 @@ const CheckoutContainer = styled.table`
 // jsx 
 const Checkout = ({ cartItemsTotal }) => {
     const { addItemToCart, subtractItemFromCart, removeItemFromCart, cartItems } = useContext(CartContext);
+
     return (
         <>
             <CheckoutContainer>

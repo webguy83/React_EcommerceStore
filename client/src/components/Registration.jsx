@@ -42,7 +42,7 @@ const FormError = styled.p`
 const Registration = () => {
 
     const { userInputData, setUserInputData, errorPasswordMessage, setErrorPasswordMessage } = useContext(RegistrationContext);
-    const { signInUser } = useContext(UserContext)
+    const { signInUser, setRegisterUserStatus } = useContext(UserContext)
     const { email, password, confirmPassword, displayName } = userInputData;
 
     const handleChange = (e) => {
@@ -57,14 +57,17 @@ const Registration = () => {
             setErrorPasswordMessage("Your passwords do not match!");
             return;
         }
-
+        setRegisterUserStatus(false);
         auth.createUserWithEmailAndPassword(email, password)
             .then(({ user }) => {
                 setErrorPasswordMessage("");
                 return createUserDoc(user, { displayName });
             })
             .then(() => {
-                signInUser(email, password);
+                return signInUser(email, password);
+            })
+            .then(() => {
+                setRegisterUserStatus(true);
             })
             .catch(err => {
                 setErrorPasswordMessage(err.message);

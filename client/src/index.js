@@ -3,23 +3,16 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import { Provider } from 'react-redux';
-import { store, persistor } from './store/store';
-import { PersistGate } from 'redux-persist/integration/react';
 import UserProvider from './contexts/user';
 import CartProvider from './contexts/cart';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
-            <PersistGate persistor={persistor}>
-                <UserProvider>
-                    <CartProvider>
-                        <App />
-                    </CartProvider>
-                </UserProvider>
-            </PersistGate>
-        </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+        <CartProvider>
+            <UserProvider>
+                <App />
+            </UserProvider>
+        </CartProvider>
+    </BrowserRouter>
     , document.getElementById('root'));
 

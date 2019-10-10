@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../contexts/cart';
 import styled, { keyframes } from 'styled-components';
 import CustomButton from './UI/CustomButton';
 import { withRouter } from 'react-router-dom';
-import { selectCartItems } from '../store/selectors';
-import { createStructuredSelector } from 'reselect';
-import { toggleMiniCartHidden } from '../store/actions/minicart';
-import { connect } from 'react-redux';
 import ShoppingCartItem from './ShoppingCartItem';
 
 // css
@@ -56,10 +53,10 @@ const EmptyMiniCart = styled.div`
 const EmptyMessage = styled.p`
     font-size: 1.9rem;
 `
-
 // jsx
 
-const MiniCart = ({ cartItems, history, dispatch }) => {
+const MiniCart = ({ history }) => {
+    const { cartItems, toggleMiniCartHidden } = useContext(CartContext);
     return (
         <MiniCartContainer>
             <h2>Your Cart</h2>
@@ -72,7 +69,7 @@ const MiniCart = ({ cartItems, history, dispatch }) => {
                     </Items>
                     <CustomButton click={() => {
                         history.push("/checkout");
-                        dispatch(toggleMiniCartHidden());
+                        toggleMiniCartHidden();
                     }} value="Checkout" />
                 </>
                 :
@@ -83,8 +80,4 @@ const MiniCart = ({ cartItems, history, dispatch }) => {
     );
 };
 
-const mapStateToProps = createStructuredSelector({
-    cartItems: selectCartItems
-})
-
-export default withRouter(connect(mapStateToProps)(MiniCart));
+export default withRouter(MiniCart);

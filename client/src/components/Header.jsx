@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import Logo from './Logo';
 import ShoppingCartIcon from './Icon';
-import { connect } from 'react-redux';
-import { selectMiniCartHidden } from '../store/selectors';
-import { createStructuredSelector } from 'reselect';
 import { Link } from 'react-router-dom';
 import MiniCart from './MiniCart';
 import styled, { css } from 'styled-components';
 import { UserContext } from '../contexts/user';
+import { CartContext } from '../contexts/cart';
 
 // css
 
@@ -65,8 +63,10 @@ const NavLink = styled(Link)`
 `
 // jsx
 
-const Header = ({ miniCartHidden }) => {
+const Header = () => {
     const { currentUser, signOutUser } = useContext(UserContext)
+    const { miniCartHidden } = useContext(CartContext);
+
     return (
         <HeaderContainer>
             <LogoLink to="/">
@@ -85,8 +85,4 @@ const Header = ({ miniCartHidden }) => {
     );
 };
 
-const mapStateToProps = createStructuredSelector({
-    miniCartHidden: selectMiniCartHidden,
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;

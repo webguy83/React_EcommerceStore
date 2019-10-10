@@ -1,4 +1,5 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useContext } from 'react';
+import { CartContext } from './cart';
 import { getCurrentUser, createUserDoc, auth, googleProvider } from '../helpers/firebase';
 
 export const UserContext = createContext({
@@ -8,12 +9,18 @@ export const UserContext = createContext({
     setError: () => { },
     checkUserSession: () => { },
     signInUser: () => { },
-    signOutUser: () => {}
+    signOutUser: () => { },
+    userStatus: false,
+    registerUserStatus: true,
+    setRegisterUserStatus: () => {}
 })
 
 const UserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [error, setError] = useState("");
+    const [userStatus, setUserStatus] = useState(false);
+    const [registerUserStatus, setRegisterUserStatus] = useState(true);
+    const { clearCart } = useContext(CartContext);
 
     const checkUserSession = () => {
         getCurrentUser()
@@ -25,13 +32,15 @@ const UserProvider = ({ children }) => {
                 return userRef.get();
             })
             .then(userSnapshot => {
+                setUserStatus(true);
                 setCurrentUser({
                     id: userSnapshot.id,
                     ...userSnapshot.data()
                 })
             })
             .catch(err => {
-                setError(err.message);
+                setError(err);
+                setUserStatus(true);
             })
     }
 
@@ -55,7 +64,8 @@ const UserProvider = ({ children }) => {
     const signOutUser = () => {
         auth.signOut()
             .then(() => {
-                setCurrentUser(null)
+                setCurrentUser(null);
+                clearCart();
             })
             .catch(err => {
                 setError(err.message);
@@ -67,7 +77,15 @@ const UserProvider = ({ children }) => {
     }, [])
 
     return <UserContext.Provider value={{
-        currentUser, setCurrentUser, error, setError, signInUser, signOutUser
+        currentUser,
+        setCurrentUser,
+        error,
+        setError,
+        signInUser,
+        signOutUser,
+        userStatus,
+        registerUserStatus,
+        setRegisterUserStatus
     }}>
         {children}
     </UserContext.Provider>

@@ -1,11 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../contexts/cart';
 import styled from 'styled-components/macro';
-import { connect } from 'react-redux';
-
-import { selectCartItemAmount, selectIconCartHidden } from '../store/selectors';
-import { createStructuredSelector } from 'reselect';
-
-import { toggleMiniCartHidden } from '../store/actions/minicart';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
@@ -25,24 +20,14 @@ const Counter = styled.span`
     text-align: center;
 `
 
-const Icon = ({ toggleMiniCartHidden, itemCount, iconCartHidden }) => {
+const Icon = () => {
+    const { iconCartHidden, toggleMiniCartHidden, cartItemsAmount } = useContext(CartContext);
     return (
-        iconCartHidden ? null : <IconContainer onClick={toggleMiniCartHidden}>
+        iconCartHidden ? null : <IconContainer onClick={() => toggleMiniCartHidden()}>
             <FontAwesomeIcon icon={faShoppingCart} size="3x" />
-            <Counter>{itemCount}</Counter>
+            <Counter>{cartItemsAmount}</Counter>
         </IconContainer>
     );
 };
 
-const mapStateToProps = createStructuredSelector({
-    itemCount: selectCartItemAmount,
-    iconCartHidden: selectIconCartHidden
-});
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        toggleMiniCartHidden: () => dispatch(toggleMiniCartHidden())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Icon);
+export default Icon;

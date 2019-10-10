@@ -7,7 +7,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import styled from 'styled-components/macro';
 import { UserContext } from './contexts/user';
-
+import Spinner from './components/UI/Spinner';
 // css
 const Container = styled.div`
     max-width: 118rem;
@@ -16,17 +16,23 @@ const Container = styled.div`
 // jsx
 
 const App = () => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, userStatus, registerUserStatus } = useContext(UserContext);
 
   return (
     <Container>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/shop" component={Shop} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path="/signinregistration" render={() => currentUser ? <Redirect to="/" /> : <SignInRegistration />} />
-      </Switch>
+      {userStatus && registerUserStatus ?
+        <>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/shop" component={Shop} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/signinregistration" render={() => currentUser ? <Redirect to="/" /> : <SignInRegistration />} />
+          </Switch>
+        </>
+        :
+        <Spinner />
+      }
     </Container>
   );
 }

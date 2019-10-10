@@ -54,7 +54,7 @@ export const getCurrentUser = () => {
         const unsubscribe = auth.onAuthStateChanged(userAuth => {
             unsubscribe();
             res(userAuth);
-        }, rej)
+        }, rej("A network error has occured."))
     });
 }
 

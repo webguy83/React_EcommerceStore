@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components/macro';
-import { connect } from 'react-redux';
-import { addCartItem } from '../../store/actions/cart';
-
+import { CartContext } from '../../contexts/cart';
 import CustomButton from '../UI/CustomButton';
 
 // css
@@ -40,9 +38,9 @@ const ColFooter = styled.div`
 `
 // jsx
 
-const CollectionItem = ({ item, addCartItem }) => {
-
+const CollectionItem = ({ item }) => {
     const { name, imageUrl, price } = item;
+    const { addItemToCart } = useContext(CartContext)
     return (
         <ColItem>
             <Image imageUrl={imageUrl} />
@@ -50,17 +48,9 @@ const CollectionItem = ({ item, addCartItem }) => {
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </ColFooter>
-            <CustomButton click={() => addCartItem(item)} addToCart value="Add to Cart" />
+            <CustomButton click={() => addItemToCart(item)} addToCart value="Add to Cart" />
         </ColItem>
     );
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addCartItem: (item) => {
-            dispatch(addCartItem(item));
-        }
-    }
-}
-
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;

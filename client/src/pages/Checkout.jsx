@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { iconCartHidden } from '../store/actions/minicart';
-import { selectCartItems, selectCartItemsTotal } from '../store/selectors';
-import { createStructuredSelector } from 'reselect';
+import React, { useEffect, useContext } from 'react';
+import { CartContext } from '../contexts/cart';
 import CheckoutDesktopMobile from '../components/Checkout';
 import StripeButton from '../components/UI/StripeButton';
 import styled from 'styled-components/macro';
@@ -32,35 +29,31 @@ const CreditCardWarning = styled.p`
 
 // jsx
 
-const Checkout = ({ cartItems, cartItemsTotal, iconCartHidden }) => {
+const Checkout = () => {
+    const { cartItems, setIconCartHidden, cartItemsTotalPrice } = useContext(CartContext);
     useEffect(() => {
-        iconCartHidden(true);
+        setIconCartHidden(true);
         return () => {
-            iconCartHidden(false);
+            setIconCartHidden(false);
         }
-    }, [iconCartHidden])
+    }, [setIconCartHidden])
 
     return (
         <CheckoutContainer>
             <Header>Checkout</Header>
-            <CheckoutDesktopMobile cartItemsTotal={cartItemsTotal} cartItems={cartItems} />
-            <CreditCardWarning><strong>Test credit card #:</strong> 4242 4242 4242 4242<br /><strong>Expires:</strong> 01/20<br /><strong>CVC:</strong> 123</CreditCardWarning>
-            <StripeButton price={cartItemsTotal} />
+            <CheckoutDesktopMobile cartItemsTotal={cartItemsTotalPrice} cartItems={cartItems} />
+            {
+                cartItems.length > 0 ?
+                    <>
+                        <CreditCardWarning><strong>Test credit card #:</strong> 4242 4242 4242 4242<br /><strong>Expires:</strong> 01/20<br /><strong>CVC:</strong> 123</CreditCardWarning>
+                        <StripeButton price={cartItemsTotalPrice} />
+                    </>
+                    :
+                    null
+            }
+
         </CheckoutContainer>
     );
 };
 
-const mapStateToProps = createStructuredSelector({
-    cartItems: selectCartItems,
-    cartItemsTotal: selectCartItemsTotal
-});
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        iconCartHidden: (hide) => {
-            dispatch(iconCartHidden(hide))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout); 
+export default Checkout; 
