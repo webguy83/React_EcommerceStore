@@ -39,6 +39,7 @@ const UserProvider = ({ children }) => {
                 })
             })
             .catch(err => {
+                console.log(err)
                 setError(err);
                 setUserStatus(true);
             })
@@ -51,7 +52,6 @@ const UserProvider = ({ children }) => {
                 await auth.signInWithPopup(googleProvider);
             const userRef = await createUserDoc(user);
             const userSnapshot = await userRef.get();
-
             setCurrentUser({
                 id: userSnapshot.id,
                 ...userSnapshot.data()

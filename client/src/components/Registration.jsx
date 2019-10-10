@@ -57,9 +57,10 @@ const Registration = () => {
             setErrorPasswordMessage("Your passwords do not match!");
             return;
         }
-        setRegisterUserStatus(false);
+        
         auth.createUserWithEmailAndPassword(email, password)
             .then(({ user }) => {
+                setRegisterUserStatus(false);
                 setErrorPasswordMessage("");
                 return createUserDoc(user, { displayName });
             })
