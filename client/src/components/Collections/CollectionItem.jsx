@@ -36,19 +36,48 @@ const ColFooter = styled.div`
     justify-content: space-between;
     align-items: center; 
 `
+const PurchasedOverlay = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 42vh;
+    background-color: #fff;
+    opacity: .7;
+`
+
+const PurchasedOverlayText = styled.p`
+    font-size: 2.8rem;
+    transform: rotate(-45deg);
+`
 // jsx
 
-const CollectionItem = ({ item }) => {
+const CollectionItem = ({ item, itemPurchased }) => {
     const { name, imageUrl, price } = item;
-    const { addItemToCart } = useContext(CartContext)
+    const { addItemToCart, removeItemFromCart } = useContext(CartContext);
+
     return (
         <ColItem>
+            {itemPurchased ? <PurchasedOverlay>
+                <PurchasedOverlayText>Added to Cart!</PurchasedOverlayText>
+            </PurchasedOverlay> : null}
             <Image imageUrl={imageUrl} />
             <ColFooter>
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </ColFooter>
-            <CustomButton click={() => addItemToCart(item)} addToCart value="Add to Cart" />
+            <CustomButton addToCart
+                value={itemPurchased ?
+                    "Remove From Cart"
+                    : "Add to Cart"
+                } click={() => {
+                    if (!itemPurchased) {
+                        addItemToCart(item);
+                    } else {
+                        removeItemFromCart(item);
+                    }
+                }} />
         </ColItem>
     );
 };

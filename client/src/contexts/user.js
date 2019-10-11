@@ -39,7 +39,6 @@ const UserProvider = ({ children }) => {
                 })
             })
             .catch(err => {
-                console.log(err)
                 setError(err);
                 setUserStatus(true);
             })

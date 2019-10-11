@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import Logo from './Logo';
 import ShoppingCartIcon from './Icon';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import MiniCart from './MiniCart';
 import styled, { css } from 'styled-components';
 import { UserContext } from '../contexts/user';
 import { CartContext } from '../contexts/cart';
 
 // css
+
 
 const LinkMainStyles = css`
     text-decoration: none;
@@ -48,7 +49,7 @@ const NavList = styled.nav`
     }
 `
 
-const NavLink = styled(Link)`
+const NavLinkContainer = styled(NavLink)`
     ${LinkMainStyles}
     ${NotLastChildStyles}
 
@@ -61,6 +62,11 @@ const NavLink = styled(Link)`
         }
     }
 `
+
+const NavLinkActiveState = {
+    "opacity": .5,
+    "cursor": "auto"
+}
 // jsx
 
 const Header = () => {
@@ -73,10 +79,10 @@ const Header = () => {
                 <Logo />
             </LogoLink>
             <NavList>
-                <NavLink to="/shop">Shop</NavLink>
-                <NavLink to="/contact">Contact</NavLink>
+                <NavLinkContainer activeStyle={NavLinkActiveState} to="/shop">Shop</NavLinkContainer>
+                <NavLinkContainer activeStyle={NavLinkActiveState} to="/contact">Contact</NavLinkContainer>
                 {
-                    currentUser ? <NavLink as="div" to="" onClick={() => signOutUser()}>Sign Out</NavLink> : <NavLink to="/signinregistration">Sign In / Registration</NavLink>
+                    currentUser ? <NavLinkContainer as="div" activeStyle={NavLinkActiveState} to="" onClick={() => signOutUser()}>Sign Out</NavLinkContainer> : <NavLinkContainer activeStyle={NavLinkActiveState} to="/signinregistration">Sign In / Registration</NavLinkContainer>
                 }
                 <ShoppingCartIcon />
             </NavList>
