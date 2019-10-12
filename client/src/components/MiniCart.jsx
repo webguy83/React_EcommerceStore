@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import CustomButton from './UI/CustomButton';
 import { withRouter } from 'react-router-dom';
 import ShoppingCartItem from './ShoppingCartItem';
+import CloseButton from './UI/CloseButton';
 
 // css
 
@@ -50,6 +51,12 @@ const EmptyMiniCart = styled.div`
     align-items: center;
 `
 
+const MiniCartHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+`
+
 const EmptyMessage = styled.p`
     font-size: 1.9rem;
 `
@@ -59,7 +66,10 @@ const MiniCart = ({ history }) => {
     const { cartItems, toggleMiniCartHidden } = useContext(CartContext);
     return (
         <MiniCartContainer>
-            <h2>Your Cart</h2>
+            <MiniCartHeader>
+                <h2>Your Cart</h2>
+                <CloseButton closeElm={toggleMiniCartHidden} />
+            </MiniCartHeader>
             {cartItems.length > 0 ?
                 <>
                     <Items>
