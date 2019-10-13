@@ -47,12 +47,14 @@ const CustomButtonContainer = styled.button`
 `
 // jsx
 
-const CustomButton = ({ type, value, click, google, addToCart }) => {
+const CustomButton = ({ type, value, click, google, addToCart, ...otherProps}) => {
     const defaultColour = google ? GoogleSignIn : addToCart ? AddToCartBtn : "";
     return (
         <CustomButtonContainer onClick={click}
             type={type}
-            defaultColour={defaultColour}>{value}
+            defaultColour={defaultColour}
+            {...otherProps}
+            >{value}
         </CustomButtonContainer>
     );
 };

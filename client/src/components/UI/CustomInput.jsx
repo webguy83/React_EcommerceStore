@@ -24,9 +24,10 @@ const CustomLabel = styled.label`
 
     
 `
-const CustomInputContainer = styled.input`
-    border: none;
-    border-bottom: 1px solid darkgray;
+const Input = styled.input`
+    
+    font-family: inherit;
+    border: 1px solid darkgray;
 
     &:focus {
         outline: none;
@@ -36,8 +37,19 @@ const CustomInputContainer = styled.input`
         }
     }
 
-    &[type=password] {
+    &[type=password], &[type=textarea] {
         letter-spacing: .3rem;
+    }
+`
+
+const TextArea = styled.textarea`
+    font-family: inherit;
+    &:focus {
+        outline: none;
+
+        &+${CustomLabel} {
+            ${shrinkText}
+        }
     }
 `
 
@@ -45,16 +57,20 @@ const ElementGroup = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
 `
 
-//import { customInputContainer, elementGroup, customLabel } from './CustomInput.module.scss';
-// jsx
-
 const CustomInput = ({ label, labelToInputLink, handleChange, ...otherInputProps }) => {
+    const { type } = otherInputProps;
     return (
         <ElementGroup>
-            <CustomInputContainer id={labelToInputLink} onChange={handleChange} {...otherInputProps} />
+            {
+                type === "textarea" ? 
+                <TextArea id={labelToInputLink} onChange={handleChange} rows="5" {...otherInputProps}  />
+                :
+                <Input id={labelToInputLink} onChange={handleChange} {...otherInputProps} />
+            }
+            
             {
                 label ?
                     <CustomLabel htmlFor={labelToInputLink} {...otherInputProps} >{label}</CustomLabel>

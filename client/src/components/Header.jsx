@@ -25,7 +25,7 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 
     @media (max-width: 670px) {
         flex-direction: column;

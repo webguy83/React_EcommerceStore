@@ -1,43 +1,19 @@
 import React, { useContext } from 'react';
 import { RegistrationContext } from '../contexts/registration';
 import { UserContext } from '../contexts/user';
-import styled from 'styled-components/macro';
+
+import {
+    RegistrationContainer,
+    FormGroup,
+    Instructions,
+    SubmitButtonGroup,
+    FormError
+} from './Styles/Form';
 
 import CustomInput from './UI/CustomInput';
 import CustomButton from './UI/CustomButton';
 
 import { auth, createUserDoc } from '../helpers/firebase';
-
-const RegistrationContainer = styled.div`
-    width: 45%;
-
-    @media (max-width: 830px) {
-        width: auto;
-        margin-top: 4rem; 
-    }
-`
-const FormGroup = styled.form`
-    display: flex;
-    flex-direction: column;
-    margin-top: 5rem;
-    height: 28rem;
-    justify-content: space-between;
-`
-const Instructions = styled.p`
-    font-size: 1.5rem;
-    margin-top: 1.3rem;
-`
-
-const SubmitButtonGroup = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`
-
-const FormError = styled.p`
-    font-size: 1.5rem;
-    color: red;
-`
 
 const Registration = () => {
 
@@ -57,7 +33,7 @@ const Registration = () => {
             setErrorPasswordMessage("Your passwords do not match!");
             return;
         }
-        
+
         auth.createUserWithEmailAndPassword(email, password)
             .then(({ user }) => {
                 setRegisterUserStatus(false);

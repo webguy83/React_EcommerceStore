@@ -7,7 +7,6 @@ import styled from 'styled-components/macro';
 
 // css
 const SignInRegistrationContainer = styled.div`
-    margin-top: 4rem;
     display: flex;
     justify-content: space-around;
 
