@@ -11,7 +11,7 @@ export const RegistrationContainer = styled.div`
 export const FormGroup = styled.form`
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
+    margin-top: 4rem;
     height: 28rem;
     justify-content: space-between;
 `

@@ -3,7 +3,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 
 // css
 

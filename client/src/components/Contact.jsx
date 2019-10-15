@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Instructions, FormGroup } from './Styles/Form';
 import CustomInput from './UI/CustomInput';
 import CustomButton from './UI/CustomButton'
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
+import ContactFormConfirmMsg from './UI/ContactFormConfirmMsg';
 
 // css
 const ContactForm = styled.div`
@@ -19,17 +21,37 @@ const Contact = () => {
         phoneNumber: "",
         comments: ""
     });
+    const [status, setStatus] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value })
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setStatus("Sending...");
+        axios({
+            method: "POST",
+            url: "/contactsubmit",
+            data: userData
+        }).then(res => {
+            const { msg } = res.data;
+            setStatus(msg);
+        }).catch(err => {
+            console.log(err);
+        })
+    }
     const { firstName, lastName, email, phoneNumber, comments } = userData;
+
     return (
         <ContactForm>
             <h2>Have a question? Please contact me!</h2>
-            <Instructions>Please leave your contact information below and I will get back to you soon.</Instructions>
-            <FormGroup>
+            <Instructions style={{
+                margin: "1.3rem 0"
+            }}>Please leave your contact information below and I will get back to you soon.</Instructions>
+            {status !== "" ? <ContactFormConfirmMsg status={status} /> : null}
+            <FormGroup onSubmit={handleSubmit} method="POST">
                 <CustomInput type="text"
                     name="firstName"
                     handleChange={handleChange}
