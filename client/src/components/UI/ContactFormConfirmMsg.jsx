@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components/macro';
 
 const slideIn = css`
+    animation: slidein .5s ease-in-out 0s 1;
+
     @keyframes slidein {
         from {
         height: 0;
@@ -12,24 +14,47 @@ const slideIn = css`
         }
     }
 `
+const slideOut = css`
+    animation: slideout .5s ease-in-out 3s 1;
+
+    @keyframes slideout {
+        from {
+        height: 2rem;
+        }
+    
+        to {
+        height: 0;
+        }
+    }
+`
+
+const backgroundColour = css`
+    background-color: ${({ status }) => {
+        switch (status) {
+            case "success":
+                return "lightgreen;";
+            case "fail":
+                return "lightsalmon;";
+            default:
+                return "#f4b400;";
+        }
+    }}
+`
 
 const colourTrans = css`
-    background-color: lightgreen;
     transition: all 1s;
 `
 
 const ConfirmMsg = styled.div`
-    background-color: #f4b400;
+    ${backgroundColour};
     overflow: hidden;
-    animation: slidein .5s ease-in 0s 1;
-
+   
     ${slideIn}
-    ${({ status }) => {
-        switch(status) {
-            case "success":
-                return colourTrans;
-            default:
-                return colourTrans;
+    ${colourTrans}
+
+    ${({status}) => {
+        if(status === "success") {
+            return slideOut;
         }
     }}
 `
