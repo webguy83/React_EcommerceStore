@@ -1,33 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components/macro';
 
-const slideIn = css`
-    animation: slidein .5s ease-in-out 0s 1;
-
-    @keyframes slidein {
-        from {
-        height: 0;
-        }
-    
-        to {
-        height: 2rem;
-        }
-    }
-`
-const slideOut = css`
-    animation: slideout .5s ease-in-out 3s 1;
-
-    @keyframes slideout {
-        from {
-        height: 2rem;
-        }
-    
-        to {
-        height: 0;
-        }
-    }
-`
-
 const backgroundColour = css`
     background-color: ${({ status }) => {
         switch (status) {
@@ -42,21 +15,13 @@ const backgroundColour = css`
 `
 
 const colourTrans = css`
-    transition: all 1s;
+    transition: all 2s;
 `
 
 const ConfirmMsg = styled.div`
-    ${backgroundColour};
+    ${backgroundColour}
     overflow: hidden;
-   
-    ${slideIn}
     ${colourTrans}
-
-    ${({status}) => {
-        if(status === "success") {
-            return slideOut;
-        }
-    }}
 `
 
 const StatusMsg = styled.p`
