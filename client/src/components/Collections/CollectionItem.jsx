@@ -45,6 +45,7 @@ const PurchasedOverlay = styled.div`
     width: 100%;
     height: 42vh;
     background-color: #fff;
+    opacity: .7;
 `
 
 const PurchasedOverlayText = styled.p`

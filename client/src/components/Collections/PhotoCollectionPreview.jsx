@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import { CartContext } from '../../contexts/cart';
 import styled from 'styled-components/macro';
 import { convertCartItemsToObj } from '../../helpers/cart';
-
+import { Link, withRouter } from 'react-router-dom';
 import CollectionItem from './CollectionItem';
+import { lowerCaseCountry } from '../../helpers/generic';
 
 const PhotoCollectionPreviewContainer = styled.div`
     & .grid {
@@ -19,7 +20,7 @@ const PhotoCollectionPreviewContainer = styled.div`
     }
 `
 
-const PhotoCollectionPreview = ({ title, items }) => {
+const PhotoCollectionPreview = ({ title, items, match }) => {
     const { cartItems } = useContext(CartContext);
     const cartItemsObj = convertCartItemsToObj(cartItems);
 
@@ -34,8 +35,14 @@ const PhotoCollectionPreview = ({ title, items }) => {
                         itemPurchased={cartItemsObj[item.id] ? true : false} />
                 })}
             </div>
+            <Link to={`${match.url}/${lowerCaseCountry(title)}`} style={{
+                width: "100%",
+                display: "block",
+                textAlign: "center",
+                fontSize: "1.4rem"
+            }}>{`View all of ${title}`}</Link>
         </PhotoCollectionPreviewContainer>
     );
 };
 
-export default PhotoCollectionPreview;
+export default withRouter(PhotoCollectionPreview);
