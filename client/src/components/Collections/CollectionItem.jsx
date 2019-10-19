@@ -1,7 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components/macro';
 import { CartContext } from '../../contexts/cart';
 import CustomButton from '../UI/CustomButton';
+import { CSSTransition } from 'react-transition-group';
+import {
+    overlayEnter,
+    overlayEnterActive,
+    overlayEnterDone,
+    overlayExit,
+    overlayExitActive
+} from './Styles/CollectionItem.module.css';
 
 // css
 
@@ -44,7 +52,6 @@ const PurchasedOverlay = styled.div`
     width: 100%;
     height: 42vh;
     background-color: #fff;
-    opacity: .7;
 `
 
 const PurchasedOverlayText = styled.p`
@@ -59,9 +66,22 @@ const CollectionItem = ({ item, itemPurchased }) => {
 
     return (
         <ColItem>
-            {itemPurchased ? <PurchasedOverlay>
-                <PurchasedOverlayText>Added to Cart!</PurchasedOverlayText>
-            </PurchasedOverlay> : null}
+            <CSSTransition
+                in={itemPurchased}
+                timeout={300}
+                unmountOnExit
+                classNames={{
+                    enter: overlayEnter,
+                    enterActive: overlayEnterActive,
+                    enterDone: overlayEnterDone,
+                    exit: overlayExit,
+                    exitActive: overlayExitActive
+                   }}>
+                <PurchasedOverlay>
+                    <PurchasedOverlayText>Added to Cart!</PurchasedOverlayText>
+                </PurchasedOverlay>
+            </CSSTransition>
+
             <Image imageUrl={imageUrl} />
             <ColFooter>
                 <span className="name">{name}</span>

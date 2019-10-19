@@ -11,7 +11,7 @@ import indiaImg from "./Assets/india_cover.jpg";
 const ShopMenuContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    grid-auto-rows: calc(47vh - 4.7rem);
+    grid-auto-rows: calc(43vh - 4.7rem);
     grid-gap: 3rem;
     grid-auto-flow: dense;
 `
