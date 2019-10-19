@@ -11,7 +11,7 @@ import { getCollection } from '../helpers/generic'
 const CollectionContainer = styled.div`
     & .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
         grid-gap: 3rem;
         margin-bottom: 5rem;
     }

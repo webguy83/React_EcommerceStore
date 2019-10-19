@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components/macro';
 import { CartContext } from '../../contexts/cart';
 import CustomButton from '../UI/CustomButton';
@@ -17,17 +17,7 @@ const ColItem = styled.div`
     width: 100%;
     height: 42vh;
     min-height: 20rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: relative;
-
-    & > button {
-        position: absolute;
-        opacity: .7;
-        bottom: 6rem;
-    }
 `
 const Image = styled.div`
     width: 100%;
@@ -35,6 +25,9 @@ const Image = styled.div`
     background-size: cover;
     background-position: center;
     background-image: url(${({ imageUrl }) => imageUrl});
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 `
 
 const ColFooter = styled.div`
@@ -56,7 +49,15 @@ const PurchasedOverlay = styled.div`
 
 const PurchasedOverlayText = styled.p`
     font-size: 2.8rem;
+   
     transform: rotate(-45deg);
+`
+
+const ButtonGroup = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 `
 // jsx
 
@@ -76,28 +77,43 @@ const CollectionItem = ({ item, itemPurchased }) => {
                     enterDone: overlayEnterDone,
                     exit: overlayExit,
                     exitActive: overlayExitActive
-                   }}>
+                }}>
                 <PurchasedOverlay>
                     <PurchasedOverlayText>Added to Cart!</PurchasedOverlayText>
                 </PurchasedOverlay>
             </CSSTransition>
 
-            <Image imageUrl={imageUrl} />
+            <Image imageUrl={imageUrl}>
+                <ButtonGroup>
+                    {!itemPurchased ?
+                    <CustomButton
+                        style={{
+                            "opacity": .7
+                        }}
+                        addToCart
+                        value="View" /> : null}
+                    <CustomButton
+                        style={{
+                            "opacity": .7
+                        }}
+                        addToCart
+                        value={itemPurchased ?
+                            "Remove From Cart"
+                            : "Add to Cart"
+                        } click={() => {
+                            if (!itemPurchased) {
+                                addItemToCart(item);
+                            } else {
+                                removeItemFromCart(item);
+                            }
+                        }} />
+                </ButtonGroup>
+
+            </Image>
             <ColFooter>
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </ColFooter>
-            <CustomButton addToCart
-                value={itemPurchased ?
-                    "Remove From Cart"
-                    : "Add to Cart"
-                } click={() => {
-                    if (!itemPurchased) {
-                        addItemToCart(item);
-                    } else {
-                        removeItemFromCart(item);
-                    }
-                }} />
         </ColItem>
     );
 };
