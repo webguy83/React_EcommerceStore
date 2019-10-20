@@ -29,7 +29,7 @@ const CustomButtonContainer = styled.button`
     font-family: inherit;
     font-size: 1.4rem;
     font-weight: bold;
-    border: .1rem solid black;
+    border: .1rem solid white;
     background-color: black;
     color: white;
     outline: none;

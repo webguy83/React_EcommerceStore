@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components/macro';
 import { CartContext } from '../../contexts/cart';
 import CustomButton from '../UI/CustomButton';
@@ -10,7 +10,7 @@ import {
     overlayExit,
     overlayExitActive
 } from './Styles/CollectionItem.module.css';
-
+import CollectionItemModal from './CollectionItemModal';
 // css
 
 const ColItem = styled.div`
@@ -65,9 +65,19 @@ const ButtonGroup = styled.div`
 const CollectionItem = ({ item, itemPurchased }) => {
     const { name, imageUrl, price } = item;
     const { addItemToCart, removeItemFromCart } = useContext(CartContext);
+    const [showModal, setShowModal] = useState(false);
+
+    const onModalClose = () => {
+        setShowModal(false);
+    }
 
     return (
         <ColItem>
+            {showModal ?
+                <CollectionItemModal addItemToCart={addItemToCart} product={item} isOpen={showModal} onRequestClose={onModalClose} />
+                : null
+            }
+
             <CSSTransition
                 in={itemPurchased}
                 timeout={300}
@@ -87,17 +97,20 @@ const CollectionItem = ({ item, itemPurchased }) => {
             <Image imageUrl={imageUrl}>
                 <ButtonGroup>
                     {!itemPurchased ?
+                        <CustomButton
+                            style={{
+                                "opacity": .7
+                            }}
+                            
+                            value="View"
+                            click={() => setShowModal(true)}
+                        /> : null}
+
                     <CustomButton
                         style={{
                             "opacity": .7
                         }}
-                        addToCart
-                        value="View" /> : null}
-                    <CustomButton
-                        style={{
-                            "opacity": .7
-                        }}
-                        addToCart
+                        
                         value={itemPurchased ?
                             "Remove From Cart"
                             : "Add to Cart"
