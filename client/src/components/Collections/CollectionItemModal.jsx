@@ -1,10 +1,31 @@
 import React from 'react';
 import Modal from 'react-modal';
-import styled from 'styled-components/macro';
+import styled, { createGlobalStyle } from 'styled-components/macro';
 import CustomButton from '../UI/CustomButton';
 import CloseButton from '../UI/CloseButton';
 
 // css
+
+const ModalOverlay = createGlobalStyle`
+    .ModalOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgb(74, 74, 74, .7);
+    }
+    .ReactModal__Content {
+        opacity: 0;
+        transition: all 300ms ease-in-out;
+        background: linear-gradient(#ffffff, #f1f1f1);
+    }
+    
+    .ReactModal__Content--after-open{
+        opacity: 1;
+    }
+`
+
 const ModalContainer = styled.div`
     position: relative;
 
@@ -16,15 +37,17 @@ const ModalContainer = styled.div`
     & figure {
         & img {
             width: 100%;
-            max-height: 38vh;
+            max-height: 47vh;
             object-fit: cover;
             max-width: 80rem;
             margin: 0 auto;
             display: block;
+            border: .1rem solid black;
         }
         & figcaption {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-top: 1.3rem;
+            text-align: center;
         }
     }
 
@@ -38,9 +61,23 @@ const ModalContainer = styled.div`
 
 const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props }) => {
     Modal.setAppElement('#root');
-
+    const { images, name, price } = product;
     return (
-        <Modal onRequestClose={onRequestClose} {...props}>
+        <Modal overlayClassName="ModalOverlay"
+            onRequestClose={onRequestClose}
+            style={{
+                content: {
+                    top: "50%",
+                    right: "auto",
+                    bottom: "auto",
+                    left: " 50%",
+                    marginRight: '-50%',
+                    transform: 'translate(-50%, -50%)'
+                }
+            }}
+            {...props}
+        >
+            <ModalOverlay />
             <ModalContainer>
                 <CloseButton style={{
                     position: "absolute",
@@ -48,12 +85,12 @@ const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props 
                 }}
                     closeElm={() => onRequestClose()}
                 />
-                <h2>A new Modal!</h2>
+                <h2>{name}</h2>
                 <figure>
-                    <img src="https://via.placeholder.com/800" alt="A noob image" />
-                    <figcaption>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus eos atque, amet, quia repellat eius fugit repudiandae porro enim eligendi sequi. Consequatur, alias beatae! At quasi vero sunt incidunt eius!</figcaption>
+                    <img src={images["largest"]} alt={name} />
+                    <figcaption>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</figcaption>
                 </figure>
-                <p>Cost: <strong>$25</strong></p>
+                <p>Cost: <strong>${price}</strong></p>
                 <CustomButton
                     value="Add to Cart"
                     style={{

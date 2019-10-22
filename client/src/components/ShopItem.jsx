@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import { withRouter } from 'react-router-dom';
-
+import ContentBox from './UI/ContentBox';
 import { lowerCaseCountry } from '../helpers/generic';
 
 const big = css`
@@ -45,35 +45,13 @@ const ShopItemBackground = styled.div`
     background-size: cover;
 `
 
-const Content = styled.div`
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: .1rem solid black;
-    background-color: white;
-    padding: 1.3rem;
-    opacity: .6;
-
-    & > h2 {
-        text-transform: uppercase;
-    }
-    & > p {
-        font-size: 1.3rem;
-    }
-`
-
 const ShopItem = ({ title, image, size, history, match }) => {
     return (
         <ShopItemContainer size={size} onClick={() => history.push(`${match.url}shop/${lowerCaseCountry(title)}`)} >
             <ShopItemBackground style={{
                 backgroundImage: `url(${image})`
             }} />
-            <Content>
-                <h2>{title}</h2>
-                <p>Shop for photos now!</p>
-            </Content>
+            <ContentBox title={title} textContent="Shop for photos now!" />
         </ShopItemContainer>
     );
 };

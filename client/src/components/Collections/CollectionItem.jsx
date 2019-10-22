@@ -11,6 +11,7 @@ import {
     overlayExitActive
 } from './Styles/CollectionItem.module.css';
 import CollectionItemModal from './CollectionItemModal';
+import ContentBox from '../UI/ContentBox';
 // css
 
 const ColItem = styled.div`
@@ -18,16 +19,21 @@ const ColItem = styled.div`
     height: 42vh;
     min-height: 20rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `
-const Image = styled.div`
+const Item = styled.div`
     width: 100%;
     height: 90%;
     background-size: cover;
     background-position: center;
     background-image: url(${({ imageUrl }) => imageUrl});
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: flex-end;
+    cursor: pointer;
 `
 
 const ColFooter = styled.div`
@@ -50,16 +56,9 @@ const PurchasedOverlay = styled.div`
 
 const PurchasedOverlayText = styled.p`
     font-size: 2.8rem;
-   
     transform: rotate(-45deg);
 `
 
-const ButtonGroup = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-`
 // jsx
 
 const CollectionItem = ({ item, itemPurchased }) => {
@@ -77,7 +76,6 @@ const CollectionItem = ({ item, itemPurchased }) => {
                 <CollectionItemModal addItemToCart={addItemToCart} product={item} isOpen={showModal} onRequestClose={onModalClose} />
                 : null
             }
-
             <CSSTransition
                 in={itemPurchased}
                 timeout={300}
@@ -93,37 +91,27 @@ const CollectionItem = ({ item, itemPurchased }) => {
                     <PurchasedOverlayText>Added to Cart!</PurchasedOverlayText>
                 </PurchasedOverlay>
             </CSSTransition>
+            <ContentBox title="View" textContent="Click for details!" />
+            <Item imageUrl={imageUrl} onClick={(e) => {
+                setShowModal(true)
+            }}>
+                <CustomButton
+                    style={{
+                        "opacity": .7
+                    }}
 
-            <Image imageUrl={imageUrl}>
-                <ButtonGroup>
-                    {!itemPurchased ?
-                        <CustomButton
-                            style={{
-                                "opacity": .7
-                            }}
-                            
-                            value="View"
-                            click={() => setShowModal(true)}
-                        /> : null}
-
-                    <CustomButton
-                        style={{
-                            "opacity": .7
-                        }}
-                        
-                        value={itemPurchased ?
-                            "Remove From Cart"
-                            : "Add to Cart"
-                        } click={() => {
-                            if (!itemPurchased) {
-                                addItemToCart(item);
-                            } else {
-                                removeItemFromCart(item);
-                            }
-                        }} />
-                </ButtonGroup>
-
-            </Image>
+                    value={itemPurchased ?
+                        "Remove From Cart"
+                        : "Add to Cart"
+                    } click={(e) => {
+                        e.stopPropagation();
+                        if (!itemPurchased) {
+                            addItemToCart(item);
+                        } else {
+                            removeItemFromCart(item);
+                        }
+                    }} />
+            </Item>
             <ColFooter>
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>

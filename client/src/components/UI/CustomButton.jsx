@@ -36,8 +36,7 @@ const CustomButtonContainer = styled.button`
     transition: all .3s ease-out;
 
     &:hover, &:active {
-        color: black;
-        background-color: white;
+        background-color: #4a4a4a;
         transition: all .3s ease-out;
     }
 
