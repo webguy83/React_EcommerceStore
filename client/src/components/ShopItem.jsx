@@ -11,6 +11,12 @@ const big = css`
         grid-column: auto;  
     }
 `
+const ShopItemBackground = styled.div`
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+`
 
 const ShopItemContainer = styled.div`
     display: flex;
@@ -22,7 +28,7 @@ const ShopItemContainer = styled.div`
     &:hover {
         cursor: pointer;
 
-        & .shopItemBackground {
+        & ${ShopItemBackground} {
             transform: scale(1.1);
             transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -34,16 +40,11 @@ const ShopItemContainer = styled.div`
     }
     
     ${({ size }) => {
-        return size === "big" ? big : "small"
+        return size === "big" ? big : null
     }}
 `
 
-const ShopItemBackground = styled.div`
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
-`
+
 
 const ShopItem = ({ title, image, size, history, match }) => {
     return (
@@ -51,7 +52,7 @@ const ShopItem = ({ title, image, size, history, match }) => {
             <ShopItemBackground style={{
                 backgroundImage: `url(${image})`
             }} />
-            <ContentBox title={title} textContent="Shop for photos now!" />
+            <ContentBox className="content" style={{position: "absolute"}} title={title} textContent="Shop for photos now!" />
         </ShopItemContainer>
     );
 };

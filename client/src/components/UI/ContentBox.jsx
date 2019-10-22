@@ -3,7 +3,6 @@ import styled from 'styled-components/macro';
 
 const Content = styled.div`
     display: flex;
-    position: absolute;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -18,11 +17,12 @@ const Content = styled.div`
     & > p {
         font-size: 1.3rem;
     }
+    ${({style}) => style}
 `
 
-const ContentBox = ({ title, textContent }) => {
+const ContentBox = ({ title, textContent, style, className }) => {
     return (
-        <Content>
+        <Content className={className} style={style}>
             <h2>{title}</h2>
             <p>{textContent}</p>
         </Content>

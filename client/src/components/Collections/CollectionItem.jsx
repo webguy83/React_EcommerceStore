@@ -91,10 +91,14 @@ const CollectionItem = ({ item, itemPurchased }) => {
                     <PurchasedOverlayText>Added to Cart!</PurchasedOverlayText>
                 </PurchasedOverlay>
             </CSSTransition>
-            <ContentBox title="View" textContent="Click for details!" />
+
             <Item imageUrl={imageUrl} onClick={(e) => {
                 setShowModal(true)
             }}>
+                {!itemPurchased ? <ContentBox title="View" textContent="Click for details!" style={{
+                    position: "absolute",
+                    top: "40%"
+                }} /> : null}
                 <CustomButton
                     style={{
                         "opacity": .7
