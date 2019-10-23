@@ -61,7 +61,7 @@ const ModalContainer = styled.div`
 
 const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props }) => {
     Modal.setAppElement('#root');
-    const { images, name, price } = product;
+    const { images, name, price, description, loc } = product;
     return (
         <Modal overlayClassName="ModalOverlay"
             onRequestClose={onRequestClose}
@@ -88,7 +88,7 @@ const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props 
                 <h2>{name}</h2>
                 <figure>
                     <img src={images["largest"]} alt={name} />
-                    <figcaption>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</figcaption>
+                    <figcaption>{description} - <strong>{loc}</strong></figcaption>
                 </figure>
                 <p>Cost: <strong>${price}</strong></p>
                 <CustomButton

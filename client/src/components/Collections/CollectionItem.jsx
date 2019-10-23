@@ -14,16 +14,7 @@ import CollectionItemModal from './CollectionItemModal';
 import ContentBox from '../UI/ContentBox';
 // css
 
-const ColItem = styled.div`
-    width: 100%;
-    height: 42vh;
-    min-height: 20rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`
+
 const Item = styled.div`
     width: 100%;
     height: 90%;
@@ -34,6 +25,17 @@ const Item = styled.div`
     justify-content: center;
     align-items: flex-end;
     cursor: pointer;
+`
+
+const ColItem = styled.div`
+    width: 100%;
+    height: 42vh;
+    min-height: 20rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `
 
 const ColFooter = styled.div`
