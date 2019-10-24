@@ -8,6 +8,11 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const IconContainer = styled.div`
     position: relative;
     cursor: pointer;
+
+    &:hover, &:active {
+        color: var(--sec);
+        transition: var(--btnTrans);
+    }
 `
 
 const Counter = styled.span`

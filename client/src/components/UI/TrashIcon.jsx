@@ -6,10 +6,11 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components/macro';
 
 const TrashIconContainer = styled.span`
-    &:hover {
-        cursor: pointer;
-        color: #F4B400;
-        transition: all .3s ease-in-out;
+    cursor: pointer;
+
+    &:hover, &:active {
+        color: var(--sec);
+        transition: var(--btnTrans);
     }
 `
 

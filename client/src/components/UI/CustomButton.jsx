@@ -12,15 +12,6 @@ const GoogleSignIn = css`
     }
 `
 
-const AddToCartBtn = css`
-    background-color: #f4b400
-    color: black;
-
-    &:hover {
-        background-color: white;
-    }
-`
-
 const CustomButtonContainer = styled.button`
     min-width: 11rem;
     padding: 1rem;
@@ -30,14 +21,14 @@ const CustomButtonContainer = styled.button`
     font-size: 1.4rem;
     font-weight: bold;
     border: .1rem solid white;
-    background-color: black;
+    background-color: var(--prim);
     color: white;
     outline: none;
     transition: all .3s ease-out;
 
     &:hover, &:active {
-        background-color: #4a4a4a;
-        transition: all .3s ease-out;
+        background-color: var(--sec);
+        transition: var(--btnTrans);
     }
 
     ${({ defaultColour }) => {
@@ -46,8 +37,8 @@ const CustomButtonContainer = styled.button`
 `
 // jsx
 
-const CustomButton = ({ type, value, click, google, addToCart, ...otherProps}) => {
-    const defaultColour = google ? GoogleSignIn : addToCart ? AddToCartBtn : "";
+const CustomButton = ({ type, value, click, google, ...otherProps}) => {
+    const defaultColour = google ? GoogleSignIn : "";
     return (
         <CustomButtonContainer onClick={click}
             type={type}

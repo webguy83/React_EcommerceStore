@@ -9,6 +9,12 @@
   box-sizing: inherit;
 }
 
+:root {
+  --prim: black;
+  --sec: #4a4a4a;
+  --btnTrans: all .3s ease-out;
+}
+
 input, button {
   font-family: inherit;
 }

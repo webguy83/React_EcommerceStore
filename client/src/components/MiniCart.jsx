@@ -22,7 +22,7 @@ const MiniCartContainer = styled.div`
     right: 0;
     top: 7rem;
     background-color: white;
-    border: .1rem solid black;
+    border: .1rem solid var(--prim);
     padding: 2rem;
     z-index: 1;
     animation: ${showCart} .3s ease-in-out;

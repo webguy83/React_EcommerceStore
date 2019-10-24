@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import styled, { createGlobalStyle } from 'styled-components/macro';
 import CustomButton from '../UI/CustomButton';
 import CloseButton from '../UI/CloseButton';
-
+import Spinner from '../UI/Spinner';
 // css
 
 const ModalOverlay = createGlobalStyle`
@@ -17,7 +17,7 @@ const ModalOverlay = createGlobalStyle`
     }
     .ReactModal__Content {
         opacity: 0;
-        transition: all 300ms ease-in-out;
+        transition: all 500ms ease-in-out;
         background: linear-gradient(#ffffff, #f1f1f1);
     }
     
@@ -42,7 +42,7 @@ const ModalContainer = styled.div`
             max-width: 80rem;
             margin: 0 auto;
             display: block;
-            border: .1rem solid black;
+            border: .1rem solid var(--prim);
         }
         & figcaption {
             font-size: 1.5rem;
@@ -60,6 +60,12 @@ const ModalContainer = styled.div`
 // jsx
 
 const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props }) => {
+    const [bgImageLoaded, setbgImageLoaded] = useState(false);
+
+    const onImageLoadedSuccess = () => {
+        setbgImageLoaded(true);
+    }
+
     Modal.setAppElement('#root');
     const { images, name, price, description, loc } = product;
     return (
@@ -86,8 +92,9 @@ const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props 
                     closeElm={() => onRequestClose()}
                 />
                 <h2>{name}</h2>
+                {!bgImageLoaded ? <Spinner /> : null}
                 <figure>
-                    <img src={images["largest"]} alt={name} />
+                    <img src={images["largest"]} onLoad={() => onImageLoadedSuccess()} alt={name} />
                     <figcaption>{description} - <strong>{loc}</strong></figcaption>
                 </figure>
                 <p>Cost: <strong>${price}</strong></p>

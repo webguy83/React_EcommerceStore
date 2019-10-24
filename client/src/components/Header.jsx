@@ -12,7 +12,12 @@ import { CartContext } from '../contexts/cart';
 
 const LinkMainStyles = css`
     text-decoration: none;
-    color: black;
+    color: var(--prim);
+
+    &:hover, &:active {
+        color: var(--sec);
+        transition: var(--btnTrans);
+    }
 `
 
 const NotLastChildStyles = css`

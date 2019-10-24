@@ -17,10 +17,11 @@ const disabledStyles = css`
 `
 
 const AddSubtractIconContainer = styled.div`
-    &:hover {
-        cursor: pointer;
-        color: #F4B400;
-        transition: all .3s ease-in-out;
+    cursor: pointer;
+    
+    &:hover, &:active {
+        color: var(--sec);
+        transition: var(--btnTrans);
     }
 
     ${({ disabled }) => {

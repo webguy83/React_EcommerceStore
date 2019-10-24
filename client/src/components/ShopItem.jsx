@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components/macro';
 import { withRouter } from 'react-router-dom';
 import ContentBox from './UI/ContentBox';
+import ItemProductPreview from './ItemProductPreview';
 import { lowerCaseCountry } from '../helpers/generic';
 
 const big = css`
@@ -22,37 +23,18 @@ const ShopItemContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: .1rem solid black;
+    border: .1rem solid var(--prim);
     overflow: hidden;
-
-    &:hover {
-        cursor: pointer;
-
-        & ${ShopItemBackground} {
-            transform: scale(1.1);
-            transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        & .content {
-            opacity: .9;
-            transition: all .3s ease-out;
-        }
-    }
     
     ${({ size }) => {
         return size === "big" ? big : null
     }}
 `
 
-
-
 const ShopItem = ({ title, image, size, history, match }) => {
     return (
         <ShopItemContainer size={size} onClick={() => history.push(`${match.url}shop/${lowerCaseCountry(title)}`)} >
-            <ShopItemBackground style={{
-                backgroundImage: `url(${image})`
-            }} />
-            <ContentBox className="content" style={{position: "absolute"}} title={title} textContent="Shop for photos now!" />
+            <ItemProductPreview bgImage={image} title={title} textContent="Shop for photos now!" />
         </ShopItemContainer>
     );
 };

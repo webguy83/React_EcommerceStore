@@ -1,30 +1,31 @@
 import React, { useContext, useState } from 'react';
-import styled from 'styled-components/macro';
+import styled, { createGlobalStyle } from 'styled-components/macro';
 import { CartContext } from '../../contexts/cart';
 import CustomButton from '../UI/CustomButton';
 import { CSSTransition } from 'react-transition-group';
-import {
-    overlayEnter,
-    overlayEnterActive,
-    overlayEnterDone,
-    overlayExit,
-    overlayExitActive
-} from './Styles/CollectionItem.module.css';
 import CollectionItemModal from './CollectionItemModal';
-import ContentBox from '../UI/ContentBox';
+import ItemProductPreview from '../ItemProductPreview';
+
 // css
 
-
-const Item = styled.div`
-    width: 100%;
-    height: 90%;
-    background-size: cover;
-    background-position: center;
-    background-image: url(${({ imageUrl }) => imageUrl});
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    cursor: pointer;
+const OverlayStyles = createGlobalStyle`
+    #root .overlay-enter {
+        opacity: 0;
+    }
+    #root .overlay-enter-active {
+        opacity: .7;
+        transition: opacity .3s;
+    }
+    #root .overlay-enter-done {
+        opacity: .7;
+    }
+    #root .overlay-exit{
+        opacity: .7;
+    }
+    #root .overlay-exit-active {
+        opacity: 0;
+        transition: opacity .3s;
+    }
 `
 
 const ColItem = styled.div`
@@ -36,6 +37,12 @@ const ColItem = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    & .ItemProductPreviewGroup {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
 `
 
 const ColFooter = styled.div`
@@ -51,7 +58,7 @@ const PurchasedOverlay = styled.div`
     align-items: center;
     position: absolute;
     width: 100%;
-    height: 42vh;
+    height: 100%;
     background-color: #fff;
     opacity: .7;
 `
@@ -74,50 +81,45 @@ const CollectionItem = ({ item, itemPurchased }) => {
 
     return (
         <ColItem>
+            <OverlayStyles />
             {showModal ?
-                <CollectionItemModal addItemToCart={addItemToCart} product={item} isOpen={showModal} onRequestClose={onModalClose} />
+                <CollectionItemModal addItemToCart={addItemToCart}
+                    product={item}
+                    isOpen={showModal}
+                    onRequestClose={onModalClose} />
                 : null
             }
             <CSSTransition
                 in={itemPurchased}
                 timeout={300}
                 unmountOnExit
-                classNames={{
-                    enter: overlayEnter,
-                    enterActive: overlayEnterActive,
-                    enterDone: overlayEnterDone,
-                    exit: overlayExit,
-                    exitActive: overlayExitActive
-                }}>
+                classNames="overlay">
                 <PurchasedOverlay>
                     <PurchasedOverlayText>Added to Cart!</PurchasedOverlayText>
                 </PurchasedOverlay>
             </CSSTransition>
-
-            <Item imageUrl={imageUrl} onClick={(e) => {
+            <div className="ItemProductPreviewGroup" onClick={() => {
                 setShowModal(true)
             }}>
-                {!itemPurchased ? <ContentBox title="View" textContent="Click for details!" style={{
+                <ItemProductPreview show={itemPurchased} bgImage={imageUrl} title="View" textContent="Click for details!" />
+            </div>
+            <CustomButton
+                style={{
                     position: "absolute",
-                    top: "40%"
-                }} /> : null}
-                <CustomButton
-                    style={{
-                        "opacity": .7
-                    }}
+                    bottom: "2.2rem"
+                }}
 
-                    value={itemPurchased ?
-                        "Remove From Cart"
-                        : "Add to Cart"
-                    } click={(e) => {
-                        e.stopPropagation();
-                        if (!itemPurchased) {
-                            addItemToCart(item);
-                        } else {
-                            removeItemFromCart(item);
-                        }
-                    }} />
-            </Item>
+                value={itemPurchased ?
+                    "Remove From Cart"
+                    : "Add to Cart"
+                } click={(e) => {
+                    e.stopPropagation();
+                    if (!itemPurchased) {
+                        addItemToCart(item);
+                    } else {
+                        removeItemFromCart(item);
+                    }
+                }} />
             <ColFooter>
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>

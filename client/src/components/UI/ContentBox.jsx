@@ -6,7 +6,7 @@ const Content = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: .1rem solid black;
+    border: .1rem solid var(--prim);
     background-color: white;
     padding: 1.3rem;
     opacity: .6;
@@ -17,12 +17,12 @@ const Content = styled.div`
     & > p {
         font-size: 1.3rem;
     }
-    ${({style}) => style}
+    ${({ style }) => style}
 `
 
-const ContentBox = ({ title, textContent, style, className }) => {
+const ContentBox = ({ title, textContent, ...props }) => {
     return (
-        <Content className={className} style={style}>
+        <Content className="content" {...props}>
             <h2>{title}</h2>
             <p>{textContent}</p>
         </Content>

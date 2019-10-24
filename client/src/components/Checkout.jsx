@@ -47,7 +47,7 @@ const CheckoutContainer = styled.table`
     & .totalPrice {
         font-weight: bold;
         font-size: 2rem;
-        border-bottom: .1rem solid black;
+        border-bottom: .1rem solid var(--prim);
         letter-spacing: .2rem;
     }
 
