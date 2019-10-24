@@ -1,9 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components/macro';
 import { withRouter } from 'react-router-dom';
-import ContentBox from './UI/ContentBox';
 import ItemProductPreview from './ItemProductPreview';
 import { lowerCaseCountry } from '../helpers/generic';
+
+// css
 
 const big = css`
     grid-column: 1 / -1;
@@ -11,12 +12,6 @@ const big = css`
     @media (max-width: 750px) {
         grid-column: auto;  
     }
-`
-const ShopItemBackground = styled.div`
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
 `
 
 const ShopItemContainer = styled.div`
@@ -30,6 +25,7 @@ const ShopItemContainer = styled.div`
         return size === "big" ? big : null
     }}
 `
+// jsx
 
 const ShopItem = ({ title, image, size, history, match }) => {
     return (

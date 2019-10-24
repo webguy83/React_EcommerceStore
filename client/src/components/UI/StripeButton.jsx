@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import { CartContext } from '../../contexts/cart';
 
 import StripeLogo from './logo.svg';
 
-const StripeButton = ({ price }) => {
+const StripeButton = ({ price, setPurchaseStatus }) => {
+    const { clearCart } = useContext(CartContext);
     const stripePrice = price * 100;
     const pubKey = "pk_test_qA1t0QAGVZHm4k4dI7Mj0MH0004ZvVtscR";
 
     const onToken = (token) => {
+        setPurchaseStatus("pending");
         axios({
             url: 'payment',
             method: 'post',
@@ -17,10 +20,10 @@ const StripeButton = ({ price }) => {
                 token
             }
         }).then(() => {
-            alert('Thank you for your purchase!')
-        }).catch(err => {
-            console.log(`Payment error: ${JSON.parse(err)}`)
-            alert('There was an issue with your payment sorry :(. Please verify your card!')
+            clearCart();
+            setPurchaseStatus("success");
+        }).catch(() => {
+            setPurchaseStatus("fail");
         })
     }
 

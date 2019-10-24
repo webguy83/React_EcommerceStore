@@ -4,7 +4,7 @@ import { Instructions, FormGroup } from './Styles/Form';
 import CustomInput from './UI/CustomInput';
 import CustomButton from './UI/CustomButton'
 import styled from 'styled-components/macro';
-import ContactFormConfirmMsg from './UI/ContactFormConfirmMsg';
+import ConfirmationMsg from './UI/ConfirmationMsg';
 
 // css
 const ContactForm = styled.div`
@@ -50,7 +50,7 @@ const Contact = () => {
             <Instructions style={{
                 margin: "1.3rem 0"
             }}>Please leave your contact information below and I will get back to you soon.</Instructions>
-            {status !== "" ? <ContactFormConfirmMsg status={status} /> : null}
+            {status !== "" ? <ConfirmationMsg status={status} /> : null}
             <FormGroup onSubmit={handleSubmit} method="POST">
                 <CustomInput type="text"
                     name="firstName"

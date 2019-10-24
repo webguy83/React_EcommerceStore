@@ -29,7 +29,7 @@ const StatusMsg = styled.p`
     text-align: center;
 `
 
-const ContactFormConfirmMsg = ({ status }) => {
+const ConfirmationMsg = ({ status }) => {
     let msg;
     switch (status) {
         case "success":
@@ -48,4 +48,4 @@ const ContactFormConfirmMsg = ({ status }) => {
     );
 };
 
-export default ContactFormConfirmMsg;
+export default ConfirmationMsg;

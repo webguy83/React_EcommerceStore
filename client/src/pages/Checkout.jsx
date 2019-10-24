@@ -1,8 +1,9 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { CartContext } from '../contexts/cart';
 import CheckoutDesktopMobile from '../components/Checkout';
 import StripeButton from '../components/UI/StripeButton';
 import styled from 'styled-components/macro';
+import ConfirmationMsg from '../components/UI/ConfirmationMsg';
 
 // css
 const CheckoutContainer = styled.div`
@@ -31,6 +32,7 @@ const CreditCardWarning = styled.p`
 
 const Checkout = () => {
     const { cartItems, setIconCartHidden, cartItemsTotalPrice } = useContext(CartContext);
+    const [purchaseStatus, setPurchaseStatus] = useState("");
     useEffect(() => {
         setIconCartHidden(true);
         return () => {
@@ -41,16 +43,14 @@ const Checkout = () => {
     return (
         <CheckoutContainer>
             <Header>Checkout</Header>
-            <CheckoutDesktopMobile cartItemsTotal={cartItemsTotalPrice} cartItems={cartItems} />
-            {
-                cartItems.length > 0 ?
-                    <>
-                        <CreditCardWarning><strong>Test credit card #:</strong> 4242 4242 4242 4242<br /><strong>Expires:</strong> 01/20<br /><strong>CVC:</strong> 123</CreditCardWarning>
-                        <StripeButton price={cartItemsTotalPrice} />
-                    </>
-                    :
-                    null
-            }
+            {purchaseStatus === "" ?
+                <CheckoutDesktopMobile cartItemsTotal={cartItemsTotalPrice} cartItems={cartItems} />
+                : <ConfirmationMsg status={purchaseStatus} />}
+            {cartItems.length > 0 ?
+                <>
+                    <CreditCardWarning><strong>Test credit card #:</strong> 4242 4242 4242 4242<br /><strong>Expires:</strong> 01/20<br /><strong>CVC:</strong> 123</CreditCardWarning>
+                    <StripeButton setPurchaseStatus={(status) => setPurchaseStatus(status)} price={cartItemsTotalPrice} />
+                </> : null}
 
         </CheckoutContainer>
     );
