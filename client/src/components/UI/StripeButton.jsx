@@ -11,7 +11,7 @@ const StripeButton = ({ price, setPurchaseStatus }) => {
     const pubKey = "pk_test_qA1t0QAGVZHm4k4dI7Mj0MH0004ZvVtscR";
 
     const onToken = (token) => {
-        setPurchaseStatus("pending");
+        setPurchaseStatus("sending");
         axios({
             url: 'payment',
             method: 'post',

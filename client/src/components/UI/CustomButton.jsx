@@ -8,7 +8,7 @@ const GoogleSignIn = css`
     border: none;
     
     &:hover {
-        background-color: #f4b400
+        background-color: var(--warning);
     }
 `
 

@@ -13,6 +13,9 @@
   --prim: black;
   --sec: #4a4a4a;
   --btnTrans: all .3s ease-out;
+  --warning: #f4b400;
+  --success: #d4edda;
+  --fail: #f8d7da;
 }
 
 input, button {

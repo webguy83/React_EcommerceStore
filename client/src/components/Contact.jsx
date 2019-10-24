@@ -14,13 +14,14 @@ const ContactForm = styled.div`
 // jsx
 
 const Contact = () => {
-    const [userData, setUserData] = useState({
+    const initFormData = {
         firstName: "",
         lastName: "",
         email: "",
         phoneNumber: "",
         comments: ""
-    });
+    }
+    const [userData, setUserData] = useState(initFormData);
     const [status, setStatus] = useState("");
 
     const handleChange = (e) => {
@@ -30,7 +31,7 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setStatus("Sending...");
+        setStatus("sending");
         axios({
             method: "POST",
             url: "/contactsubmit",
@@ -38,19 +39,24 @@ const Contact = () => {
         }).then(res => {
             const { msg } = res.data;
             setStatus(msg);
+            setUserData(initFormData);
         }).catch(err => {
             console.log(err);
         })
     }
     const { firstName, lastName, email, phoneNumber, comments } = userData;
-
+    const statusMessages = {
+        success: "Submission sent! I will get back to you as soon as possible.",
+        fail: "Submission has failed! Please try again later.",
+        sending: "Sending..."
+    }
     return (
         <ContactForm>
             <h2>Have a question? Please contact me!</h2>
             <Instructions style={{
                 margin: "1.3rem 0"
             }}>Please leave your contact information below and I will get back to you soon.</Instructions>
-            {status !== "" ? <ConfirmationMsg status={status} /> : null}
+            {status !== "" ? <ConfirmationMsg statusMessages={statusMessages} status={status} /> : null}
             <FormGroup onSubmit={handleSubmit} method="POST">
                 <CustomInput type="text"
                     name="firstName"

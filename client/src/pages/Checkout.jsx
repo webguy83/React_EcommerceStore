@@ -40,18 +40,23 @@ const Checkout = () => {
         }
     }, [setIconCartHidden])
 
+    const statusMessages = {
+        success: "Success! Your purchase has completed and you will receive your photos within 5 to 7 days.",
+        fail: "Sorry, there was in issue with your purchase! Please contact support if this issue persists.",
+        sending: "Purchasing..."
+    }
+
     return (
         <CheckoutContainer>
             <Header>Checkout</Header>
             {purchaseStatus === "" ?
                 <CheckoutDesktopMobile cartItemsTotal={cartItemsTotalPrice} cartItems={cartItems} />
-                : <ConfirmationMsg status={purchaseStatus} />}
+                : <ConfirmationMsg status={purchaseStatus} statusMessages={statusMessages} />}
             {cartItems.length > 0 ?
                 <>
                     <CreditCardWarning><strong>Test credit card #:</strong> 4242 4242 4242 4242<br /><strong>Expires:</strong> 01/20<br /><strong>CVC:</strong> 123</CreditCardWarning>
                     <StripeButton setPurchaseStatus={(status) => setPurchaseStatus(status)} price={cartItemsTotalPrice} />
                 </> : null}
-
         </CheckoutContainer>
     );
 };

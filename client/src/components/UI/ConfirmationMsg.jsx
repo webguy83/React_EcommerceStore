@@ -5,11 +5,11 @@ const backgroundColour = css`
     background-color: ${({ status }) => {
         switch (status) {
             case "success":
-                return "lightgreen;";
+                return "var(--success);";
             case "fail":
-                return "lightsalmon;";
+                return "var(--fail);";
             default:
-                return "#f4b400;";
+                return "var(--warning);";
         }
     }}
 `
@@ -29,21 +29,10 @@ const StatusMsg = styled.p`
     text-align: center;
 `
 
-const ConfirmationMsg = ({ status }) => {
-    let msg;
-    switch (status) {
-        case "success":
-            msg = "Submission sent! I will get back to you as soon as possible."
-            break;
-        case "fail":
-            msg = "Submission failed! Please try again later."
-            break;
-        default:
-            msg = "Sending..."
-    }
+const ConfirmationMsg = ({ status, statusMessages }) => {
     return (
         <ConfirmMsg status={status}>
-            <StatusMsg>{msg}</StatusMsg>
+            <StatusMsg>{statusMessages[status]}</StatusMsg>
         </ConfirmMsg>
     );
 };
