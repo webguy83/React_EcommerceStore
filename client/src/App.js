@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import Home from './pages/Home';
-import Shop from './pages/Shop';
-import SignInRegistration from './pages/SignInRegistration';
-import Checkout from './pages/Checkout';
-import Contact from './pages/Contact';
+import React, { useContext, Suspense, lazy } from 'react';
+//import Home from './pages/Home';
+//import Shop from './pages/Shop';
+//import SignInRegistration from './pages/SignInRegistration';
+//import Checkout from './pages/Checkout';
+//import Contact from './pages/Contact';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import styled from 'styled-components/macro';
@@ -16,6 +16,13 @@ const Container = styled.div`
 `
 // jsx
 
+const Home = lazy(() => import("./pages/Home"));
+const Checkout = lazy(() => import('./pages/Checkout'));
+const SignInRegistration = lazy(() => import('./pages/SignInRegistration'));
+const Shop = lazy(() => import('./pages/Shop'));
+const Contact = lazy(() => import('./pages/Contact'));
+
+
 const App = () => {
   const { currentUser, userStatus, registerUserStatus } = useContext(UserContext);
 
@@ -24,13 +31,15 @@ const App = () => {
       {userStatus && registerUserStatus ?
         <>
           <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/shop" component={Shop} />
-            <Route path="/contact" component={Contact} />
-            <Route exact path="/checkout" component={Checkout} />
-            <Route exact path="/signinregistration" render={() => currentUser ? <Redirect to="/" /> : <SignInRegistration />} />
-          </Switch>
+          <Suspense fallback={<Spinner />}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/shop" component={Shop} />
+              <Route path="/contact" component={Contact} />
+              <Route exact path="/checkout" component={Checkout} />
+              <Route exact path="/signinregistration" render={() => currentUser ? <Redirect to="/" /> : <SignInRegistration />} />
+            </Switch>
+          </Suspense>
         </>
         :
         <Spinner />
