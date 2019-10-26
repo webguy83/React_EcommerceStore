@@ -13,7 +13,7 @@ const ModalOverlay = createGlobalStyle`
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgb(74, 74, 74, .7);
+        background-color: rgba(74, 74, 74, .7);
     }
     .ReactModal__Content {
         opacity: 0;
