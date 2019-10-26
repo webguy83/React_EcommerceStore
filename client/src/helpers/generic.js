@@ -50,3 +50,11 @@ export const convertCollectionsToArray = (collections) => {
 export const getCollection = (collections, collection) => {
     return collections[collection];
 }
+
+export const countryFlagCodes = {
+    china: "CN",
+    southkorea: "KR",
+    thailand: "TH",
+    malaysia: "MY",
+    india: "IN"
+}

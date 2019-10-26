@@ -6,8 +6,10 @@ import { CartContext } from '../contexts/cart';
 import { convertCartItemsToObj } from '../helpers/cart';
 import CollectionItem from '../components/Collections/CollectionItem';
 import styled from 'styled-components/macro';
-import { getCollection } from '../helpers/generic'
+import { getCollection } from '../helpers/generic';
+import CollectionTitle from '../components/Collections/CollectionTitle';
 
+// css
 const CollectionContainer = styled.div`
     & .grid {
         display: grid;
@@ -15,12 +17,8 @@ const CollectionContainer = styled.div`
         grid-gap: 3rem;
         margin-bottom: 5rem;
     }
-
-    & .title {
-        margin-bottom: 1.3rem;
-        grid-column: 1 / -1;
-    }
 `
+// jsx
 
 const Collection = ({ match }) => {
     const { collections, loading } = useContext(ShopContext);
@@ -32,17 +30,18 @@ const Collection = ({ match }) => {
         if (!collection) {
             return <Redirect to="/" />
         }
-        const { items } = collection;
+        const { items, title } = collection;
         const cartItemsObj = convertCartItemsToObj(cartItems);
+
         return (
             <CollectionContainer>
-                <h2 className="title">{collection.title}</h2>
+                <CollectionTitle title={title} />
                 <div className="grid">
                     {items.map((item) => {
-                        return <CollectionItem key={item.id} 
-                                id={item.id} 
-                                item={item} 
-                                itemPurchased={cartItemsObj[item.id] ? true : false} />
+                        return <CollectionItem key={item.id}
+                            id={item.id}
+                            item={item}
+                            itemPurchased={cartItemsObj[item.id] ? true : false} />
                     })}
                 </div>
             </CollectionContainer>

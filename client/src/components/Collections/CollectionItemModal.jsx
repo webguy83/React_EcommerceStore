@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import styled, { createGlobalStyle } from 'styled-components/macro';
 import CustomButton from '../UI/CustomButton';
 import CloseButton from '../UI/CloseButton';
-import Spinner from '../UI/Spinner';
+
 // css
 
 const ModalOverlay = createGlobalStyle`
@@ -34,7 +34,7 @@ const ModalContainer = styled.div`
         margin-bottom: 1.3rem;
     }
 
-    & figure {
+    & .imageHolder {
         & img {
             width: 100%;
             max-height: 47vh;
@@ -45,7 +45,7 @@ const ModalContainer = styled.div`
             display: block;
             border: .1rem solid var(--prim);
         }
-        & figcaption {
+        & p {
             font-size: 1.5rem;
             margin-top: 1.3rem;
             text-align: center;
@@ -61,69 +61,58 @@ const ModalContainer = styled.div`
 // jsx
 
 const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props }) => {
-    const [modalImg, setModalImg] = useState(null);
     const { images, name, price, description, loc } = product;
-
-    useEffect(() => {
-        const getImg = async () => {
-            let img = "";
-            try {
-                const res = await fetch(images['largest']);
-                if(res.status === 404) throw new Error("Image not found.")
-                img = res.url;
-                
-            } catch(err) {
-                img = "https://via.placeholder.com/800x440";
-            }
-            setModalImg(img);
-        }
-        getImg();
-    }, [images])
 
     Modal.setAppElement('#root');
 
     return (
-        !modalImg ? <Spinner /> :
-            <Modal overlayClassName="ModalOverlay"
-                onRequestClose={onRequestClose}
-                style={{
-                    content: {
-                        top: "50%",
-                        right: "auto",
-                        bottom: "auto",
-                        left: " 50%",
-                        marginRight: '-50%',
-                        transform: 'translate(-50%, -50%)'
-                    }
+        <Modal overlayClassName="ModalOverlay"
+            onRequestClose={onRequestClose}
+            style={{
+                content: {
+                    top: "50%",
+                    right: "auto",
+                    bottom: "auto",
+                    left: " 50%",
+                    marginRight: '-50%',
+                    transform: 'translate(-50%, -50%)'
+                }
+            }}
+            {...props}
+        >
+            <ModalOverlay />
+            <ModalContainer>
+                <CloseButton style={{
+                    position: "absolute",
+                    right: 0
                 }}
-                {...props}
-            >
-                <ModalOverlay />
-                <ModalContainer>
-                    <CloseButton style={{
-                        position: "absolute",
-                        right: 0
+                    closeElm={() => onRequestClose()}
+                />
+                <h2>{name}</h2>
+                <div className="imageHolder">
+                    <picture>
+                        <source media="(min-width: 860px)" srcSet={images["largest"]} />
+                        <source media="(min-width: 660px)" srcSet={images["large"]} />
+                        <source media="(min-width: 530px)" srcSet={images["medium"]} />
+                        <source media="(min-width: 460px)" srcSet={images["small"]} />
+                        <img src={images["smallest"]} alt={name} />
+                    </picture>
+
+                    <p className="desc">{description} - <strong>{loc}</strong></p>
+                </div>
+                <p>Cost: <strong>${price}</strong></p>
+                <CustomButton
+                    value="Add to Cart"
+                    style={{
+                        margin: "1.3rem auto",
+                        display: "block"
                     }}
-                        closeElm={() => onRequestClose()}
-                    />
-                    <h2>{name}</h2>
-                    <figure>
-                        <img src={modalImg} alt={name} />
-                        <figcaption>{description} - <strong>{loc}</strong></figcaption>
-                    </figure>
-                    <p>Cost: <strong>${price}</strong></p>
-                    <CustomButton
-                        value="Add to Cart"
-                        style={{
-                            margin: "1.3rem auto",
-                            display: "block"
-                        }}
-                        click={() => {
-                            addItemToCart(product);
-                            onRequestClose();
-                        }} />
-                </ModalContainer>
-            </Modal>
+                    click={() => {
+                        addItemToCart(product);
+                        onRequestClose();
+                    }} />
+            </ModalContainer>
+        </Modal>
     );
 };
 

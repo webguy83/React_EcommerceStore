@@ -5,6 +5,7 @@ import { convertCartItemsToObj } from '../../helpers/cart';
 import { Link, withRouter } from 'react-router-dom';
 import CollectionItem from './CollectionItem';
 import { lowerCaseCountry } from '../../helpers/generic';
+import CollectionTitle from './CollectionTitle';
 
 const PhotoCollectionPreviewContainer = styled.div`
     & .grid {
@@ -12,11 +13,6 @@ const PhotoCollectionPreviewContainer = styled.div`
         grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
         grid-gap: 3rem;
         margin-bottom: 1rem;
-    }
-
-    & .colTitle {
-        margin-bottom: 1.3rem;
-        grid-column: 1 / -1;
     }
 `
 
@@ -26,7 +22,7 @@ const PhotoCollectionPreview = ({ title, items, match }) => {
 
     return (
         <PhotoCollectionPreviewContainer>
-            <h2 className="colTitle">{title}</h2>
+            <CollectionTitle title={title} />
             <div className="grid">
                 {items.filter((_, i) => i < 4).map((item) => {
                     return <CollectionItem key={item.id}
