@@ -26,11 +26,25 @@ const ItemProductPreviewContainer = styled.div`
     align-items: center;
 
     ${({ show }) => !show ? hoverContent : null}
+    ${({ wideImages }) => {
+       return wideImages ?
+            `
+            @media (min-width: 750px) {
+                background-image: url(${wideImages[1]});
+            }
+            @media (min-width: 950px) {
+                background-image: url(${wideImages[0]});
+            }
+            
+            `
+            : ""
+        }
+    }}
 `
 
-const ItemProductPreview = ({ bgImage, show, ...props }) => {
+const ItemProductPreview = ({ bgImage, wideImages, show, ...props }) => {
     return (
-        <ItemProductPreviewContainer show={show} bgImage={bgImage}>
+        <ItemProductPreviewContainer wideImages={wideImages} show={show} bgImage={bgImage}>
             {!show ? <ContentBox {...props} /> : null}
         </ItemProductPreviewContainer>
     );

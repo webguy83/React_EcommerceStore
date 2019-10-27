@@ -71,7 +71,7 @@ const PurchasedOverlayText = styled.p`
 // jsx
 
 const CollectionItem = ({ item, itemPurchased }) => {
-    const { name, imageUrl, price } = item;
+    const { name, images, price } = item;
     const { addItemToCart, removeItemFromCart } = useContext(CartContext);
     const [showModal, setShowModal] = useState(false);
 
@@ -101,7 +101,7 @@ const CollectionItem = ({ item, itemPurchased }) => {
             <div className="ItemProductPreviewGroup" onClick={() => {
                 setShowModal(true)
             }}>
-                <ItemProductPreview show={itemPurchased} bgImage={imageUrl} title="View" textContent="Click for details!" />
+                <ItemProductPreview show={itemPurchased} bgImage={images["large"]} title="View" textContent="Click for details!" />
             </div>
             <CustomButton
                 style={{

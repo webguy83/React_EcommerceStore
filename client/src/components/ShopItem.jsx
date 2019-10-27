@@ -27,10 +27,10 @@ const ShopItemContainer = styled.div`
 `
 // jsx
 
-const ShopItem = ({ title, image, size, history, match }) => {
+const ShopItem = ({ title, image, size, history, match, wideImages }) => {
     return (
         <ShopItemContainer size={size} onClick={() => history.push(`${match.url}shop/${lowerCaseCountry(title)}`)} >
-            <ItemProductPreview bgImage={image} title={title} textContent="Shop for photos now!" />
+            <ItemProductPreview wideImages={wideImages} bgImage={image} title={title} textContent="Shop for photos now!" />
         </ShopItemContainer>
     );
 };

@@ -22,10 +22,10 @@ const DetailsName = styled.div`
     font-weight: bold;
 `
 
-const ShoppingCartItem = ({ item: { imageUrl, name, price, qty } }) => {
+const ShoppingCartItem = ({ item: { images, name, price, qty } }) => {
     return (
         <ShoppingCartItemContainer>
-            <Thumbnail src={imageUrl} alt={name} />
+            <Thumbnail src={images["smallest"]} alt={name} />
             <Details>
                 <DetailsName>{name}</DetailsName>
                 <div>

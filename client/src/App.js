@@ -1,14 +1,11 @@
 import React, { useContext, Suspense, lazy } from 'react';
-//import Home from './pages/Home';
-//import Shop from './pages/Shop';
-//import SignInRegistration from './pages/SignInRegistration';
-//import Checkout from './pages/Checkout';
-//import Contact from './pages/Contact';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import styled from 'styled-components/macro';
 import { UserContext } from './contexts/user';
 import Spinner from './components/UI/Spinner';
+import {updateCollections} from './helpers/firebase';
+
 // css
 const Container = styled.div`
     max-width: 118rem;
@@ -25,7 +22,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 
 const App = () => {
   const { currentUser, userStatus, registerUserStatus } = useContext(UserContext);
-
+  //updateCollections("M53bv5WZ0fbuly4DG0Gs");
   return (
     <Container>
       {userStatus && registerUserStatus ?

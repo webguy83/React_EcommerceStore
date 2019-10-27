@@ -58,9 +58,69 @@ export const getCurrentUser = () => {
     });
 }
 
+export const updateCollections = (docId) => {
+    const countryRefs = firestore.collection("collections").doc(docId);
+
+    // countryRefs.set({0: {
+    //     id: 53453453452,
+    //     name: "Taj Mahal",
+    //     price: 45,
+    //     description: "",
+    //     images: {
+    //         largest: "",
+    //         large: "",
+    //         medium: "",
+    //         small: "",
+    //         smallest: ""
+    //     },
+    //     loc: ""
+    // },
+    // 1: {
+    //     id: 564564544456,
+    //     name: "Prince Palace",
+    //     price: 35,
+    //     description: "",
+    //     images: {
+    //         largest: "",
+    //         large: "",
+    //         medium: "",
+    //         small: "",
+    //         smallest: ""
+    //     },
+    //     loc: ""
+    // },
+    // 2: {
+    //     id: 89793234,
+    //     name: "Ogerville",
+    //     price: 23,
+    //     description: "",
+    //     images: {
+    //         largest: "",
+    //         large: "",
+    //         medium: "",
+    //         small: "",
+    //         smallest: ""
+    //     },
+    //     loc: ""
+    // },
+    // 3: {
+    //     id: 7674788888,
+    //     name: "Big Temple",
+    //     price: 33,
+    //     description: "",
+    //     images: {
+    //         largest: "",
+    //         large: "",
+    //         medium: "",
+    //         small: "",
+    //         smallest: ""
+    //     },
+    //     loc: ""
+    // }})
+}
+
 export const addCollectionAndDocuments = async (colKey, objsToAdd) => {
     const colRef = firestore.collection(colKey);
-
     const batch = firestore.batch();
     objsToAdd.forEach(obj => {
         const newDocReference = colRef.doc();
@@ -81,7 +141,7 @@ export const mapCollectionsToFirebaseSnapShot = (collections) => {
             items
         }
     })
-    
+
     return modifiedCollection.reduce((prev, cur) => {
         prev[lowerCaseCountry(cur.title)] = cur;
         return prev;

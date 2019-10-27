@@ -5,12 +5,15 @@ import './index.css';
 import App from './App';
 import UserProvider from './contexts/user';
 import CartProvider from './contexts/cart';
+import ShopProvider from './contexts/shop';
 
 ReactDOM.render(
     <BrowserRouter>
         <CartProvider>
             <UserProvider>
-                <App />
+                <ShopProvider>
+                    <App />
+                </ShopProvider>
             </UserProvider>
         </CartProvider>
     </BrowserRouter>

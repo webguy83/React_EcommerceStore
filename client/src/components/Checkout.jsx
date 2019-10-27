@@ -102,10 +102,10 @@ const Checkout = ({ cartItemsTotal }) => {
                 <tbody>
                     {cartItems.length > 0 ?
                         cartItems.map((item) => {
-                            const { id, imageUrl, name, qty, price } = item;
+                            const { id, images, name, qty, price } = item;
                             return <tr key={id}>
                                 <td className="thumb" style={{
-                                    backgroundImage: `url(${imageUrl})`,
+                                    backgroundImage: `url(${images["smallest"]})`,
                                 }}></td>
                                 <td>{name}</td>
                                 <td>
@@ -135,12 +135,12 @@ const Checkout = ({ cartItemsTotal }) => {
                 <tbody>
                     {cartItems.length > 0 ?
                         cartItems.map(item => {
-                            const { id, imageUrl, name, qty, price } = item;
+                            const { id, images, name, qty, price } = item;
                             return <React.Fragment key={id}>
                                 <tr>
                                     <th>Product</th>
                                     <td className="thumb" style={{
-                                        backgroundImage: `url(${imageUrl})`
+                                        backgroundImage: `url(${images["smallest"]})`
                                     }}></td>
                                 </tr>
                                 <tr>
