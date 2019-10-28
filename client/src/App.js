@@ -4,8 +4,8 @@ import Header from './components/Header';
 import styled from 'styled-components/macro';
 import { UserContext } from './contexts/user';
 import Spinner from './components/UI/Spinner';
-import {updateCollections} from './helpers/firebase';
-
+import { updateCollections } from './helpers/firebase';
+import { india } from './helpers/data';
 // css
 const Container = styled.div`
     max-width: 118rem;
@@ -22,7 +22,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 
 const App = () => {
   const { currentUser, userStatus, registerUserStatus } = useContext(UserContext);
-  //updateCollections("M53bv5WZ0fbuly4DG0Gs");
+  //updateCollections(india);
   return (
     <Container>
       {userStatus && registerUserStatus ?
