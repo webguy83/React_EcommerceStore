@@ -1,11 +1,10 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components/macro';
 
 const CloseButtonContainer = styled.div`
     ${({ style }) => style}
     cursor: pointer;
+    font-size: 2.9rem;
     
     &:hover, &:active {
         color: var(--sec);
@@ -16,7 +15,7 @@ const CloseButtonContainer = styled.div`
 
 const CloseButton = ({ closeElm, style }) => {
     return <CloseButtonContainer style={style} onClick={closeElm}>
-        <FontAwesomeIcon icon={faTimesCircle} size="3x" />
+        &times;
     </CloseButtonContainer>;
 };
 

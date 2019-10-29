@@ -31,13 +31,14 @@ const ModalOverlay = createGlobalStyle`
 const ModalContainer = styled.div`
     position: relative;
 
-    & h2 {
-        text-align: center;
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 1.3rem;
     }
 
     & .imageHolder {
-        
         max-width: 80rem;
 
         & img {
@@ -66,6 +67,7 @@ const ModalContainer = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 1.5rem;
     }
 `
 // jsx
@@ -128,13 +130,10 @@ const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props 
         >
             <ModalOverlay />
             <ModalContainer>
-                <CloseButton style={{
-                    position: "absolute",
-                    right: 0
-                }}
-                    closeElm={() => onRequestClose()}
-                />
-                <h2>{name}</h2>
+                <header>
+                    <h2>{name}</h2>
+                    <CloseButton closeElm={() => onRequestClose()} />
+                </header>
                 <div className="imageHolder">
                     <picture>
                         <source media="(min-width: 860px)" srcSet={images["largest"]} />

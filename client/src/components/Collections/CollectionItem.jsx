@@ -65,7 +65,7 @@ const PurchasedOverlay = styled.div`
 
 const PurchasedOverlayText = styled.p`
     font-size: 2.8rem;
-    transform: rotate(-45deg);
+    transform: rotate(-15deg);
 `
 
 // jsx
@@ -95,7 +95,7 @@ const CollectionItem = ({ item, itemPurchased }) => {
                 unmountOnExit
                 classNames="overlay">
                 <PurchasedOverlay>
-                    <PurchasedOverlayText>Added to Cart!</PurchasedOverlayText>
+                    <PurchasedOverlayText>Added to Cart! &#10004;</PurchasedOverlayText>
                 </PurchasedOverlay>
             </CSSTransition>
             <div className="ItemProductPreviewGroup" onClick={() => {
