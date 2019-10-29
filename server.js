@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const transport = {
-    service: 'Hotmail',
+    service: 'hotmail',
     auth: {
         user: process.env.HOTMAIL_USER,
         pass: process.env.HOTMAIL_PASSWORD

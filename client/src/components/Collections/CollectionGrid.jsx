@@ -6,7 +6,7 @@ import styled from 'styled-components/macro';
 const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(24rem,1fr));
-    grid-auto-rows: calc(43vh - 4.7rem);
+    grid-auto-rows: minmax(23rem, calc(43vh - 4.7rem));
     grid-gap: 3rem;
     margin-bottom: 5rem;
 

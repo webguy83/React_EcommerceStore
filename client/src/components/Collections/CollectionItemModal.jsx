@@ -43,7 +43,6 @@ const ModalContainer = styled.div`
         & img {
             width: 100%;
             max-height: 47vh;
-            min-height: 20rem;
             object-fit: cover;
             max-width: 80rem;
             margin: 0 auto;
@@ -52,15 +51,21 @@ const ModalContainer = styled.div`
         }
         & p {
             font-size: 1.5rem;
-            margin-top: 1.3rem;
+            margin: .5rem 0;
             text-align: center;
         }
     }
 
-    & p {
+    & span {
         font-size: 2.2rem;
         text-align: center;
-        margin-top: 1.3rem;
+        margin-right: 2rem;
+    }
+
+    .costDetails {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 `
 // jsx
@@ -76,7 +81,7 @@ const loadImg = (url) => {
 
 const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props }) => {
     const [modalImg, setModalImg] = useState(null);
-    
+
     const largest = useMediaQuery('(min-width: 860px)');
     const large = useMediaQuery('(min-width: 660px) and (max-width: 859px)');
     const medium = useMediaQuery('(min-width: 530px) and (max-width: 659px)');
@@ -86,13 +91,13 @@ const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props 
 
     let imgSize = "";
 
-    if(largest) {
+    if (largest) {
         imgSize = "largest";
-    } else if(large) {
+    } else if (large) {
         imgSize = "large";
-    } else if(medium) {
+    } else if (medium) {
         imgSize = "medium";
-    } else if(small) {
+    } else if (small) {
         imgSize = "small";
     } else {
         imgSize = "smallest"
@@ -100,8 +105,8 @@ const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props 
 
     useEffect(() => {
         loadImg(images[imgSize])
-        .then(img => setModalImg(img))
-        .catch(err => console.error(err))
+            .then(img => setModalImg(img))
+            .catch(err => console.error(err))
     }, [images, imgSize])
 
     Modal.setAppElement('#root');
@@ -142,17 +147,18 @@ const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props 
 
                     <p className="desc">{description} - <strong>{loc}</strong></p>
                 </div>
-                <p>Cost: <strong>${price}</strong></p>
-                <CustomButton
-                    value="Add to Cart"
-                    style={{
-                        margin: "1.3rem auto",
-                        display: "block"
-                    }}
-                    click={() => {
-                        addItemToCart(product);
-                        onRequestClose();
-                    }} />
+                <div className="costDetails">
+                    <span>Cost: <strong>${price}</strong></span>
+                    <CustomButton
+                        value="Add to Cart"
+                        style={{
+                            display: "block"
+                        }}
+                        click={() => {
+                            addItemToCart(product);
+                            onRequestClose();
+                        }} />
+                </div>
             </ModalContainer>
         </Modal>
     );
