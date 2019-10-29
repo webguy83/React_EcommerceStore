@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import styled, { createGlobalStyle } from 'styled-components/macro';
 import CustomButton from '../UI/CustomButton';
 import CloseButton from '../UI/CloseButton';
+import useMediaQuery from 'react-use-media-query-hook';
+import Spinner from '../UI/Spinner';
 
 // css
 
@@ -63,13 +65,49 @@ const ModalContainer = styled.div`
 `
 // jsx
 
+const loadImg = (url) => {
+    return new Promise((res, rej) => {
+        const img = new Image();
+        img.addEventListener('load', () => res(img));
+        img.addEventListener('error', (error) => rej(error));
+        img.src = url;
+    })
+}
+
 const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props }) => {
+    const [modalImg, setModalImg] = useState(null);
+    
+    const largest = useMediaQuery('(min-width: 860px)');
+    const large = useMediaQuery('(min-width: 660px) and (max-width: 859px)');
+    const medium = useMediaQuery('(min-width: 530px) and (max-width: 659px)');
+    const small = useMediaQuery('(min-width: 460px) and (max-width: 529px)');
+
     const { images, name, price, description, loc } = product;
+
+    let imgSize = "";
+
+    if(largest) {
+        imgSize = "largest";
+    } else if(large) {
+        imgSize = "large";
+    } else if(medium) {
+        imgSize = "medium";
+    } else if(small) {
+        imgSize = "small";
+    } else {
+        imgSize = "smallest"
+    }
+
+    useEffect(() => {
+        loadImg(images[imgSize])
+        .then(img => setModalImg(img))
+        .catch(err => console.error(err))
+    }, [images, imgSize])
 
     Modal.setAppElement('#root');
 
     return (
-        <Modal overlayClassName="ModalOverlay"
+        !modalImg ? <Spinner /> : <Modal overlayClassName="ModalOverlay"
             onRequestClose={onRequestClose}
             style={{
                 content: {
@@ -98,7 +136,8 @@ const CollectionItemModal = ({ onRequestClose, addItemToCart, product, ...props 
                         <source media="(min-width: 660px)" srcSet={images["large"]} />
                         <source media="(min-width: 530px)" srcSet={images["medium"]} />
                         <source media="(min-width: 460px)" srcSet={images["small"]} />
-                        <img src={images["smallest"]} alt={name} />
+                        <source media="(max-width: 459px)" srcSet={images["smallest"]} />
+                        <img src={modalImg.src} alt={name} />
                     </picture>
 
                     <p className="desc">{description} - <strong>{loc}</strong></p>

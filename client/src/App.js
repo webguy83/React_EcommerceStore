@@ -6,6 +6,7 @@ import { UserContext } from './contexts/user';
 import Spinner from './components/UI/Spinner';
 
 // css
+
 const Container = styled.div`
     max-width: 118rem;
     margin: 0 auto;
@@ -20,6 +21,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 
 const App = () => {
   const { currentUser, userStatus, registerUserStatus } = useContext(UserContext);
+
   return (
     <Container>
       {userStatus && registerUserStatus ?

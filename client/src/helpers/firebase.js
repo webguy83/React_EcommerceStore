@@ -58,8 +58,8 @@ export const getCurrentUser = () => {
     });
 }
 
-export const updateCollections = (updateObj) => {
-    const countryRefs = firestore.collection("collections").doc();
+export const updateCollections = (docId = null, updateObj) => {
+    const countryRefs = firestore.collection("collections").doc(docId);
     countryRefs.set(updateObj)
 }
 

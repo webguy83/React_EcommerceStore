@@ -250,9 +250,9 @@ export const southkorea = {
     },
     {
         id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
-        name: "Changdeokgung Palace and its Secret Garden",
+        name: "Changdeokgung Palace",
         price: 57,
-        description: "Some beautiful pavilions around a pond",
+        description: "The Secret Garden and some beautiful pavilions around a pond",
         images: {
             largest: "https://i.ibb.co/NsT3KJH/changdeokgung.jpg",
             large: "https://i.ibb.co/MZcRBDm/changdeokgung.jpg",

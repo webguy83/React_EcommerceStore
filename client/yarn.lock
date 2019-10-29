@@ -8945,6 +8945,11 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
+react-use-media-query-hook@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-use-media-query-hook/-/react-use-media-query-hook-0.0.1.tgz#450f41f9993ca6ee64c8f25450b8d1135c031011"
+  integrity sha512-V/jqkWP9+3oNuSKaD8gE3eiR+I9jOe4tzj9IoUfy+XUNImOx7ubnksPUilenkkGnMVhJx02Y2P2PC/3o9vMMxw==
+
 react@^16.10.0:
   version "16.10.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.10.1.tgz#967c1e71a2767dfa699e6ba702a00483e3b0573f"
