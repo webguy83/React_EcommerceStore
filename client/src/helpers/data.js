@@ -43,7 +43,7 @@ export const india = {
     },
     {
         id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
-        name: "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya",
+        name: "CSMVS",
         price: 33,
         description: "Grand museum with Indo-Saracenic architecture featuring history exhibits, cultural art & education",
         images: {
@@ -214,7 +214,7 @@ export const malaysia = {
             smallest: "https://i.ibb.co/gg0pzXp/eco-Park-Bandar.jpg"
         },
         loc: "Ipoh, Malaysia"
-    },{
+    }, {
         id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
         name: "Jesselton Point",
         price: 37,
@@ -231,4 +231,274 @@ export const malaysia = {
 
     ],
     title: "Malaysia"
+}
+
+export const southkorea = {
+    items: [{
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Seoraksan National Park",
+        price: 65,
+        description: "Popular with tourists and nature enthusiasts, it is home to many rare taxa of flora and fauna",
+        images: {
+            largest: "https://i.ibb.co/QnzpbMg/seoraksan.jpg",
+            large: "https://i.ibb.co/QpQb7yj/seoraksan.jpg",
+            medium: "https://i.ibb.co/9yTSBP5/seoraksan.jpg",
+            small: "https://i.ibb.co/MnRb9Ts/seoraksan.jpg",
+            smallest: "https://i.ibb.co/TRjpnYW/seoraksan.jpg"
+        },
+        loc: "Sokcho, South Korea"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Changdeokgung Palace and its Secret Garden",
+        price: 57,
+        description: "Some beautiful pavilions around a pond",
+        images: {
+            largest: "https://i.ibb.co/NsT3KJH/changdeokgung.jpg",
+            large: "https://i.ibb.co/MZcRBDm/changdeokgung.jpg",
+            medium: "https://i.ibb.co/hLBvL42/changdeokgung.jpg",
+            small: "https://i.ibb.co/vYfC0BM/changdeokgung.jpg",
+            smallest: "https://i.ibb.co/xSyHxw1/changdeokgung.jpg"
+        },
+        loc: "Seoul, South Korea"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Sobaeksan National Park",
+        price: 57,
+        description: "Autumn season at the peak and home to 1067 plant species and 2639 animal species",
+        images: {
+            largest: "https://i.ibb.co/fCC682f/sobaeksan.jpg",
+            large: "https://i.ibb.co/dt05S0K/sobaeksan.jpg",
+            medium: "https://i.ibb.co/1RGm6K8/sobaeksan.jpg",
+            small: "https://i.ibb.co/YRrfYHg/sobaeksan.jpg",
+            smallest: "https://i.ibb.co/bmjht3R/sobaeksan.jpg"
+        },
+        loc: "Danyang County, South Korea"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Bukhansan National Park",
+        price: 44,
+        description: "The park contains forested areas, temples and granite peaks",
+        images: {
+            largest: "https://i.ibb.co/hgRJgbn/bukhansan.jpg",
+            large: "https://i.ibb.co/0DkJLGC/bukhansan.jpg",
+            medium: "https://i.ibb.co/PTPJq1q/bukhansan.jpg",
+            small: "https://i.ibb.co/WxkXrff/bukhansan.jpg",
+            smallest: "https://i.ibb.co/vD4zbSg/bukhansan.jpg"
+        },
+        loc: "Seoul, South Korea"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Gwangjang Market",
+        price: 29,
+        description: "One of the oldest and largest traditional markets in South Korea with more than 5000 shops",
+        images: {
+            largest: "https://i.ibb.co/sqqZZpx/gwangjangmarket.jpg",
+            large: "https://i.ibb.co/mTpfnJM/gwangjangmarket.jpg",
+            medium: "https://i.ibb.co/6PC3Tr9/gwangjangmarket.jpg",
+            small: "https://i.ibb.co/9WFJ8fp/gwangjangmarket.jpg",
+            smallest: "https://i.ibb.co/DtN9g6Z/gwangjangmarket.jpg"
+        },
+        loc: "Seoul, South Korea"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Haneul Park",
+        price: 37,
+        description: "A comfortable place for a nice walk",
+        images: {
+            largest: "https://i.ibb.co/0YrR338/haneul.jpg",
+            large: "https://i.ibb.co/Gk7mJ7g/haneul.jpg",
+            medium: "https://i.ibb.co/5cqsfRr/haneul.jpg",
+            small: "https://i.ibb.co/SfPtzFK/haneul.jpg",
+            smallest: "https://i.ibb.co/8X3sNzp/haneul.jpg"
+        },
+        loc: "Seoul, South Korea"
+    }, {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Songaksan Mountain",
+        price: 32,
+        description: "A simple volcano on Jeju Island which has double craters and a parasitic volcano",
+        images: {
+            largest: "https://i.ibb.co/0VsfhQ0/songaksan.jpg",
+            large: "https://i.ibb.co/6RnHhXy/songaksan.jpg",
+            medium: "https://i.ibb.co/C2SMhfD/songaksan.jpg",
+            small: "https://i.ibb.co/VtXrxrY/songaksan.jpg",
+            smallest: "https://i.ibb.co/V2jfVby/songaksan.jpg"
+        },
+        loc: "Jeju Island, South Korea"
+    }, {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Hallasan National Park",
+        price: 43,
+        description: "The highest mountain in South Korea",
+        images: {
+            largest: "https://i.ibb.co/zZVrmdk/hallasan.jpg",
+            large: "https://i.ibb.co/z2mY0FL/hallasan.jpg",
+            medium: "https://i.ibb.co/GpyzPw2/hallasan.jpg",
+            small: "https://i.ibb.co/2jW39PV/hallasan.jpg",
+            smallest: "https://i.ibb.co/pjkSz7n/hallasan.jpg"
+        },
+        loc: "Jeju Island, South Korea"
+    }, {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Sky Road",
+        price: 48,
+        description: "Located at the heart of Daejeon, there are a lot of shops for cosmetics and other personal items where you can choose from",
+        images: {
+            largest: "https://i.ibb.co/RHbJjk4/daejeon.jpg",
+            large: "https://i.ibb.co/drMT1cw/daejeon.jpg",
+            medium: "https://i.ibb.co/ySqxNmp/daejeon.jpg",
+            small: "https://i.ibb.co/2P5rqmf/daejeon.jpg",
+            smallest: "https://i.ibb.co/5WstZ33/daejeon.jpg"
+        },
+        loc: "Daejeon, South Korea"
+    }, {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Haedong Yonggungsa",
+        price: 40,
+        description: "The temple was built in 1376 by the teacher known as Naong during the Goryeo Dynasty",
+        images: {
+            largest: "https://i.ibb.co/LRzmyrp/yonggungsa.jpg",
+            large: "https://i.ibb.co/ZX46zJG/yonggungsa.jpg",
+            medium: "https://i.ibb.co/RgB6Tr7/yonggungsa.jpg",
+            small: "https://i.ibb.co/tqRNYzb/yonggungsa.jpg",
+            smallest: "https://i.ibb.co/QK5qdYM/yonggungsa.jpg"
+        },
+        loc: "Busan, South Korea"
+    }, {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Woraksan National Park",
+        price: 38,
+        description: "The park is home to 1200 plant species with an elevation of 1094m (3589ft)",
+        images: {
+            largest: "https://i.ibb.co/Gsks8TB/woraksan.jpg",
+            large: "https://i.ibb.co/gZHHKmV/woraksan.jpg",
+            medium: "https://i.ibb.co/0hKN150/woraksan.jpg",
+            small: "https://i.ibb.co/LpcMjb1/woraksan.jpg",
+            smallest: "https://i.ibb.co/3dm8Zds/woraksan.jpg"
+        },
+        loc: "Chungcheongbuk-do, South Korea"
+    }
+
+    ],
+    title: "South Korea"
+}
+
+export const thailand = {
+    items: [{
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Phuket Big Buddha",
+        price: 51,
+        description: "A seated Maravija Buddha statue",
+        images: {
+            largest: "https://i.ibb.co/VqT7Cg0/phuket-Bigbuddha.jpg",
+            large: "https://i.ibb.co/ScNk1fq/phuket-Bigbuddha.jpg",
+            medium: "https://i.ibb.co/c8vj3Qp/phuket-Bigbuddha.jpg",
+            small: "https://i.ibb.co/JK3cVzD/phuket-Bigbuddha.jpg",
+            smallest: "https://i.ibb.co/k2MhjJX/phuket-Bigbuddha.jpg"
+        },
+        loc: "Phuket, Thailand"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Wat Rong Khun",
+        price: 68,
+        description: "Known as the White Temple, is a contemporary, unconventional, privately owned art exhibit in the style of a Buddhist temple",
+        images: {
+            largest: "https://i.ibb.co/GF0ch9c/wat-Rong-Khun.jpg",
+            large: "https://i.ibb.co/zJcx1wx/wat-Rong-Khun.jpg",
+            medium: "https://i.ibb.co/D95YDkN/wat-Rong-Khun.jpg",
+            small: "https://i.ibb.co/zSzTZKf/wat-Rong-Khun.jpg",
+            smallest: "https://i.ibb.co/6bkCqYT/wat-Rong-Khun.jpg"
+        },
+        loc: "Chiang Rai, Thailand"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Ao Nang Beach",
+        price: 34,
+        description: "The busiest beach destination in Thailand's Krabi Province",
+        images: {
+            largest: "https://i.ibb.co/6rTTJsJ/aonangbeach.jpg",
+            large: "https://i.ibb.co/fFDPP6p/aonangbeach.jpg",
+            medium: "https://i.ibb.co/47qgQGc/aonangbeach.jpg",
+            small: "https://i.ibb.co/ccjXxZn/aonangbeach.jpg",
+            smallest: "https://i.ibb.co/Ksz9DZT/aonangbeach.jpg"
+        },
+        loc: "Krabi, Thailand"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Downtown Bangkok",
+        price: 50,
+        description: "View of Bangkok from the top of Vertigo Bar",
+        images: {
+            largest: "https://i.ibb.co/RhtWMFR/bangkok.jpg",
+            large: "https://i.ibb.co/gDBwp2h/bangkok.jpg",
+            medium: "https://i.ibb.co/Snrhg5s/bangkok.jpg",
+            small: "https://i.ibb.co/z6ShvmH/bangkok.jpg",
+            smallest: "https://i.ibb.co/Q8S4ND2/bangkok.jpg"
+        },
+        loc: "Bangkok, Thailand"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Patong Beach",
+        price: 25,
+        description: "Parasailing over sunset in Phuket",
+        images: {
+            largest: "https://i.ibb.co/4RJLV9G/patong.jpg",
+            large: "https://i.ibb.co/9gjBDgC/patong.jpg",
+            medium: "https://i.ibb.co/M15tW3g/patong.jpg",
+            small: "https://i.ibb.co/8x873zR/patong.jpg",
+            smallest: "https://i.ibb.co/2yHbb8q/patong.jpg"
+        },
+        loc: "Phuket, Thailand"
+    },
+    {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Buak Hard Public Park",
+        price: 42,
+        description: "A park decorated with many trees and flowers",
+        images: {
+            largest: "https://i.ibb.co/dWVVkND/nongbuak.jpg",
+            large: "https://i.ibb.co/db1x5m4/nongbuak.jpg",
+            medium: "https://i.ibb.co/Q61sWRk/nongbuak.jpg",
+            small: "https://i.ibb.co/Hdb6Bh2/nongbuak.jpg",
+            smallest: "https://i.ibb.co/6rrFFxC/nongbuak.jpg"
+        },
+        loc: "Chiang Mai, Thailand"
+    }, {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Wat Chedi Luang",
+        price: 18,
+        description: "A Buddhist temple in the historic center",
+        images: {
+            largest: "https://i.ibb.co/8d14bht/watchediluang.jpg",
+            large: "https://i.ibb.co/SfLYpfB/watchediluang.jpg",
+            medium: "https://i.ibb.co/SvkGFNS/watchediluang.jpgg",
+            small: "https://i.ibb.co/7W6RD6t/watchediluang.jpg",
+            smallest: "https://i.ibb.co/d6MJSpC/watchediluang.jpg"
+        },
+        loc: "Chiang Mai, Thailand"
+    }, {
+        id: Math.floor(new Date().getMilliseconds() + Math.random() * 99999999999),
+        name: "Thai-Chinese Cultural Center",
+        price: 55,
+        description: "This cultural center features a gorgeous garden, a tea shop, and the Moral Museum",
+        images: {
+            largest: "https://i.ibb.co/Sr7CN0C/thai-Chinesecultural.jpg",
+            large: "https://i.ibb.co/f2yRsyf/thai-Chinesecultural.jpg",
+            medium: "https://i.ibb.co/2KmTJ6m/thai-Chinesecultural.jpg",
+            small: "https://i.ibb.co/xDDqd1J/thai-Chinesecultural.jpg",
+            smallest: "https://i.ibb.co/ZMRVD62/thai-Chinesecultural.jpg"
+        },
+        loc: "Udon Thani, Thailand"
+    }
+    ],
+    title: "Thailand"
 }

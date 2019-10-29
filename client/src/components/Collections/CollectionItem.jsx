@@ -30,8 +30,6 @@ const OverlayStyles = createGlobalStyle`
 
 const ColItem = styled.div`
     width: 100%;
-    height: 42vh;
-    min-height: 20rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -47,7 +45,9 @@ const ColItem = styled.div`
 
 const ColFooter = styled.div`
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    background-color: black;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center; 
@@ -106,7 +106,7 @@ const CollectionItem = ({ item, itemPurchased }) => {
             <CustomButton
                 style={{
                     position: "absolute",
-                    bottom: "2.2rem"
+                    bottom: "1.9rem"
                 }}
 
                 value={itemPurchased ?

@@ -43,7 +43,6 @@ const ItemProductPreviewContainer = styled.div`
 `
 
 const ItemProductPreview = ({ bgImage, wideImages, show, ...props }) => {
-    console.log(wideImages)
     return (
         <ItemProductPreviewContainer wideImages={wideImages} show={show} bgImage={bgImage}>
             {!show ? <ContentBox {...props} /> : null}

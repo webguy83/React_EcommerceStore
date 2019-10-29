@@ -35,6 +35,9 @@ const ModalContainer = styled.div`
     }
 
     & .imageHolder {
+        
+        max-width: 80rem;
+
         & img {
             width: 100%;
             max-height: 47vh;

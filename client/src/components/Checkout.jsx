@@ -92,8 +92,8 @@ const Checkout = ({ cartItemsTotal }) => {
             <CheckoutContainer>
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Description</th>
+                        <th>Product Preview</th>
+                        <th>Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Remove</th>
@@ -138,13 +138,13 @@ const Checkout = ({ cartItemsTotal }) => {
                             const { id, images, name, qty, price } = item;
                             return <React.Fragment key={id}>
                                 <tr>
-                                    <th>Product</th>
+                                    <th>Product Preview</th>
                                     <td className="thumb" style={{
                                         backgroundImage: `url(${images["smallest"]})`
                                     }}></td>
                                 </tr>
                                 <tr>
-                                    <th>Description</th>
+                                    <th>Name</th>
                                     <td>{name}</td>
                                 </tr>
                                 <tr>
