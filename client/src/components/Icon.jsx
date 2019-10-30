@@ -14,13 +14,17 @@ const IconContainer = styled.div`
     & .cart {
         font-size: 3.8rem;
     }
+
+    .fas {
+        font-size: 4.4rem;
+    }
 `
 
 const Counter = styled.span`
     position: absolute;
-    left: -5%;
-    top: -10%;
-    color: var(--prim);
+    left: 9%;
+    top: 7%;
+    color: #fff;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -31,7 +35,7 @@ const Icon = () => {
     return (
         iconCartHidden ? null : <IconContainer onClick={() => toggleMiniCartHidden()}>
             <Counter>{cartItemsAmount}</Counter>
-            <span role="img" aria-label="cart" className="cart">&#128722;</span>
+            <i class="fas fa-shopping-cart"></i>
         </IconContainer>
     );
 };
