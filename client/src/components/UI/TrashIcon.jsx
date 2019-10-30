@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-
 import styled from 'styled-components/macro';
 
 const TrashIconContainer = styled.span`
     cursor: pointer;
+    font-size: 2.9rem;
 
     &:hover, &:active {
         color: var(--sec);
@@ -17,7 +15,7 @@ const TrashIconContainer = styled.span`
 const TrashIcon = ({ removeItem }) => {
     return (
         <TrashIconContainer onClick={removeItem}>
-            <FontAwesomeIcon icon={faTrashAlt} />
+            	&#128465;
         </TrashIconContainer>
     );
 };

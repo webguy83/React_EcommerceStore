@@ -1,7 +1,11 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlobeAsia } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
-const Logo = () => <FontAwesomeIcon icon={faGlobeAsia} size="6x" />
+const LogoContainer = styled.div`
+    font-size: 4rem;
+`
+
+const Logo = () => <LogoContainer><span role="img" aria-label="globe">&#127759;</span></LogoContainer>
+
 export default Logo;

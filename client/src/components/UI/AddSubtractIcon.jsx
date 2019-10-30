@@ -1,8 +1,4 @@
 import React from 'react';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-
 import styled, { css } from 'styled-components/macro';
 
 // css
@@ -34,7 +30,7 @@ const AddSubtractIconContainer = styled.div`
 const AddSubtractIcon = ({ addIcon, addOrSubtract, disabled }) => {
     return (
         <AddSubtractIconContainer disabled={disabled} onClick={addOrSubtract}>
-            <FontAwesomeIcon icon={addIcon ? faPlusCircle : faMinusCircle} />
+            <span role="img" aria-label="addRemove">{addIcon ? <>&#10133;</> : <>&#10134;</>}</span>
         </AddSubtractIconContainer>
     );
 };

@@ -9,7 +9,6 @@ import { CartContext } from '../contexts/cart';
 
 // css
 
-
 const LinkMainStyles = css`
     text-decoration: none;
     color: var(--prim);
@@ -28,7 +27,7 @@ const NotLastChildStyles = css`
 
 const DisplayName = styled.p`
     font-size: 1.3rem;
-    margin-left: 1rem;
+    margin: 0 5rem 0 1rem;
 `
 
 const HeaderContainer = styled.div`
@@ -37,7 +36,7 @@ const HeaderContainer = styled.div`
     position: relative;
     margin-bottom: 2rem;
 
-    @media (max-width: 670px) {
+    @media (max-width: 720px) {
         flex-direction: column;
         align-items: center;
     }
@@ -52,7 +51,7 @@ const NavList = styled.nav`
     display: flex;
     align-items: center;
 
-    @media (max-width: 670px) {
+    @media (max-width: 600px) {
         flex-direction: column;
         justify-content: center;
         margin-top: 2rem;
@@ -61,6 +60,8 @@ const NavList = styled.nav`
 
 const LogoGroup = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const NavLinkContainer = styled(NavLink)`
@@ -69,7 +70,7 @@ const NavLinkContainer = styled(NavLink)`
 
     cursor: pointer;
 
-    @media (max-width: 670px) {
+    @media (max-width: 600px) {
         :not(:last-child) {
             margin-right: 0;
             margin-bottom: 2rem;
