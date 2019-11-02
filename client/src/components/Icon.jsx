@@ -35,7 +35,7 @@ const Icon = () => {
     return (
         iconCartHidden ? null : <IconContainer onClick={() => toggleMiniCartHidden()}>
             <Counter>{cartItemsAmount}</Counter>
-            <i class="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart"></i>
         </IconContainer>
     );
 };
