@@ -18,13 +18,14 @@
   --fail: #f8d7da;
 }
 
-input, button {
+input,
+button {
   font-family: inherit;
 }
 
 html {
   font-size: 62.5%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }

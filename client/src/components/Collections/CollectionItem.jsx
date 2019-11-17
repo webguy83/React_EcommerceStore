@@ -118,7 +118,7 @@ const CollectionItem = ({ item, itemPurchased }) => {
         <CustomButton
           style={{
             position: "absolute",
-            bottom: "1.9rem"
+            bottom: "1.6rem"
           }}
           value={itemPurchased ? "Remove From Cart" : "Add to Cart"}
           click={e => {
