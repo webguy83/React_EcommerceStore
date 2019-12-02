@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`confirmation box - success messages should render without crashing 1`] = `
+<DocumentFragment>
+  .c0 {
+  background-color: var(--success);
+  overflow: hidden;
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+
+.c1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+<div
+    class="c0"
+    data-testid="container"
+  >
+    <p
+      class="c1"
+      data-testid="statusMsg"
+    >
+      You have submitted without error!
+    </p>
+  </div>
+</DocumentFragment>
+`;

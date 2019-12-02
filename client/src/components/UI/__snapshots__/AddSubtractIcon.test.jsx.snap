@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add and subtraction icon tests renders without crashing 1`] = `
+<DocumentFragment>
+  .c0 {
+  cursor: pointer;
+}
+
+.c0:hover,
+.c0:active {
+  color: var(--sec);
+  -webkit-transition: var(--btnTrans);
+  transition: var(--btnTrans);
+}
+
+<div
+    class="c0"
+    data-testid="container"
+  >
+    <span
+      aria-label="addRemove"
+      data-testid="span"
+      role="img"
+    >
+      ➕
+    </span>
+  </div>
+</DocumentFragment>
+`;
