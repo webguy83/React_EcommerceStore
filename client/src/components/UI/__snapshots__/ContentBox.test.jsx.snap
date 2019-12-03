@@ -22,7 +22,6 @@ exports[`content box tests should render without crashing 1`] = `
   background-color: white;
   padding: 1.3rem;
   opacity: 0.6;
-  font-weight: bold;
 }
 
 .c0 > h2 {
@@ -35,8 +34,7 @@ exports[`content box tests should render without crashing 1`] = `
 
 <div
     class="c0 content"
-    data-testid="container"
-    style="font-weight: bold;"
+    data-testid="content"
   >
     <h2
       data-testid="title"

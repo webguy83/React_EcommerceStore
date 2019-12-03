@@ -22,7 +22,7 @@ const Content = styled.div`
 
 const ContentBox = ({ title, textContent, ...props }) => {
   return (
-    <Content data-testid="container" className="content" {...props}>
+    <Content data-testid="content" className="content" {...props}>
       <h2 data-testid="title">{title}</h2>
       <p data-testid="textContent">{textContent}</p>
     </Content>

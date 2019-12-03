@@ -4,23 +4,17 @@ import "jest-styled-components";
 import "@testing-library/jest-dom/extend-expect";
 import { render, cleanup } from "@testing-library/react";
 
-let container = null;
-
-beforeEach(() => {
-  container = render(
-    <ContentBox
-      title="Canada"
-      textContent="Shop for Photos!"
-      style={{
-        fontWeight: "bold"
-      }}
-    />
-  );
-});
-
 afterEach(cleanup);
 
 describe("content box tests", () => {
+  let container = null;
+
+  beforeEach(() => {
+    container = render(
+      <ContentBox title="Canada" textContent="Shop for Photos!" />
+    );
+  });
+
   it("should render without crashing", () => {
     const { asFragment } = container;
     expect(asFragment()).toMatchSnapshot();
@@ -35,9 +29,19 @@ describe("content box tests", () => {
     const { getByTestId } = container;
     expect(getByTestId("textContent")).toHaveTextContent(/^Shop for Photos!$/);
   });
+});
 
+describe("css testing", () => {
   it("should add new custom CSS to styled component", () => {
-    const { getByTestId } = container;
-    expect(getByTestId("container")).toHaveStyleRule("font-weight", "bold");
+    const { getByTestId } = render(
+      <ContentBox
+        title="Canada"
+        textContent="Shop for Photos!"
+        style={{
+          fontWeight: "bold"
+        }}
+      />
+    );
+    expect(getByTestId("content")).toHaveStyleRule("font-weight", "bold");
   });
 });
