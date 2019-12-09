@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default tests for Custom Input should render without crashing and input as default 1`] = `
+<DocumentFragment>
+  .c3 {
+  color: darkgray;
+  position: absolute;
+  top: -0.5rem;
+  font-size: 1.6rem;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  top: -1rem;
+  font-size: 1.3rem;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.c1 {
+  font-family: inherit;
+  border: 1px solid darkgray;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1:focus + .c2 {
+  top: -1rem;
+  font-size: 1.3rem;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.c1[type="password"],
+.c1[type="textarea"] {
+  -webkit-letter-spacing: 0.3rem;
+  -moz-letter-spacing: 0.3rem;
+  -ms-letter-spacing: 0.3rem;
+  letter-spacing: 0.3rem;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  padding: 1.5rem 0;
+}
+
+<div
+    class="c0"
+  >
+    <input
+      class="c1"
+      data-testid="input"
+      id="firstName"
+      name="firstName"
+      required=""
+      type="text"
+      value="Curtis"
+    />
+    <label
+      class="c2 c3"
+      data-testid="label"
+      for="firstName"
+      name="firstName"
+      required=""
+      type="text"
+      value="Curtis"
+    >
+      First Name
+    </label>
+  </div>
+</DocumentFragment>
+`;
