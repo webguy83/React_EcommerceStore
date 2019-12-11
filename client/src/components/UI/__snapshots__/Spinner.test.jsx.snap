@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default tests for loader should render Spinner without errors 1`] = `
+<DocumentFragment>
+  .c0 {
+  position: absolute;
+  left: calc(50% - 4.5rem);
+  top: calc(50% - 4.5rem);
+}
+
+.c0 .loader {
+  border: 0.8rem solid #f3f3f3;
+  border-top: 0.8rem solid var(--prim);
+  border-radius: 50%;
+  width: 6.4rem;
+  height: 6.4rem;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+<div
+    class="c0"
+  >
+    <div
+      class="loader"
+      data-testid="loader"
+    />
+  </div>
+</DocumentFragment>
+`;
