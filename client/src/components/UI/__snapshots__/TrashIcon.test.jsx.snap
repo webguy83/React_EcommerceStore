@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default styles for TrashIcon it should render with no errors 1`] = `
+<DocumentFragment>
+  .c0 {
+  cursor: pointer;
+  font-size: 2.9rem;
+}
+
+.c0:hover,
+.c0:active {
+  color: var(--sec);
+  -webkit-transition: var(--btnTrans);
+  transition: var(--btnTrans);
+}
+
+<span
+    class="c0"
+  >
+    🗑
+  </span>
+</DocumentFragment>
+`;
