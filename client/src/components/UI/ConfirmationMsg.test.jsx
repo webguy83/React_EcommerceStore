@@ -44,34 +44,34 @@ describe("confirmation box - success messages", () => {
   });
 });
 
-describe("confirmation box - status background colour", () => {
-  it("should set background colour of status bar to green when success", () => {
-    const { getByTestId } = render(
-      <ConfirmationMsg status="success" statusMessages={defaultStatusMessage} />
-    );
-    expect(getByTestId("container")).toHaveStyleRule(
-      "background-color",
-      "var(--success)"
-    );
-  });
+// describe("confirmation box - status background colour", () => {
+//   it("should set background colour of status bar to green when success", () => {
+//     const { getByTestId } = render(
+//       <ConfirmationMsg status="success" statusMessages={defaultStatusMessage} />
+//     );
+//     expect(getByTestId("container")).toHaveStyleRule(
+//       "background-color",
+//       "var(--success)"
+//     );
+//   });
 
-  it("should set background colour of status bar to red when failed", () => {
-    const { getByTestId } = render(
-      <ConfirmationMsg status="fail" statusMessages={defaultStatusMessage} />
-    );
-    expect(getByTestId("container")).toHaveStyleRule(
-      "background-color",
-      "var(--fail)"
-    );
-  });
+//   it("should set background colour of status bar to red when failed", () => {
+//     const { getByTestId } = render(
+//       <ConfirmationMsg status="fail" statusMessages={defaultStatusMessage} />
+//     );
+//     expect(getByTestId("container")).toHaveStyleRule(
+//       "background-color",
+//       "var(--fail)"
+//     );
+//   });
 
-  it("should set background colour of status bar to yellow when loading", () => {
-    const { getByTestId } = render(
-      <ConfirmationMsg status="sending" statusMessages={defaultStatusMessage} />
-    );
-    expect(getByTestId("container")).toHaveStyleRule(
-      "background-color",
-      "var(--warning)"
-    );
-  });
-});
+//   it("should set background colour of status bar to yellow when loading", () => {
+//     const { getByTestId } = render(
+//       <ConfirmationMsg status="sending" statusMessages={defaultStatusMessage} />
+//     );
+//     expect(getByTestId("container")).toHaveStyleRule(
+//       "background-color",
+//       "var(--warning)"
+//     );
+//   });
+// });

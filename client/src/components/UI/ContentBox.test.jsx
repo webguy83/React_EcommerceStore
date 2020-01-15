@@ -31,17 +31,17 @@ describe("content box tests", () => {
   });
 });
 
-describe("css testing", () => {
-  it("should add new custom CSS to styled component", () => {
-    const { getByTestId } = render(
-      <ContentBox
-        title="Canada"
-        textContent="Shop for Photos!"
-        style={{
-          fontWeight: "bold"
-        }}
-      />
-    );
-    expect(getByTestId("content")).toHaveStyleRule("font-weight", "bold");
-  });
-});
+// describe("css testing", () => {
+//   it("should add new custom CSS to styled component", () => {
+//     const { getByTestId } = render(
+//       <ContentBox
+//         title="Canada"
+//         textContent="Shop for Photos!"
+//         style={{
+//           fontWeight: "bold"
+//         }}
+//       />
+//     );
+//     expect(getByTestId("content")).toHaveStyleRule("font-weight", "bold");
+//   });
+// });
